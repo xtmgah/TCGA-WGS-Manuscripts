@@ -5,5 +5,5 @@ This repository contains reproducible code, pipelines, and resources used in who
 The following WGS-based analyses are included or planned for inclusion in this repository:
 
 ### Testicular Germ Cell Tumors (TGCT)
-- [**A Thiopurine-like Mutagenic Process Defines TGCT Subtypes**]()
+- [**A Thiopurine-like Mutagenic Process Defines TGCT Subtypes**](https://github.com/xtmgah/TCGA-WGS-Mansucripts/tree/main/TCGA-TGCT)
 
