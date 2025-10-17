@@ -1,4 +1,4 @@
-# TCGA-WGS-Mansucripts
+# TCGA-WGS-Manuscripts
 This repository contains reproducible code, pipelines, and resources used in whole-genome sequencing (WGS)-based analyses of cancer samples from The Cancer Genome Atlas (TCGA). It serves as a centralized collection of manuscript-associated code for various pan-cancer and cancer-type-specific projects.
 
 ## Manuscripts
