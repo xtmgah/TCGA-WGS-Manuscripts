@@ -99,3 +99,7 @@ The data/ folder is expected to contain most of the whole-genome sequencing (WGS
 ## Data format
 You can find all the data format in the html file "data_format.html"
 
+## WGS analysis pipeline
+
+The Whole Genome Sequencing (WGS) pipeline used in this study is available at the following repository: [WGS-Pipeline](https://github.com/xtmgah/Sherlock-Lung/tree/main/Sherlock-Lung%20Pipeline)
+
