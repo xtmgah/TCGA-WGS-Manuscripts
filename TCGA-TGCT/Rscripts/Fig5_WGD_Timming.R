@@ -1,56 +1,24 @@
----
-title: "A Thiopurine-like Mutagenic Process Defines TGCT Subtypes"
-author: "Tongwu Zhang"
-date: "`r Sys.Date()`"
-output:
-  html_document:
-    toc: true
-    toc_float: true
-    toc_depth: 3
-    number_sections: true
----
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
-```
+# ------------------------------------------------------------------------------
+# Script: Figure 5 - TCGA-TGCT WGS analysis
+# Description: This script reproduces all main analyses and figures for the follwoing TGCT manuscript: 
+# A Thiopurine-like Mutagenic Process Defines TGCT Subtypes
+# ------------------------------------------------------------------------------
 
-## Overview
-This R Markdown document reproduces the main analyses and figures for TCGA-TGCT WGS dataset
+# --- Load Required Libraries and Set Plotting Styles ---------------------------
+# (You may need to install some packages if missing)
 
-Manuscript title: A Thiopurine-like Mutagenic Process Defines TGCT Subtype
-
-Fig. 5:  Early and Widespread Whole-Genome Doubling (WGD) and Clonal Architecture in TGCTs.
----
-
-## Load Required Libraries and Set Plotting Styles 
-(You may need to install some packages if missing)
-
-```{r}
-
-source('functions/Sherlock_functions.R')
+source('../functions/Sherlock_functions.R')
 
 set_wd()
 libztw()
 pdfhr()
 pdfhr2()
 
-# Load R object WGS analysis results --------------------------------------
 
-load('data/wgs_data.RData')
-load('data/wgs_clinical.RData')
-load('data/ngspurity_data.RData')
-
-
-```
-
-
-## Fig. 5a
-Distribution of tumors with minimal cancer cell fraction (CCF) of subclones in seminomas and non-seminomas, with non-seminomas showing higher intratumoral heterogeneity.
-
-
-```{r}
+# Fig. 5a -----------------------------------------------------------------
 # Number of Subclones -----------------------------------------------------
-load('data/DP_info_data.RData', verbose = T)
-load('data/ngspurity_data.RData')
+load('../data/DP_info_data.RData', verbose = T)
+load('../data/ngspurity_data.RData')
 
 library(plotthis)
 
@@ -114,13 +82,16 @@ pdata %>%
   ) +
   scale_fill_viridis_d()
 
-```
-## Fig. 5b
-Comparison of clonal versus subclonal mutation proportions between seminomas and non-seminomas.
+# ggsave(
+#   'subclone_miniccf_subtype.pdf',
+#   width = 6,
+#   height = 6,
+#   device = cairo_pdf()
+# )
 
 
-```{r,fig.width=4}
-load('data/clsdata.RData',verbose = T)
+# Fig. 5b -----------------------------------------------------------------
+load('../data/clsdata.RData',verbose = T)
 
 clsdata2 <- clsdata %>%
   mutate(CLS = if_else(str_starts(CLS, 'clonal'), 'clonal', CLS)) %>%
@@ -155,44 +126,44 @@ clsdata2 %>%
   #theme(legend.position = 'top',legend.direction = 'horizontal')+
   panel_border(color = 'black')
 
-```
+# ggsave(
+#   filename = 'CLS_subtype2.pdf',
+#   width = 3.5,
+#   height = 5,
+#   device = cairo_pdf
+# )
 
-## Fig. 5c
-Ternary plot illustrating genome-wide major copy number (MCN) composition to infer WGD status. Each point represents a tumor, colored by subtype and shaped by WGD category. Tumors are classified as non-WGD, single WGD, or multiple WGD based on the relative proportions of the autosomal genome with MCN = 1, 2, or ≥3.
 
-```{r}
-load('data/MCN_data.RData')
-#library(ggtern)
+
+# Fig. 5c -----------------------------------------------------------------
+load('../data/MCN_data.RData')
+library(ggtern)
 MCN_data %>%
   mutate(MCN_R1 = 1 - MCN_R2 - MCN_R3) %>%
-  ggtern::ggtern(ggtern::aes(MCN_R1, MCN_R2, MCN_R3, fill = Subtype, shape = WGD)) +
-  ggtern::geom_mask() +
+  ggtern(ggtern::aes(MCN_R1, MCN_R2, MCN_R3, fill = Subtype, shape = WGD)) +
+  geom_mask() +
   geom_point(size = 3) +
   scale_shape_manual(values = c(24, 21)) +
   scale_fill_manual(values = ncicolpal[c(4, 5)]) +
   ggtern::theme_rgbw(base_size = 14, base_family = 'Roboto') +
-  ggtern::theme_nogrid() +
-  ggtern::theme_hidetitles() +
-  ggtern::theme_clockwise() +
-  ggtern::theme_legend_position('tr') +
-  ggtern::geom_Lline(Lintercept = 0.5) +
-  ggtern::geom_Rline(Rintercept = 0.5) +
+  theme_nogrid() +
+  theme_hidetitles() +
+  theme_clockwise() +
+  theme_legend_position('tr') +
+  geom_Lline(Lintercept = 0.5) +
+  geom_Rline(Rintercept = 0.5) +
   labs(
     xarrow = '% autosomal genome with MCN <2',
     yarrow = '% autosomal genome with MCN >=2 & <3',
     zarrow = '% autosomal genome with MCN >=3'
   )
 
-```
+#ggtern::ggsave(filename = 'Tumor_WGD_tmp.pdf', width = 6.5, height = 6.5)
 
 
-## Fig. 5d
- Timing of WGD events relative to the accumulation of clock-like mutations (SBS1 and SBS5). Boxplots show the ratio of mutations in genomic segments with major copy number (MCN) = 2 versus MCN = 1 (indicative of single WGD), or MCN = 3 versus MCN = 2 (indicative of multiple WGDs). High mutation ratios in duplicated segments suggest that WGD occurred early during tumor evolution in both seminomas and non-seminomas.
-
-
-```{r}
+# Fig. 5d -----------------------------------------------------------------
 sample_wgd2 <- MCN_data %>% filter(MCN_R3 > 0.5) %>% pull(Tumor_Barcode)
-load('data/tgct_signature_probability.RData', verbose = T)
+load('tgct_signature_probability.RData', verbose = T)
 
 DP_info_data <- DP_info_data %>% left_join(tgct_sbs96_probability)
 
@@ -293,25 +264,22 @@ pdata %>%
   guides(color = 'none') +
   coord_flip()
 
-ggsave(
-  filename = 'WGD_timing_subtypes_SBS15.pdf',
-  width = 8,
-  height = 4,
-  device = cairo_pdf
-)
-```
-
-## Fig. 5e
-Correlation between WGD timing and early clonal mutation proportion in seminomas (left) and non-seminomas (right). Tumors harboring early clonal driver mutations prior to WGD are annotated by color, with counts and frequencies indicated above the plots. Pearson R and P-value are shown above scatterplots. 
+# ggsave(
+#   filename = 'WGD_timing_subtypes_SBS15.pdf',
+#   width = 8,
+#   height = 4,
+#   device = cairo_pdf
+# )
 
 
-```{r}
+# Fig. 5e -----------------------------------------------------------------
+
 # WGS timming and clonal structure/drivers  -------------------------------
 # WGD timming -------------------------------------------------------------
-load('data/wgs_data.RData')
-load('data/ngspurity_data.RData')
-load('data/DP_info_data.RData', verbose = T)
-load('data/clsdata.RData')
+load('../data/wgs_data.RData')
+load('../data/ngspurity_data.RData')
+load('../data/DP_info_data.RData', verbose = T)
+load('../data/clsdata.RData')
 #load('../ZTW_functions.RData')
 tmp <- DP_info_data %>%
   filter(no.chrs.bearing.mut == 2) %>%
@@ -329,10 +297,10 @@ tdata <- ngspurity %>%
 
 
 # driver gene
-load('data/tgct_mtvcf.RData', verbose = T)
-load('data/tgct_maf.RData', verbose = T)
+load('../data/tgct_mtvcf.RData', verbose = T)
+load('../data/tgct_maf.RData', verbose = T)
 #load('tgct_driver_mutations.RData')
-load('data/intogene_drivers.RData', verbose = T)
+load('../data/intogene_drivers.RData', verbose = T)
 genelist <- intogene %>% pull(SYMBOL)
 
 tmp <- tgct_mtvcf %>% select(Tumor_Barcode, MutationID, CLS)
@@ -420,63 +388,16 @@ pdata %>%
   ) +
   guides(fill = guide_legend(nrow = 1, byrow = TRUE))
 
-```
+# ggsave(
+#   filename = 'WGD_timing_early_clonal.pdf',
+#   width = 9,
+#   height = 6,
+#   device = cairo_pdf
+# )
 
-## Fig. 5f
-Estimated cell divisions before WGD in seminomas versus non-seminomas, inferred from pre-WGD mutation burden. P-values from two-sided Wilcoxon rank-sum tests are shown above boxplots.
 
-```{r, fig.width=4}
-load('data/predup_with_divs.RData')
-# box plot
-my_comparisons <- list(c('Seminoma', 'Non-Seminoma'))
-
-stat.test <- predup_with_divs %>%
-  rstatix::wilcox_test(
-    cell_divisions_mid ~ Subtype,
-    comparisons = my_comparisons
-  ) %>%
-  rstatix::add_xy_position(x = "Subtype") %>%
-  mutate(myformatted.p = paste0('P = ', round(p, 3))) %>%
-  mutate(Subtype = NA, y.position = 90)
-
-predup_with_divs %>%
-  ggplot(aes(Subtype, cell_divisions_mid, fill = Subtype)) +
-  geom_boxplot(width = 0.5, color = 'black', outlier.shape = NA) +
-  #ggbeeswarm::geom_quasirandom(pch=21,size=2,width = 0.2,color="white",stroke=0.2,dodge.width=1)+
-  #geom_hline(yintercept = 1,linetype=2,col=ncicolpal[2])+
-  #geom_vline(xintercept = 1.5,col='#cccccc',size=0.2)+
-  labs(x = NULL, y = 'Number of cell division before WGD') +
-  scale_fill_manual(values = subtypecol, breaks = names(subtypecol)) +
-  scale_y_continuous(breaks = pretty_breaks(n = 7),limits = c(0,100)) +
-  theme_ipsum_rc(
-    axis_text_size = 14,
-    axis_title_just = 'm',
-    axis_title_size = 16,
-    grid = F,
-    ticks = T
-  ) +
-  panel_border(color = 'black') +
-  theme(
-    axis.text.x = element_blank(),
-    panel.spacing.x = unit(0.4, 'cm'),
-    axis.ticks.x = element_blank(),
-    plot.margin = margin(4, 4, 4, 4),
-    legend.position = 'right',
-    legend.text = element_text(size = 14),
-    legend.title = element_text(size = 14),
-    strip.text.x = element_text(hjust = 0.5, face = 'bold', size = 16)
-  ) +
-  scale_color_manual(values = c(ncicolpal[1], 'black')) +
-  #guides(color='none')+
-  stat_pvalue_manual(stat.test, label = "myformatted.p", color = ncicolpal[1])
-
-```
-
-## Fig. 5g
-Correlation between pre-WGD cell divisions and patient age at diagnosis in seminomas (left) and non-seminomas (right). Pearson R and P-value are shown above scatterplots.
-All boxplots display median, IQR, and whiskers extending to 1.5× IQR.
-
-```{r,fig.width=10}
+# Fig. 5f -----------------------------------------------------------------
+load('../data/predup_with_divs.RData')
 
 predup_with_divs %>%
   ggplot(aes(cell_divisions_mid, age_at_diagnosis, , fill = Subtype)) +
@@ -510,11 +431,48 @@ predup_with_divs %>%
   ) +
   guides(fill = 'none', col = 'none')
 
-```
 
 
+# Fig. 5g -----------------------------------------------------------------
 
-## R session information
-```{r}
-sessionInfo()
-```
+predup_with_divs %>%
+  ggplot(aes(cell_divisions_mid, age_at_diagnosis, , fill = Subtype)) +
+  geom_point(pch = 21, size = 2.5) +
+  stat_smooth(aes(fill = Subtype, color = Subtype), method = "lm") +
+  stat_cor(size = 5, col = ncicolpal[1]) +
+  #stat_regline_equation(label.y = c(60,64),label.x = c(4,4)) +
+  scale_fill_manual(values = subtypecol) +
+  scale_color_manual(values = subtypecol) +
+  scale_y_continuous(breaks = pretty_breaks(n = 5)) +
+  scale_x_continuous(breaks = pretty_breaks(n = 7)) +
+  facet_wrap(~Subtype, scale = 'free_x') +
+  labs(x = 'Number of cell division before WGD', y = 'Age at diagnosis') +
+  theme_ipsum_rc(
+    axis_text_size = 14,
+    axis_title_just = 'm',
+    axis_title_size = 16,
+    grid = 'XY',
+    ticks = T
+  ) +
+  panel_border(color = 'black') +
+  theme(
+    #axis.text.x = element_blank(),
+    panel.spacing.x = unit(0.4, 'cm'),
+    #axis.ticks.x = element_blank(),
+    plot.margin = margin(4, 4, 4, 4),
+    legend.position = 'bottom',
+    legend.text = element_text(size = 14),
+    legend.title = element_text(size = 14),
+    strip.text.x = element_text(hjust = 0.5, face = 'bold', size = 16)
+  ) +
+  guides(fill = 'none', col = 'none')
+
+# ggsave(
+#   filename = 'Cell_Division_before_WGD_age.pdf',
+#   width = 9,
+#   height = 4,
+#   device = cairo_pdf
+# )
+# 
+
+

@@ -7,7 +7,7 @@
 # --- Load Required Libraries and Set Plotting Styles ---------------------------
 # (You may need to install some packages if missing)
 
-source('functions/Sherlock_functions.R')
+source('../functions/Sherlock_functions.R')
 
 set_wd()
 libztw()
@@ -17,8 +17,8 @@ pdfhr2()
 
 
 # Fig. 6a -----------------------------------------------------------------
-load('data/ssGSEA.RData')
-load('data/wgs_data.RData')
+load('../data/ssGSEA.RData')
+load('../data/wgs_data.RData')
 
 pdata <- ssgsea_results_h %>%
   left_join(barcode2study) %>%
@@ -409,7 +409,7 @@ ggplot(
 
 
 # Fig. 6e -----------------------------------------------------------------
-load('data/tcga_expdata_all.RData',verbose = T)
+load('../data/tcga_expdata_all.RData',verbose = T)
 
 pdata <- expdata %>% filter(Gene=='UNG') 
 mvalue <- pdata %>% group_by(Study) %>% summarise(mvalue=median(log2(RSEM+1)))
@@ -473,7 +473,7 @@ plot_grid(p1,p2,align = 'h',nrow = 1,axis = 'tb',rel_widths = c(5,1))
 
 
 # Fig. 6f -----------------------------------------------------------------
-load('data/tcga_expdata_all.RData',verbose = T)
+load('../data/tcga_expdata_all.RData',verbose = T)
 
 apobec_genes <- c('AICDA','APOBEC2','APOBEC3A','APOBEC3B','APOBEC3C','APOBEC3D','APOBEC3E','APOBEC3F','APOBEC3G','APOBEC3H','APOBEC4')
 tdata <- expdata %>% 

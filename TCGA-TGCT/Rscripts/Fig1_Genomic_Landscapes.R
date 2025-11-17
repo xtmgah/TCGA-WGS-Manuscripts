@@ -1,56 +1,38 @@
----
-title: "A Thiopurine-like Mutagenic Process Defines TGCT Subtypes"
-author: "Tongwu Zhang"
-date: "`r Sys.Date()`"
-output:
-  html_document:
-    toc: true
-    toc_float: true
-    toc_depth: 3
-    number_sections: true
----
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
-```
+# ------------------------------------------------------------------------------
+# Script: Figure 1 - TCGA-TGCT WGS analysis
+# Description: This script reproduces all main analyses and figures for the follwoing TGCT manuscript: 
+# A Thiopurine-like Mutagenic Process Defines TGCT Subtypes
+# ------------------------------------------------------------------------------
 
-## Overview
-This R Markdown document reproduces the main analyses and figures for TCGA-TGCT WGS dataset
+# --- Load Required Libraries and Set Plotting Styles ---------------------------
+# (You may need to install some packages if missing)
 
-Manuscript title: A Thiopurine-like Mutagenic Process Defines TGCT Subtype
-
-Fig. 1: Distinct Genomic Landscapes of Seminomas and Non-Seminomas in Testicular Germ Cell Tumors (TGCTs). 
----
-
-## Load Required Libraries and Set Plotting Styles 
-(You may need to install some packages if missing)
-
-```{r}
-
-source('functions/Sherlock_functions.R')
+source('../functions/Sherlock_functions.R')
 
 set_wd()
 libztw()
 pdfhr()
 pdfhr2()
 
-```
 
-## Fig. 1a.
-Comparison of key genomic features between seminomas (blue) and non-seminomas (purple), including tumor mutational burden (TMB; mutations/Mb), percentage genome altered (PGA; WGD-adjusted), number of structural variants (SVs), and number of transposable element insertions (TEs). P-values were obtained from linear regression models adjusted for age and tumor purity. For TMB, tumor ploidy was also included as a covariate. Multiple testing was corrected using the Benjamini–Hochberg FDR method.
-
-```{r,fig.width=12}
 # Load R object WGS analysis results --------------------------------------
 
-load('data/wgs_data.RData')
-load('data/wgs_clinical.RData')
-load('data/ngspurity_data.RData')
+load('../data/wgs_data.RData')
+load('../data/wgs_clinical.RData')
+load('../data/ngspurity_data.RData')
+
+
+
+# Figure 1a ---------------------------------------------------------------
+
+
 
 tgct_variable <- NULL
 # Numbers -----------------------------------------------------------------
 
 # TMB
 grch38 <- read_delim(
-  'data/Homo_sapiens_assembly38.fasta.fai',
+  '../data/Homo_sapiens_assembly38.fasta.fai',
   delim = '\t',
   col_names = FALSE
 ) #%>% slice(1:24)
@@ -58,7 +40,7 @@ grch38_size <- grch38 %>%
   filter(X1 %in% paste0('chr', c(1:22, 'X', 'Y', 'M'))) %>%
   summarise(total = sum(X2)) %>%
   pull(total)
-mafdata <- read_delim('data/all_mutianno.txt.gz', delim = '\t', col_names = T) %>%
+mafdata <- read_delim('../data/all_mutianno.txt.gz', delim = '\t', col_names = T) %>%
   clean_names()
 tgct_tmb <- mafdata %>%
   filter(chr %in% paste0('chr', c(1:22, 'X', 'Y', 'M'))) %>%
@@ -70,11 +52,11 @@ tgct_tmb %>% pivot_longer(-Tumor_Barcode)
 
 
 # PGA
-load('data/tgct_PGA.RData', verbose = T)
+load('../data/tgct_PGA.RData', verbose = T)
 tgct_PGA %>% select(Tumor_Barcode, PGA_WGD)
 
 # SVs
-load('data/SV_Fusion.RData', verbose = T)
+load('../data/SV_Fusion.RData', verbose = T)
 
 tgct_sv <- wgs_data %>%
   select(Subject, Tumor_Barcode) %>%
@@ -82,7 +64,7 @@ tgct_sv <- wgs_data %>%
   mutate(SVs = replace_na(SVs, 0))
 
 # TE insertions
-load('data/trafic.RData', verbose = T)
+load('../data/trafic.RData', verbose = T)
 
 
 tgct_variable <- tgct_tmb %>%
@@ -209,13 +191,12 @@ pdata %>%
   scale_color_manual(values = c(ncicolpal[1], 'black')) +
   guides(color = 'none')
 
-```
-## Fig. 1b
-Significantly mutated genes identified by the IntOGen pipeline across all TCGT samples. Dot size reflects combined -log10 q-value based on different driver gene algorithms. Colors denote functional annotation (Act: activating; LoF: loss-of-function).
 
-```{r}
 
-load('data/intogene_drivers.RData')
+
+# Figure 1b ---------------------------------------------------------------
+
+load('../data/intogene_drivers.RData')
 
 ## visulaizaiton
 
@@ -259,16 +240,14 @@ intogene %>%
   coord_cartesian(clip = 'off')+
   panel_border(color = 'black',size = 0.4)
 
+ggsave(file='intogene_drivers2.pdf',width = 6,height = 5, device = cairo_pdf)
 
-```
 
-##Fig. 1c
-Copy number heatmap of chromosome 12 showing frequent 12p amplification and isochromosome 12p [i(12p)] in TGCTs.
 
-```{r}
-source('functions/ggdendro.R')
-load('data/cnvdata.RData')
-load('data/isochromosome_12p.RData')
+# Fig. 1c -----------------------------------------------------------------
+source('../functions/ggdendro.R')
+load('../data/cnvdata.RData')
+load('../data/isochromosome_12p.RData')
 sample_order <- isochromosome_12p
 
 reducedseg_chr12 <- reducedseg[reducedseg$chrom=='12',]
@@ -321,19 +300,15 @@ p2 <- sample_order %>%
   geom_hline(yintercept = 30.5,linetype = 1)
 
 p <- plot_grid(p1,p2,align = 'h',axis = 'tb',nrow = 1,rel_widths = c(9,2))
-
 p
-
 #ggsave(filename = 'heatmap_all_segements_isochromosome12p_raw.pdf',plot = p, width = 6.9,height = 10,device = cairo_pdf)
 
-```
 
-##Fig. 1d
-Enrichment of i(12p) in seminomas with KIT mutations. P-value and odds ratio from two-sided Fisher’s exact test shown above the barplot.
+# Fig. 1d -----------------------------------------------------------------
 
-```{r,fig.width=4.5}
+
 # Association with KIT mutations ------------------------------------------
-load('data/tgct_maf.RData')
+load('tgct_maf.RData')
 
 tdata <- wgs_data %>% 
   left_join(
@@ -345,19 +320,19 @@ tdata <- wgs_data %>%
   mutate(KIT = replace_na(KIT,'Wildtype'))
 
 
-barplot_fisher(mdata0 = tdata %>% filter(Subtype=='Seminoma'),var1name = "isochromsome",var1lab = 'Isochromosome 12p', var2name = 'KIT',var2lab = 'KIT',Pcol = ncicolpal[1])
+source('../data/Sherlock_functions.R')
 
-```
 
-##Fig. 1e
-GISTIC2.0 analysis of recurrent focal copy number alterations. Significant amplifications (red) and deletions (blue) are annotated with potential target genes. Y-axis represents the significance by q value (left) and normalized amplification signals (G-Score; right). The green line represents the significance cutoff at Q value=0.25.
+barplot_fisher(mdata0 = tdata %>% filter(Subtype=='Seminoma'),var1name = "isochromsome",var1lab = 'Isochromosome 12p', var2name = 'KIT',var2lab = 'KIT',Pcol = ncicolpal[1],filename = 'seminoma_i12p_kit.pdf',width = 4.5,height = 6.1 )
 
-```{r,fig.width=12}
 
-load('data/Gistic_gcp.RData')
+
+# Fig. 1e -----------------------------------------------------------------
+
+load('../data/Gistic_gcp.RData')
 # Gistic plot -------------------------------------------------------------
 
-cyto <- read_delim('data/cytoBand.txt.gz',delim = '\t',col_names = F)
+cyto <- read_delim('../data/cytoBand.txt.gz',delim = '\t',col_names = F)
 colnames(cyto) <- c('Chromosome', 'Start' , 'End', 'Band', 'gieStain')
 cyto <- cyto %>% mutate(Chromosome = str_remove(Chromosome,"chr"),Centro=if_else(gieStain=="acen",1,0), Arm=paste0(Chromosome,str_sub(Band,1,1))) %>% filter(Chromosome %in% c(1:22,"X","Y"))
 #hg38centro <- cyto %>% filter(Centro!=0,Chromosome %in% c(1:22)) %>% select(chrom=Chromosome,start=Start,end=End,Centro) 
@@ -552,6 +527,9 @@ p_del <- deldata %>%
 
 #p_del
 
+
+
+
 # Cytoband plot -----------------------------------------------------------
 
 p_cytoband <- gcp$chr.tbl %>%
@@ -565,6 +543,8 @@ p_cytoband <- gcp$chr.tbl %>%
   theme(legend.position = 'none',text = element_text(family = "Roboto Condensed"))+
   scale_x_continuous(breaks = pretty_breaks(),expand = c(0,0))
 
+
+
 # Combined Plots ----------------------------------------------------------
 pdfhr()
 pdfhr2()
@@ -574,18 +554,11 @@ p_combined_plot <- cowplot::plot_grid(
   p_cytoband+theme(plot.margin=margin(b=0,unit="cm")),
   p_del+theme(plot.margin=margin(t=0,unit="cm")),
   align = 'v',axis = "lr",rel_heights = c(2,0.1,2),ncol = 1)
-
-p_combined_plot
-
 #ggsave(file="Gistic2_ztw.pdf",plot = p_combined_plot,width = 12,height = 6,device = cairo_pdf)
 
-```
 
-##Fig. 1f
-Oncoprints depicting recurrent driver mutations, focal amplifications/deletions, and genes disrupted by SVs in seminomas and non-seminomas. Mutation frequencies for each gene are shown on the right. For mutations, only recurrent nonsynonymous mutations in known pan-cancer driver genes were included. For focal somatic copy number alterations (SCNAs), only high-level amplifications (copy number >= 2) and deep deletions (copy number = –2) were considered. For genes disrupted by SVs, we included only recurrent events involving known pan-cancer driver genes.
-All boxplots display median, interquartile range (IQR), and whiskers extending to 1.5× IQR.
 
-```{r,fig.width=12}
+# Fig. 1f -----------------------------------------------------------------
 conflicts_prefer(tidylog::mutate)
 conflicts_prefer(dplyr::left_join)
 conflicts_prefer(dplyr::count)
@@ -599,8 +572,8 @@ conflicts_prefer(dplyr::slice)
 # presetting
 library(data.table)
 conflicts_prefer(cowplot::get_legend)
-source('functions/Oncoplots_functions.R')
-tmp <- read_csv('functions/oncoplot_colors.csv')
+source('../functions/Oncoplots_functions.R')
+tmp <- read_csv('../functions/oncoplot_colors.csv')
 landscape_colors <- tmp$Color
 names(landscape_colors) <- tmp$Name
 #landscape_colors <- c(landscape_colors,sp_group_color_new)
@@ -612,11 +585,11 @@ landscape_colors <- c(
 
 
 # load Genomic alterations data -------------------------------------------------
-load('data/wgs_data.RData', verbose = T)
+load('../data/wgs_data.RData', verbose = T)
 # driver genes
-load('data/tgct_maf.RData', verbose = T)
-load('data/intogene_drivers.RData', verbose = T)
-load('data/DriveGene.RData')
+load('../data/tgct_maf.RData', verbose = T)
+load('../data/intogene_drivers.RData', verbose = T)
+load('../data/DriveGene.RData')
 
 
 genelist <- tgct_maf_freq %>%
@@ -638,7 +611,7 @@ data_mutation <- tgct_maf %>%
 
 
 # focal amplification
-load('data/tgct_gistic_gene.RData')
+load('../data/tgct_gistic_gene.RData')
 ## need to define the gene set ##
 genelist2 <- c(
   genelist,
@@ -668,7 +641,7 @@ data_gistic <- data_gistic %>%
   select(Subject, Tumor_Barcode, Gene, Alteration, Type)
 
 # Fusion
-load('data/SV_Fusion.RData', verbose = T)
+load('../data/SV_Fusion.RData', verbose = T)
 genelist3 <- c(genelist, c('JARID2', 'PARK2', 'GRID2'))
 data_fusion <- data_fusion %>% filter(Gene %in% genelist3)
 
@@ -692,9 +665,9 @@ data_top <-
 
 
 # Add data feature
-load('data/MCN_data.RData', verbose = T)
-load('data/VerifyBamID_idata.RData')
-load('data/isochromosome_12p.RData')
+load('../data/MCN_data.RData', verbose = T)
+load('../data/VerifyBamID_idata.RData')
+load('../data/isochromosome_12p.RData')
 
 data_feature1 <- idata %>%
   select(Subject, WGS_Inferred_Ancestry = POP) %>%
@@ -857,16 +830,8 @@ for(subtype0 in c('Seminoma','Non-Seminoma')){
     result_feature
   )
   
-  print(paste0(subtype0,'\n\n'))
   print(oncoplot_final)
 }
 
 
-```
 
-
-
-## R session information
-```{r}
-sessionInfo()
-```

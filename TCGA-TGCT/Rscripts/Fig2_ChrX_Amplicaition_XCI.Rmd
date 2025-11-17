@@ -26,7 +26,7 @@ Fig. 2: Widespread Chromosome X Amplification and X Chromosome Inactivation (XCI
 
 ```{r}
 
-source('functions/Sherlock_functions.R')
+source('../functions/Sherlock_functions.R')
 
 set_wd()
 libztw()
@@ -35,9 +35,9 @@ pdfhr2()
 
 # Load R object WGS analysis results --------------------------------------
 
-load('data/wgs_data.RData')
-load('data/wgs_clinical.RData')
-load('data/ngspurity_data.RData')
+load('../data/wgs_data.RData')
+load('../data/wgs_clinical.RData')
+load('../data/ngspurity_data.RData')
 
 
 ```
@@ -47,7 +47,7 @@ Tumor purity-adjusted sequencing depth ratio of chromosome X versus autosomes in
 
 ```{r,fig.width=3}
 
-load('data/Gender.RData', verbose = T)
+load('../data/Gender.RData', verbose = T)
 
 my_comparisons = list(
   c('Seminoma', 'Normal'),
@@ -104,8 +104,8 @@ pdata %>%
 
 #ggsave(file = 'Sex_RatioX.pdf', width = 3, height = 5.5, device = cairo_pdf)
 
-load('data/ngspurity_data.RData')
-load('data/wgs_metrics.RData')
+load('../data/ngspurity_data.RData')
+load('../data/wgs_metrics.RData')
 
 pdata %>%
   filter(Type != 'Normal') %>%
@@ -222,10 +222,10 @@ Copy number profiles of chromosome X in TGCTs, separated by seminoma (left) and 
 
 library(ggnewscale)
 
-load('data/wgs_data.RData', verbose = T)
-load('data/ngspurity_data.RData', verbose = T)
+load('../data/wgs_data.RData', verbose = T)
+load('../data/ngspurity_data.RData', verbose = T)
 
-scna_chrx <- read_delim('data/BBprofile_final_chrX.txt',delim = '\t',col_names = T)
+scna_chrx <- read_delim('../data/BBprofile_final_chrX.txt',delim = '\t',col_names = T)
 
 # switch the nMaj and nMinor
 tmp <- scna_chrx %>%
@@ -399,7 +399,7 @@ XIST mRNA expression across TCGA tumor types (male subjects), with TGCTs showing
 
 ```{r}
 
-load('data/tcga_xist_exp.RData',verbose = T)
+load('../data/tcga_xist_exp.RData',verbose = T)
 mvalue <- xist_exp_new %>%
   group_by(Study) %>%
   summarise(mvalue = median(log2(RSEM + 1)))
@@ -458,7 +458,7 @@ XIST mRNA expression in normal testis (GTEx), non-seminomas, and seminomas (TCGA
 
 
 ```{r, fig.width=4}
-load('data/tcga_xist_exp.RData',verbose = T)
+load('../data/tcga_xist_exp.RData',verbose = T)
 my_comparisons <- list(
   c('Seminoma', 'Non-Seminoma'),
   c('Seminoma', 'GTEx Testis'),
@@ -531,8 +531,8 @@ Negative correlation between XIST expression and chromosome X median DNA methyla
 
 ```{r,fig.width=10}
 
-load('../tcga_xist_exp.RData',verbose = T)
-load('data/chrx_median_mtdata.RData',verbose = T)
+load('../data/tcga_xist_exp.RData',verbose = T)
+load('../data/chrx_median_mtdata.RData',verbose = T)
 # tmp <- tdata %>%
 #   filter(CpG_chrm == 'chrX') %>% 
 #   group_by(Name) %>%
@@ -580,7 +580,7 @@ Replication stress scores across TCGA tumor types based on replication stress ge
 
 
 ```{r}
-load('data/tcga_repstress_zscore.RData',verbose = T)
+load('../data/tcga_repstress_zscore.RData',verbose = T)
 
 mvalue <- tcga_repstress_score_cbioportal %>% group_by(Study) %>% summarise(mvalue=median(RepStress_ZScore))
 tmp <- tcga_repstress_score_cbioportal %>% select(Study,TCGA_Barcode) %>% unique() %>% count(Study) %>% mutate(StudyLab=paste0(Study,' (',n,')'))
@@ -609,7 +609,7 @@ All boxplots display median, IQR, and whiskers extending to 1.5× IQR.
 
 
 ```{r,fig.width=10}
-load('data/tcga_repstress_zscore.RData',verbose = T)
+load('../data/tcga_repstress_zscore.RData',verbose = T)
 tdata <- left_join(
   tcga_repstress_score_cbioportal %>% filter(Study == 'TGCT'),
   xist_exp_tgct %>%

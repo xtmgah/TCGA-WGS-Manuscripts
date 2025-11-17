@@ -7,7 +7,7 @@
 # --- Load Required Libraries and Set Plotting Styles ---------------------------
 # (You may need to install some packages if missing)
 
-source('functions/Sherlock_functions.R')
+source('../functions/Sherlock_functions.R')
 
 set_wd()
 libztw()
@@ -18,7 +18,7 @@ pdfhr2()
 
 # Fig. 2a -----------------------------------------------------------------
 
-load('data/Gender.RData', verbose = T)
+load('../data/Gender.RData', verbose = T)
 
 my_comparisons = list(
   c('Seminoma', 'Normal'),
@@ -75,8 +75,8 @@ pdata %>%
 
 #ggsave(file = 'Sex_RatioX.pdf', width = 3, height = 5.5, device = cairo_pdf)
 
-load('data/ngspurity_data.RData')
-load('data/wgs_metrics.RData')
+load('../data/ngspurity_data.RData')
+load('../data/wgs_metrics.RData')
 
 pdata %>%
   filter(Type != 'Normal') %>%
@@ -197,10 +197,10 @@ pdata3 %>%
 
 library(ggnewscale)
 
-load('data/wgs_data.RData', verbose = T)
-load('data/ngspurity_data.RData', verbose = T)
+load('../data/wgs_data.RData', verbose = T)
+load('../data/ngspurity_data.RData', verbose = T)
 
-scna_chrx <- read_delim('data/BBprofile_final_chrX.txt',delim = '\t',col_names = T)
+scna_chrx <- read_delim('../data/BBprofile_final_chrX.txt',delim = '\t',col_names = T)
 
 # switch the nMaj and nMinor
 tmp <- scna_chrx %>%
@@ -376,7 +376,7 @@ plot_grid(p1, p2, p3, align = 'v', axis = 'lr', nrow = 3)
 
 # Fig. 2c -----------------------------------------------------------------
 
-load('data/tcga_xist_exp.RData',verbose = T)
+load('../data/tcga_xist_exp.RData',verbose = T)
 mvalue <- xist_exp_new %>%
   group_by(Study) %>%
   summarise(mvalue = median(log2(RSEM + 1)))
@@ -431,7 +431,7 @@ p1
 
 
 # Fig. 2d -----------------------------------------------------------------
-load('data/tcga_xist_exp.RData',verbose = T)
+load('../data/tcga_xist_exp.RData',verbose = T)
 my_comparisons <- list(
   c('Seminoma', 'Non-Seminoma'),
   c('Seminoma', 'GTEx Testis'),
@@ -509,7 +509,7 @@ tmp <- tdata %>%
   arrange(desc(MAD)) %>% 
   filter(MAD>0.1)
 
-load('data/chrx_median_mtdata.RData',verbose = T)
+load('../data/chrx_median_mtdata.RData',verbose = T)
 # mtdata <- tdata %>% filter(CpG_chrm == 'chrX',Name %in% tmp$Name) %>% group_by(Barcode) %>% summarise(mvalue=median(Beta,na.rm=T)) %>% ungroup()
 
 #mtdata <- tdata %>% filter(CpG_chrm == 'chrX', Name=='cg17279685') %>% select(Barcode,mvalue=Beta)
@@ -550,7 +550,7 @@ pdata %>%
 
 # Fig. 2f -----------------------------------------------------------------
 
-load('data/tcga_repstress_zscore.RData',verbose = T)
+load('../data/tcga_repstress_zscore.RData',verbose = T)
 
 mvalue <- tcga_repstress_score_cbioportal %>% group_by(Study) %>% summarise(mvalue=median(RepStress_ZScore))
 tmp <- tcga_repstress_score_cbioportal %>% select(Study,TCGA_Barcode) %>% unique() %>% count(Study) %>% mutate(StudyLab=paste0(Study,' (',n,')'))
@@ -573,7 +573,7 @@ tcga_repstress_score_cbioportal %>%
 
 
 #Fig. 2g ----------------------------------------------------------------
-load('data/tcga_repstress_zscore.RData',verbose = T)
+load('../data/tcga_repstress_zscore.RData',verbose = T)
 tdata <- left_join(
   tcga_repstress_score_cbioportal %>% filter(Study == 'TGCT'),
   xist_exp_tgct %>%

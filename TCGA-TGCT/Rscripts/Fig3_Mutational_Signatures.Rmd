@@ -1,24 +1,55 @@
-# ------------------------------------------------------------------------------
-# Script: Figure 3 - TCGA-TGCT WGS analysis
-# Description: This script reproduces all main analyses and figures for the follwoing TGCT manuscript: 
-# A Thiopurine-like Mutagenic Process Defines TGCT Subtypes
-# ------------------------------------------------------------------------------
+---
+title: "A Thiopurine-like Mutagenic Process Defines TGCT Subtypes"
+author: "Tongwu Zhang"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
 
-# --- Load Required Libraries and Set Plotting Styles ---------------------------
-# (You may need to install some packages if missing)
+## Overview
+This R Markdown document reproduces the main analyses and figures for TCGA-TGCT WGS dataset
 
-source('functions/Sherlock_functions.R')
+Manuscript title: A Thiopurine-like Mutagenic Process Defines TGCT Subtype
+
+Fig. 3: Distinct Mutational Processes in TGCT Subtypes.
+---
+
+## Load Required Libraries and Set Plotting Styles 
+(You may need to install some packages if missing)
+
+```{r}
+
+source('../functions/Sherlock_functions.R')
 
 set_wd()
 libztw()
 pdfhr()
 pdfhr2()
 
+# Load R object WGS analysis results --------------------------------------
+
+load('../data/wgs_data.RData')
+load('../data/wgs_clinical.RData')
+load('../data/ngspurity_data.RData')
 
 
-# Fig. 2a -----------------------------------------------------------------
-load('data/tgct_mutational_signatures.RData',verbose = T)
+```
+
+
+## Fig. 3a
+Unsupervised hierarchical clustering of TGCTs based on collective single-base substitution (SBS) and insertion-deletion (ID) mutational profiles, separating seminomas (blue) and non-seminomas (purple).
+
+```{r}
+load('../data/tgct_mutational_signatures.RData',verbose = T)
 # TreeAndLeaf plot --------------------------------------------------------
+profile_type <- 'SBS'
 if(profile_type == 'SBS') { tmp <- tgct_sbs96_profile %>% mutate(Type=str_remove(str_remove(MutationType,'.*\\['),'\\].*')) }
 #if(profile_type == 'ID') { tmp <- seqmatrix_refdata %>% mutate(Type=str_remove(MutationType,':[^:]*$')) }
 #if(profile_type == 'DBS') { tmp <- seqmatrix_refdata %>% mutate(Type=str_remove(MutationType,'>.*'),Type= paste0(Type,'>NN'))}
@@ -134,21 +165,28 @@ if(FALSE){
 }
 
 
-#--- Call RedeR application
-rdp <- RedPort()
-calld(rdp)
-resetd(rdp)
-addGraph(obj = rdp, g = tal, gzoom=8)
-#--- Call 'relax' to fine-tune the leaf nodes
-relax(rdp, p1=25, p2=200, p3=50, p4=100, p5=10,p6=40,p7=30)
-addLegend.size(obj = rdp, tal, title = "Number of Mutations",position = "topleft",vertical=T)
-update_color()
+#The following plot requires a Java program and cannot be rendered in RStudio when using Knit.
+if(FALSE) {
+  #--- Call RedeR application
+  rdp <- RedPort()
+  calld(rdp)
+  resetd(rdp)
+  addGraph(obj = rdp, g = tal, gzoom=8)
+  #--- Call 'relax' to fine-tune the leaf nodes
+  relax(rdp, p1=25, p2=200, p3=50, p4=100, p5=10,p6=40,p7=30)
+  addLegend.size(obj = rdp, tal, title = "Number of Mutations",position = "topleft",vertical=T)
+  update_color()
+  
+}
+
+```
+
+## Fig. 3b
+SBS mutational signature decomposition, with stacked barplots showing relative contributions per signature (left y-axis). A line with dots indicates the number of mutations (right y-axis). Cosine similarity between original and decomposed profiles is shown below.
 
 
-
-
-# Fig. 3b -----------------------------------------------------------------
-
+```{r,fig.width=16,fig.height=8}
+load('../data/tgct_mutational_signatures.RData')
 # Mutational signature landscape SBS ------------------------------------------
 tdata <- bind_rows(
   tgct_activity_all_ratio %>% 
@@ -259,10 +297,14 @@ p2 <- ggplot() +
 
 
 plot_grid(p1,p2,align = 'v',axis = 'lr',ncol = 1,rel_heights = c(2.24,1))
+```
+
+## Fig. 3c
+ID mutational signature decomposition, with stacked barplots showing relative contributions per signature (left y-axis). A line with dots indicates the number of mutations (right y-axis). Cosine similarity between original and decomposed profiles is shown below.
 
 
-
-# Fig. 3c -----------------------------------------------------------------
+```{r,fig.width=16,fig.height=8}
+load('../data/tgct_mutational_signatures.RData')
 
 # Mutational signature landscape ID ------------------------------------------
 tdata <- bind_rows(
@@ -372,11 +414,15 @@ p2 <- ggplot() +
 
 plot_grid(p1,p2,align = 'v',axis = 'lr',ncol = 1,rel_heights = c(2.6,1))
 
+```
+
+## Fig. 3d
+Correlation between mutational burden of ID signatures (ID1, ID2, ID9) and replication stress scores, with significant positive correlations in seminomas only. Pearson R and P-value are shown above scatterplots.
 
 
-# Fig. 3d -----------------------------------------------------------------
-# Signature and replication stress --------------------------------------------
-load('tcga_repstress_zscore.RData',verbose = T)
+```{r,fig.width=12,fig.height=8}
+load('../data/tgct_mutational_signatures.RData',verbose = T)
+load('../data/tcga_repstress_zscore.RData',verbose = T)
 
 pdata <- tgct_activity_all %>% 
   pivot_longer(-Tumor_Barcode) %>% 
@@ -391,9 +437,9 @@ pdata %>% group_by(name) %>% do(tidy(lm(RepStress_ZScore~value+Subtype,data=.)))
 pdata2 <- pdata %>% group_by(Subtype,name) %>% do(tidy(cor.test(.$RepStress_ZScore, log2(.$value+1),data=.))) %>% arrange((p.value)) %>% group_by(Subtype) %>% mutate(FDR=p.adjust(p.value)) %>% ungroup() %>% arrange(FDR) %>% 
   mutate(p=if_else(p.value<0.05,p.value,NA_real_))
 
-pdata2 %>% 
-  ggplot(aes(name,Subtype,fill=-log10(p),size=estimate)) +
-  geom_point(pch=21)
+# pdata2 %>% 
+#   ggplot(aes(name,Subtype,fill=-log10(p),size=estimate)) +
+#   geom_point(pch=21)
 
 
 pdata %>% 
@@ -421,11 +467,16 @@ pdata %>%
     strip.text.x = element_text(hjust = 0.5,face = 'bold',size = 16)
   )+
   guides(fill='none',col='none')
+```
 
-#ggsave(filename = 'sigIDs_subtype_repstress.pdf',width = 10,height =7,device = cairo_pdf)  
+## Fig. 3e
+Comparison of SBS mutational signature burden between seminomas and non-seminomas. Statistical significance (FDR) was assessed by linear regression, adjusted for tumor purity, with Benjamini–Hochberg correction.
 
 
-# Fig. 3e -----------------------------------------------------------------
+
+```{r}
+load('../data/tgct_mutational_signatures.RData',verbose = T)
+
 pdata <- tgct_activity_all %>% 
   pivot_longer(cols = -Tumor_Barcode) %>% 
   left_join(wgs_data %>% select(Tumor_Barcode,Subtype)) %>% 
@@ -472,11 +523,17 @@ pdata %>%
   scale_color_manual(values = c(ncicolpal[1],'black'))+
   guides(color='none')
 
-#ggsave(filename = 'SBS_subtype_comparisons.pdf',width = 9,height =6,device = cairo_pdf)  
+#
+```
+
+## Fig. 3f
+Comparison of ID mutational signature burden between subtypes, with non-seminomas showing higher ID1 and ID6 activity. Statistical significance (FDR) was assessed by linear regression, adjusted for tumor purity, with Benjamini–Hochberg correction.
+All boxplots display median, IQR, and whiskers extending to 1.5× IQR.
 
 
+```{r}
+load('../data/tgct_mutational_signatures.RData',verbose = T)
 
-# Fig. 3f -----------------------------------------------------------------
 pdata <- tgct_activity_all %>% 
   pivot_longer(cols = -Tumor_Barcode) %>% 
   left_join(wgs_data %>% select(Tumor_Barcode,Subtype)) %>% 
@@ -523,7 +580,10 @@ pdata %>%
   scale_color_manual(values = c(ncicolpal[1],'black'))+
   guides(color='none')
 
-#
+```
 
 
-
+## R session information
+```{r}
+sessionInfo()
+```

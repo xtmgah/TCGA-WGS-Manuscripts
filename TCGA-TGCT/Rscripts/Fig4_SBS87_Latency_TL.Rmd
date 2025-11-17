@@ -26,7 +26,7 @@ Fig. 4: Impact of Thiopurine-Associated Mutational Signature SBS87 on Tumor Late
 
 ```{r}
 
-source('functions/Sherlock_functions.R')
+source('../functions/Sherlock_functions.R')
 
 set_wd()
 libztw()
@@ -35,9 +35,9 @@ pdfhr2()
 
 # Load R object WGS analysis results --------------------------------------
 
-load('data/wgs_data.RData')
-load('data/wgs_clinical.RData')
-load('data/ngspurity_data.RData')
+load('../data/wgs_data.RData')
+load('../data/wgs_clinical.RData')
+load('../data/ngspurity_data.RData')
 
 
 ```
@@ -48,7 +48,7 @@ Comparison of estimated age of the most recent common ancestor (MRCA, left) and 
 
 ```{r}
 
-load('../Chronological_timing_short.RData',verbose = T)
+load('../data/Chronological_timing_short.RData',verbose = T)
 
 library(ggpubr)
 my_comparisons <- list(c("Seminoma", "Non-Seminoma"))
@@ -219,9 +219,9 @@ ggsave(
 Linear regression analysis of mutational signatures associated with tumor latency in all TGCT samples, adjusted for tumor purity. FDR from Benjamini–Hochberg correction is shown, with FDR<0.05 thresholds marked by a red dashed line.
 
 ```{r}
-load('data/Chronological_timing_short.RData', verbose = T)
-load('data/tgct_mutational_signatures.RData', verbose = T)
-load('data/ngspurity_data.RData')
+load('../data/Chronological_timing_short.RData', verbose = T)
+load('../data/tgct_mutational_signatures.RData', verbose = T)
+load('../data/ngspurity_data.RData')
 
 tdata0 <- MRCAdata %>%
   filter(!is.na(Latency), acceleration == '1x') %>%
@@ -348,7 +348,7 @@ tdata %>%
 Comparison of telomere length (TL) in normal blood, tumor, and tumor/normal TL ratio (log2) between seminomas and non-seminomas. P-values above boxplots are from linear regression, adjusted for tumor purity and age, comparing seminomas and non-seminomas; P-values below are from two-sided Wilcoxon rank-sum tests comparing tumor versus normal TL. 
 
 ```{r}
-load('data/tgct_telomere_length.RData',verbose = T)
+load('../data/tgct_telomere_length.RData',verbose = T)
 
 pdata <- telseq %>%
   rename(
@@ -482,9 +482,9 @@ pdata %>%
 Linear regression analysis of mutational signatures associated with tumor TL in non-seminomas, adjusted for tumor purity and age. FDR from Benjamini–Hochberg correction is shown, with FDR<0.05 thresholds marked by a red dashed line.
 
 ```{r}
-load('data/ngspurity_data.RData')
-load('data/wgs_clinical.RData')
-load('data/tgct_mutational_signatures.RData', verbose = T)
+load('../data/ngspurity_data.RData')
+load('../data/wgs_clinical.RData')
+load('../data/tgct_mutational_signatures.RData', verbose = T)
 
 tmp <- telseq %>%
   rename(

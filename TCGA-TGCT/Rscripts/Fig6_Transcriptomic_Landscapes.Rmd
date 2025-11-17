@@ -26,7 +26,7 @@ Fig. 6:  Germ Cell-Like Transcriptomic Program and Unique APOBEC Mutagenesis Sup
 
 ```{r}
 
-source('functions/Sherlock_functions.R')
+source('../functions/Sherlock_functions.R')
 
 set_wd()
 libztw()
@@ -39,9 +39,9 @@ library(ggrepel)
 
 # Load R object WGS analysis results --------------------------------------
 
-load('data/wgs_data.RData')
-load('data/wgs_clinical.RData')
-load('data/ngspurity_data.RData')
+load('../data/wgs_data.RData')
+load('../data/wgs_clinical.RData')
+load('../data/ngspurity_data.RData')
 
 
 ```
@@ -53,8 +53,8 @@ Differential enrichment of Hallmark gene sets in TGCTs versus other TCGA tumor t
 
 
 ```{r, fig.width=10}
-load('data/ssGSEA.RData')
-load('data/wgs_data.RData')
+load('../data/ssGSEA.RData')
+load('../data/wgs_data.RData')
 
 pdata <- ssgsea_results_h %>%
   left_join(barcode2study) %>%
@@ -439,7 +439,7 @@ ggplot(
 UNG (uracil DNA glycosylase) mRNA expression across TCGA tumors, with TGCTs showing the highest levels and seminomas higher than non-seminomas. P-values from two-sided Wilcoxon rank-sum tests are shown above boxplots. Boxplots display median, IQR, and whiskers extending to 1.5× IQR.
 
 ```{r}
-load('data/tcga_expdata_all.RData',verbose = T)
+load('../data/tcga_expdata_all.RData',verbose = T)
 
 pdata <- expdata %>% filter(Gene=='UNG') 
 mvalue <- pdata %>% group_by(Study) %>% summarise(mvalue=median(log2(RSEM+1)))
@@ -504,7 +504,7 @@ plot_grid(p1,p2,align = 'h',nrow = 1,axis = 'tb',rel_widths = c(5,1))
 Pearson correlation between APOBEC3B and UNG expression across TCGA tumors, with TGCTs showing a unique negative correlation. FDR from Benjamini–Hochberg correction is shown.
 
 ```{r}
-load('data/tcga_expdata_all.RData',verbose = T)
+load('../data/tcga_expdata_all.RData',verbose = T)
 
 apobec_genes <- c('AICDA','APOBEC2','APOBEC3A','APOBEC3B','APOBEC3C','APOBEC3D','APOBEC3E','APOBEC3F','APOBEC3G','APOBEC3H','APOBEC4')
 tdata <- expdata %>% 

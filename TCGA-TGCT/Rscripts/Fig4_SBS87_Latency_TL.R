@@ -7,7 +7,7 @@
 # --- Load Required Libraries and Set Plotting Styles ---------------------------
 # (You may need to install some packages if missing)
 
-source('functions/Sherlock_functions.R')
+source('../functions/Sherlock_functions.R')
 
 set_wd()
 libztw()
@@ -16,7 +16,7 @@ pdfhr2()
 
 # Fig. 4a -----------------------------------------------------------------
 
-load('../Chronological_timing_short.RData',verbose = T)
+load('../data/Chronological_timing_short.RData',verbose = T)
 
 library(ggpubr)
 my_comparisons <- list(c("Seminoma", "Non-Seminoma"))
@@ -187,9 +187,9 @@ plot_grid(p2, p1, align = 'h', axis = 'tb', nrow = 1)
 
 # Fig. 4c -----------------------------------------------------------------
 # Signatures Only ---------------------------------------------------------
-load('Chronological_timing_short.RData', verbose = T)
-load('tgct_mutational_signatures.RData', verbose = T)
-load('ngspurity_data.RData')
+load('../data/Chronological_timing_short.RData', verbose = T)
+load('../data/tgct_mutational_signatures.RData', verbose = T)
+load('../data/ngspurity_data.RData')
 
 tdata0 <- MRCAdata %>%
   filter(!is.na(Latency), acceleration == '1x') %>%
@@ -319,7 +319,7 @@ tdata %>%
 
 
 # Fig. 4d -----------------------------------------------------------------
-load('data/tgct_telomere_length.RData',verbose = T)
+load('../data/tgct_telomere_length.RData',verbose = T)
 
 pdata <- telseq %>%
   rename(
@@ -449,9 +449,9 @@ pdata %>%
 
 
 # Fig. 4e -----------------------------------------------------------------
-load('data/ngspurity_data.RData')
-load('data/wgs_clinical.RData')
-load('data/tgct_mutational_signatures.RData', verbose = T)
+load('../data/ngspurity_data.RData')
+load('../data/wgs_clinical.RData')
+load('../data/tgct_mutational_signatures.RData', verbose = T)
 
 tmp <- telseq %>%
   rename(
