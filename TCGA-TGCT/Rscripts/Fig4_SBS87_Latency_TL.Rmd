@@ -1,0 +1,622 @@
+---
+title: "A Thiopurine-like Mutagenic Process Defines TGCT Subtypes"
+author: "Tongwu Zhang"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+## Overview
+This R Markdown document reproduces the main analyses and figures for TCGA-TGCT WGS dataset
+
+Manuscript title: A Thiopurine-like Mutagenic Process Defines TGCT Subtype
+
+Fig. 4: Impact of Thiopurine-Associated Mutational Signature SBS87 on Tumor Latency and Telomere Length in TGCTs.
+---
+
+## Load Required Libraries and Set Plotting Styles 
+(You may need to install some packages if missing)
+
+```{r}
+
+source('../functions/Sherlock_functions.R')
+
+set_wd()
+libztw()
+pdfhr()
+pdfhr2()
+
+# Load R object WGS analysis results --------------------------------------
+
+load('../data/wgs_data.RData')
+load('../data/wgs_clinical.RData')
+load('../data/ngspurity_data.RData')
+
+
+```
+
+
+## Fig. 4a
+Comparison of estimated age of the most recent common ancestor (MRCA, left) and tumor latency (time from MRCA to diagnosis, right) between seminomas and non-seminomas. P-values from two-sided Wilcoxon rank-sum tests are shown above boxplots.
+
+```{r}
+
+load('../data/Chronological_timing_short.RData',verbose = T)
+
+library(ggpubr)
+my_comparisons <- list(c("Seminoma", "Non-Seminoma"))
+
+MRCAdata %>%
+  filter(acceleration == "1x") %>%
+  group_by(Subtype) %>%
+  summarise(
+    Latency = median(Latency, na.rm = T),
+    Age = median(Age, na.rm = T),
+    MRCA_age = median(MRCA_age, na.rm = T)
+  )
+
+
+MRCAdata %>%
+  filter(acceleration == "1x") %>%
+  filter(!is.na(Latency)) %>%
+  left_join(ngspurity %>% select(Tumor_Barcode, BB_Purity)) %>%
+  do(tidy(lm(Latency ~ Subtype + BB_Purity + Age, data = .)))
+
+my_comparisons <- list(c('Seminoma', 'Non-Seminoma'))
+
+stat.test <- MRCAdata %>%
+  filter(acceleration == "1x") %>%
+  filter(!is.na(Latency)) %>%
+  rstatix::wilcox_test(Latency ~ Subtype, comparisons = my_comparisons) %>%
+  rstatix::add_xy_position(x = "Subtype") %>%
+  mutate(
+    myformatted.p = if_else(
+      p < 0.001,
+      sprintf("P = %.2e", p),
+      sprintf("P = %.2f", p)
+    )
+  ) %>%
+  mutate(Subtype = my_comparisons[[1]][1]) %>%
+  mutate(col = if_else(p < 0.05, ncicolpal[1], 'black'))
+
+stat.test
+
+
+p1 <- MRCAdata %>%
+  filter(acceleration == "1x") %>%
+  filter(!is.na(Latency)) %>%
+  ggplot(aes(Subtype, Latency, fill = Subtype)) +
+  geom_boxplot(
+    width = 0.6,
+    fill = "gray95",
+    color = 'black',
+    outlier.shape = 21,
+    outlier.size = 0.8
+  ) +
+  ggbeeswarm::geom_quasirandom(
+    pch = 21,
+    size = 2.5,
+    width = 0.2,
+    color = "white",
+    stroke = 0.2
+  ) +
+  labs(x = NULL, y = 'Latency, years before diagnosis') +
+  scale_fill_manual(values = subtypecol) +
+  scale_y_continuous(breaks = pretty_breaks(n = 7)) +
+  theme_ipsum_rc(
+    axis_text_size = 14,
+    axis_title_just = 'm',
+    axis_title_size = 16,
+    grid = 'XY',
+    ticks = T
+  ) +
+  panel_border(color = 'black') +
+  theme(
+    axis.text.x = element_blank(),
+    panel.spacing.x = unit(0.4, 'cm'),
+    axis.ticks.x = element_blank(),
+    plot.margin = margin(4, 4, 4, 4),
+    legend.position = 'bottom',
+    legend.text = element_text(size = 14),
+    legend.title = element_text(size = 14),
+    strip.text.x = element_text(hjust = 0.5, face = 'bold', size = 5)
+  ) +
+  stat_pvalue_manual(data = stat.test, col = 'col', label = "myformatted.p") +
+  scale_color_manual(values = c(ncicolpal[1], 'black')) +
+  guides(color = 'none')
+
+
+MRCAdata %>%
+  filter(acceleration == "1x") %>%
+  filter(!is.na(Latency)) %>%
+  left_join(ngspurity %>% select(Tumor_Barcode, BB_Purity)) %>%
+  do(tidy(lm(MRCA_age ~ Subtype + BB_Purity, data = .)))
+
+my_comparisons <- list(c('Seminoma', 'Non-Seminoma'))
+
+stat.test <- MRCAdata %>%
+  filter(acceleration == "1x") %>%
+  filter(!is.na(Latency)) %>%
+  rstatix::wilcox_test(MRCA_age ~ Subtype, comparisons = my_comparisons) %>%
+  rstatix::add_xy_position(x = "Subtype") %>%
+  mutate(
+    myformatted.p = if_else(
+      p < 0.001,
+      sprintf("P = %.2e", p),
+      sprintf("P = %.2f", p)
+    )
+  ) %>%
+  mutate(Subtype = my_comparisons[[1]][1]) %>%
+  mutate(col = if_else(p < 0.05, ncicolpal[1], 'black'))
+
+stat.test
+
+
+p2 <- MRCAdata %>%
+  filter(acceleration == "1x") %>%
+  filter(!is.na(Latency)) %>%
+  ggplot(aes(Subtype, MRCA_age, fill = Subtype)) +
+  geom_boxplot(
+    width = 0.6,
+    fill = "gray95",
+    color = 'black',
+    outlier.shape = 21,
+    outlier.size = 0.8
+  ) +
+  ggbeeswarm::geom_quasirandom(
+    pch = 21,
+    size = 2.5,
+    width = 0.2,
+    color = "white",
+    stroke = 0.2
+  ) +
+  labs(x = NULL, y = 'MRCA age (years)') +
+  scale_fill_manual(values = subtypecol) +
+  scale_y_continuous(breaks = pretty_breaks(n = 7)) +
+  theme_ipsum_rc(
+    axis_text_size = 14,
+    axis_title_just = 'm',
+    axis_title_size = 16,
+    grid = 'XY',
+    ticks = T
+  ) +
+  panel_border(color = 'black') +
+  theme(
+    axis.text.x = element_blank(),
+    panel.spacing.x = unit(0.4, 'cm'),
+    axis.ticks.x = element_blank(),
+    plot.margin = margin(4, 4, 4, 4),
+    legend.position = 'bottom',
+    legend.text = element_text(size = 14),
+    legend.title = element_text(size = 14),
+    strip.text.x = element_text(hjust = 0.5, face = 'bold', size = 5)
+  ) +
+  stat_pvalue_manual(data = stat.test, col = 'col', label = "myformatted.p") +
+  scale_color_manual(values = c(ncicolpal[1], 'black')) +
+  guides(color = 'none')
+
+
+#ggsave(filename = 'MRCA_spgroup.pdf', width = 2, height = 6, device = cairo_pdf)
+
+plot_grid(p2, p1, align = 'h', axis = 'tb', nrow = 1)
+
+ggsave(
+  filename = 'MRCA_latency_spgroup.pdf',
+  width = 4,
+  height = 6,
+  device = cairo_pdf
+)
+
+```
+## Fig. 4c
+Linear regression analysis of mutational signatures associated with tumor latency in all TGCT samples, adjusted for tumor purity. FDR from Benjamini–Hochberg correction is shown, with FDR<0.05 thresholds marked by a red dashed line.
+
+```{r}
+load('../data/Chronological_timing_short.RData', verbose = T)
+load('../data/tgct_mutational_signatures.RData', verbose = T)
+load('../data/ngspurity_data.RData')
+
+tdata0 <- MRCAdata %>%
+  filter(!is.na(Latency), acceleration == '1x') %>%
+  select(Tumor_Barcode, Acc = acceleration, Latency) #Histology == "Adenocarcinoma"; acceleration == '1x'
+
+tdata <- tgct_activity_all %>%
+  pivot_longer(-Tumor_Barcode) %>%
+  left_join(tdata0) %>%
+  left_join(wgs_data %>% select(Tumor_Barcode, Subtype)) %>%
+  left_join(ngspurity %>% select(Tumor_Barcode, BB_Purity)) %>%
+  filter(!is.na(Latency))
+
+tresult_all <- tdata %>%
+  mutate(value = log2(value + 1)) %>%
+  group_by(name) %>%
+  do(tresult = safely(lm)(Latency ~ value + BB_Purity + Subtype, data = .)) %>%
+  mutate(tresult_null = map_lgl(tresult['result'], is.null)) %>%
+  filter(!tresult_null) %>%
+  mutate(fit = list(tidy(tresult[['result']]))) %>%
+  select(name, fit) %>%
+  unnest(cols = c(fit)) %>%
+  ungroup() %>%
+  filter(term == 'value') %>%
+  arrange(p.value) %>%
+  mutate(FDR = p.adjust(p.value, method = 'BH'))
+
+# tresult_all <- tdata %>%
+#   group_by(name,Subtype) %>%
+#   do(tresult = safely(cor.test)(.$Latency,log2(.$value+1))) %>%
+#   mutate(tresult_null = map_lgl(tresult['result'], is.null)) %>%
+#   filter(!tresult_null) %>%
+#   mutate(fit = list(tidy(tresult[['result']]))) %>%
+#   select(Subtype,name,fit) %>%
+#   unnest(cols = c(fit)) %>%
+#   ungroup() %>%
+#   group_by(Subtype) %>%
+#   mutate(FDR=p.adjust(p.value,method='fdr')) %>%
+#   arrange(FDR)
+
+# tresult_all <- tdata %>%
+#   group_by(name) %>%
+#   do(tresult = safely(cor.test)(.$Latency,.$value)) %>%
+#   mutate(tresult_null = map_lgl(tresult['result'], is.null)) %>%
+#   filter(!tresult_null) %>%
+#   mutate(fit = list(tidy(tresult[['result']]))) %>%
+#   select(name,fit) %>%
+#   unnest(cols = c(fit)) %>%
+#   ungroup() %>%
+#   arrange(p.value) %>%
+#   mutate(FDR=p.adjust(p.value,method='BH'))
+
+tresult_all %>%
+  ggplot(aes((estimate), -log10(FDR), fill = name)) +
+  geom_hline(yintercept = -log10(0.05), linetype = 2, col = 'red', size = 0.5) +
+  geom_vline(xintercept = 0, linetype = 2, col = '#cccccc', size = 0.5) +
+  geom_point(pch = 21, stroke = 0.2, size = 3) +
+  scale_fill_manual(values = sigcol) +
+  scale_x_continuous(breaks = pretty_breaks(n = 7)) +
+  ggrepel::geom_text_repel(
+    data = tresult_all %>% filter(FDR < 0.05),
+    aes(label = name),
+    max.overlaps = 30,
+    size = 3
+  ) +
+  labs(
+    x = 'Linear regression coefficient',
+    y = '-log10(FDR)',
+    fill = 'Signature'
+  ) +
+  guides(fill = 'none') +
+  theme_ipsum_rc(
+    base_size = 12,
+    axis_title_just = 'm',
+    axis_title_size = 14,
+    grid = F,
+    ticks = T
+  ) +
+  theme(plot.margin = margin(4, 4, 4, 4)) +
+  panel_border(color = 'black', size = 0.5) +
+  coord_cartesian(clip = 'off')
+```
+
+## Fig. 4b
+Correlation between SBS87 activity (log2-transformed) and tumor latency in seminomas (left) and non-seminomas (right). Pearson R and P-value are shown above scatterplots.
+
+```{r, fig.width=10}
+
+tdata %>%
+  filter(name == 'SBS87') %>%
+  ggplot(aes(log2(value + 1), Latency, fill = Subtype)) +
+  geom_point(pch = 21, size = 2.5) +
+  stat_smooth(aes(fill = Subtype, color = Subtype), method = "lm") +
+  stat_cor(size = 5, method = 'spearman', col = ncicolpal[1]) +
+  #stat_regline_equation(label.y = c(60,64),label.x = c(4,4)) +
+  scale_fill_manual(values = subtypecol) +
+  scale_color_manual(values = subtypecol) +
+  scale_y_continuous(breaks = pretty_breaks(n = 5)) +
+  scale_x_continuous(breaks = pretty_breaks(n = 7)) +
+  facet_wrap(~Subtype, scale = 'free') +
+  labs(x = 'log2(SBS87 + 1)', y = 'Tumor latency years') +
+  theme_ipsum_rc(
+    axis_text_size = 14,
+    axis_title_just = 'm',
+    axis_title_size = 16,
+    grid = 'XY',
+    ticks = T
+  ) +
+  panel_border(color = 'black') +
+  theme(
+    #axis.text.x = element_blank(),
+    panel.spacing.x = unit(0.4, 'cm'),
+    #axis.ticks.x = element_blank(),
+    plot.margin = margin(4, 4, 4, 4),
+    legend.position = 'bottom',
+    legend.text = element_text(size = 14),
+    legend.title = element_text(size = 14),
+    strip.text.x = element_text(hjust = 0.5, face = 'bold', size = 16)
+  ) +
+  guides(fill = 'none', col = 'none')
+
+```
+
+## Fig. 4d
+Comparison of telomere length (TL) in normal blood, tumor, and tumor/normal TL ratio (log2) between seminomas and non-seminomas. P-values above boxplots are from linear regression, adjusted for tumor purity and age, comparing seminomas and non-seminomas; P-values below are from two-sided Wilcoxon rank-sum tests comparing tumor versus normal TL. 
+
+```{r}
+load('../data/tgct_telomere_length.RData',verbose = T)
+
+pdata <- telseq %>%
+  rename(
+    `Normal TL` = Telseq_TL_Normal,
+    `Tumor TL` = Telseq_TL_Tumor,
+    `Ratio (Tumor_TL/Normal_TL)` = Telseq_TL_Ratio
+  ) %>%
+  pivot_longer(cols = c(-Subtype, -Tumor_Barcode, -Normal_Barcode)) %>%
+  mutate(
+    name = factor(
+      name,
+      levels = c("Normal TL", "Tumor TL", "Ratio (Tumor_TL/Normal_TL)")
+    )
+  )
+
+my_comparisons <- list(c('Seminoma', 'Non-Seminoma'))
+
+stat.test <- pdata %>%
+  group_by(name) %>%
+  rstatix::wilcox_test(value ~ Subtype, comparisons = my_comparisons) %>%
+  rstatix::add_xy_position(x = "Subtype") %>%
+  mutate(
+    myformatted.p = if_else(
+      p < 0.001,
+      sprintf("P = %.2e", p),
+      sprintf("P = %.2f", p)
+    )
+  ) %>%
+  mutate(Subtype = my_comparisons[[1]][1]) %>%
+  mutate(col = if_else(p < 0.05, ncicolpal[1], 'black'))
+
+stat.test
+
+
+tdata <- telseq %>%
+  left_join(wgs_data %>% select(Tumor_Barcode, Subject)) %>%
+  left_join(ngspurity %>% select(Tumor_Barcode, BB_Purity)) %>%
+  left_join(wgs_clinical %>% select(Subject, age_at_diagnosis))
+
+a <- tdata %>%
+  do(tidy(lm(Telseq_TL_Normal ~ Subtype + age_at_diagnosis, data = .))) %>%
+  filter(term == 'SubtypeNon-Seminoma') %>%
+  mutate(
+    myformatted.p = if_else(
+      p.value < 0.001,
+      sprintf("P = %.2e", p.value),
+      sprintf("P = %.2f", p.value)
+    )
+  ) %>%
+  pull(myformatted.p)
+
+b <- tdata %>%
+  do(tidy(lm(
+    Telseq_TL_Tumor ~ Subtype + age_at_diagnosis + BB_Purity,
+    data = .
+  ))) %>%
+  filter(term == 'SubtypeNon-Seminoma') %>%
+  mutate(
+    myformatted.p = if_else(
+      p.value < 0.001,
+      sprintf("P = %.2e", p.value),
+      sprintf("P = %.2f", p.value)
+    )
+  ) %>%
+  pull(myformatted.p)
+c <- tdata %>%
+  do(tidy(lm(
+    Telseq_TL_Ratio ~ Subtype + age_at_diagnosis + BB_Purity,
+    data = .
+  ))) %>%
+  filter(term == 'SubtypeNon-Seminoma') %>%
+  mutate(
+    myformatted.p = if_else(
+      p.value < 0.001,
+      sprintf("P = %.2e", p.value),
+      sprintf("P = %.2f", p.value)
+    )
+  ) %>%
+  pull(myformatted.p)
+
+stat.test$myformatted.p <- c(a, b, c)
+
+
+pdata %>%
+  ggplot(aes(Subtype, value, fill = Subtype)) +
+  #geom_violin(trim=T,size=0.2)+
+  geom_boxplot(
+    width = 0.8,
+    fill = "gray95",
+    color = 'black',
+    outlier.shape = 21,
+    outlier.size = 0.8
+  ) +
+  ggbeeswarm::geom_quasirandom(
+    pch = 21,
+    size = 2,
+    width = 0.3,
+    color = "white",
+    stroke = 0.2
+  ) +
+  facet_wrap(~name, scales = 'free_y') +
+  labs(x = NULL, y = 'Telomere value') +
+  scale_fill_manual(values = subtypecol) +
+  scale_y_continuous(breaks = pretty_breaks(n = 7)) +
+  theme_ipsum_rc(
+    axis_text_size = 14,
+    axis_title_just = 'm',
+    axis_title_size = 16,
+    grid = 'XY',
+    ticks = T
+  ) +
+  panel_border(color = 'black') +
+  theme(
+    axis.text.x = element_blank(),
+    panel.spacing.x = unit(0.4, 'cm'),
+    axis.ticks.x = element_blank(),
+    plot.margin = margin(4, 4, 4, 4),
+    legend.position = 'bottom',
+    legend.text = element_text(size = 14),
+    legend.title = element_text(size = 14),
+    strip.text.x = element_text(hjust = 0.5, face = 'bold', size = 5)
+  ) +
+  stat_pvalue_manual(data = stat.test, col = 'col', label = "myformatted.p") +
+  scale_color_manual(values = c(ncicolpal[1], 'black')) +
+  guides(color = 'none')
+
+
+```
+
+## Fig. 4e
+Linear regression analysis of mutational signatures associated with tumor TL in non-seminomas, adjusted for tumor purity and age. FDR from Benjamini–Hochberg correction is shown, with FDR<0.05 thresholds marked by a red dashed line.
+
+```{r}
+load('../data/ngspurity_data.RData')
+load('../data/wgs_clinical.RData')
+load('../data/tgct_mutational_signatures.RData', verbose = T)
+
+tmp <- telseq %>%
+  rename(
+    `Normal TL` = Telseq_TL_Normal,
+    `Tumor TL` = Telseq_TL_Tumor,
+    `log2(Tumor_TL/Normal_TL)` = Telseq_TL_Ratio
+  ) %>%
+  pivot_longer(
+    cols = c(-Subtype, -Tumor_Barcode, -Normal_Barcode),
+    names_to = 'TL',
+    values_to = 'TL_value'
+  ) %>%
+  mutate(
+    TL = factor(
+      TL,
+      levels = c("Normal TL", "Tumor TL", "log2(Tumor_TL/Normal_TL)")
+    )
+  ) %>%
+  left_join(ngspurity %>% select(Tumor_Barcode, BB_Purity)) %>%
+  left_join(wgs_data %>% select(Tumor_Barcode, Subject)) %>%
+  left_join(wgs_clinical %>% select(Subject, Age = age_at_diagnosis))
+
+tmp %>%
+  group_by(TL) %>%
+  do(tresult = safely(lm)(TL_value ~ BB_Purity + Subtype + Age, data = .)) %>%
+  mutate(tresult_null = map_lgl(tresult['result'], is.null)) %>%
+  filter(!tresult_null) %>%
+  mutate(fit = list(tidy(tresult[['result']]))) %>%
+  select(TL, fit) %>%
+  unnest(cols = c(fit)) %>%
+  ungroup()
+
+
+tdata <- tgct_activity_all %>%
+  pivot_longer(-Tumor_Barcode) %>%
+  left_join(tmp)
+
+tresult_all <- tdata %>%
+  mutate(value = log2(value + 1)) %>%
+  group_by(TL, name) %>%
+  do(
+    tresult = safely(lm)(TL_value ~ value + BB_Purity + Subtype + Age, data = .)
+  ) %>%
+  mutate(tresult_null = map_lgl(tresult['result'], is.null)) %>%
+  filter(!tresult_null) %>%
+  mutate(fit = list(tidy(tresult[['result']]))) %>%
+  select(TL, name, fit) %>%
+  unnest(cols = c(fit)) %>%
+  ungroup() %>%
+  filter(term == 'value') %>%
+  filter(TL == 'log2(Tumor_TL/Normal_TL)') %>%
+  arrange(p.value) %>%
+  mutate(FDR = p.adjust(p.value, method = 'BH'))
+
+tresult_all
+
+tresult_all %>%
+  ggplot(aes((estimate), -log10(FDR), fill = name)) +
+  geom_hline(yintercept = -log10(0.05), linetype = 2, col = 'red', size = 0.5) +
+  geom_vline(xintercept = 0, linetype = 2, col = '#cccccc', size = 0.5) +
+  geom_point(pch = 21, stroke = 0.2, size = 4) +
+  scale_fill_manual(values = sigcol) +
+  scale_x_continuous(breaks = pretty_breaks(n = 7)) +
+  ggrepel::geom_text_repel(
+    data = tresult_all %>% filter(FDR < 0.05),
+    aes(label = name),
+    max.overlaps = 30,
+    size = 4
+  ) +
+  labs(
+    x = 'Linear regression coefficient',
+    y = '-log10(FDR)',
+    fill = 'Signature'
+  ) +
+  guides(fill = 'none') +
+  theme_ipsum_rc(
+    base_size = 14,
+    axis_title_just = 'm',
+    axis_title_size = 16,
+    grid = F,
+    ticks = T
+  ) +
+  theme(plot.margin = margin(4, 4, 4, 4)) +
+  panel_border(color = 'black', size = 0.5) +
+  coord_cartesian(clip = 'off')
+
+
+```
+
+## Fig. 4f
+Correlation between SBS87 activity and TL in normal tissues (left), tumors (middle), and tumor/normal TL ratio (right), stratified by subtype. Significant positive correlations with tumor TL are observed in non-seminomas only. Pearson R and P-value are shown above scatterplots.
+All boxplots display median, IQR, and whiskers extending to 1.5× IQR.
+
+```{r, fig.width=12,fig.height=7}
+tdata %>%
+  filter(name == 'SBS87') %>%
+  ggplot(aes(log2(value + 1), TL_value, fill = Subtype)) +
+  geom_point(pch = 21, size = 2.5) +
+  stat_smooth(aes(fill = Subtype, color = Subtype), method = "lm") +
+  stat_cor(method = 'spearman', size = 5, col = ncicolpal[1]) +
+  #stat_regline_equation(label.y = c(60,64),label.x = c(4,4)) +
+  scale_fill_manual(values = subtypecol) +
+  scale_color_manual(values = subtypecol) +
+  scale_y_continuous(breaks = pretty_breaks(n = 5)) +
+  scale_x_continuous(breaks = pretty_breaks(n = 7)) +
+  ggh4x::facet_grid2(Subtype ~ TL, scale = 'free', independent = 'y') +
+  labs(x = 'log2(SBS87 + 1)', y = 'Telomere Length (TL) value') +
+  theme_ipsum_rc(
+    axis_text_size = 14,
+    axis_title_just = 'm',
+    axis_title_size = 16,
+    grid = 'XY',
+    ticks = T
+  ) +
+  panel_border(color = 'black') +
+  theme(
+    #axis.text.x = element_blank(),
+    panel.spacing = unit(0.1, 'cm'),
+    #axis.ticks.x = element_blank(),
+    plot.margin = margin(4, 4, 4, 4),
+    legend.position = 'bottom',
+    legend.text = element_text(size = 14),
+    legend.title = element_text(size = 14),
+    strip.text = element_text(hjust = 0.5, face = 'bold', size = 16)
+  ) +
+  guides(fill = 'none', col = 'none')
+
+
+```
+
+
+## R session information
+```{r}
+sessionInfo()
+```
