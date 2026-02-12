@@ -1,0 +1,419 @@
+###Fig1----
+source('./Rcode/Sherlock_functions.R')
+source("./Rcode/ztw_function.R")
+source("./Rcode/ztw.R")
+set_wd()
+libztw()
+library(rstatix)
+pdfhr()
+pdfhr2()
+myggstyle()
+load('./Rdata/wgsdata.RData',verbose = T)
+load('./Rdata/ucec_subtype_data.RData',verbose = T)
+#Fig1a----
+# Subtype piechart --------------------------------------------------------
+PieDonut_ztw(data = subtype_data %>% count(Subtype),ggplot2::aes(pies=Subtype,count=n),mainCol = subtype_color,start=3*pi/2,showNum = T,showRatioPie = TRUE,showRatioThreshold = 0.02,showDonutName = T,pieLabelSize=3.5,titlesize = 5,r0=0.3,title='AS_N', showPieName = TRUE,family = 'Roboto Condensed', labelpositionThreshold =0.02)
+ggsave(filename = './Rscipts/Figures/Fig1a.png',width = 3,height = 3,device = cairo_pdf)
+
+###Fig1b----
+# TMB/PGA/SV/TE --------------------------------------------------------------
+load('./Rdata/ucec_subtype_data.RData')
+load("./Rdata/ucec_burden.RData")
+
+res_burden <- plot_group_compare(
+  tdata       = ucec_burden,
+  value       = value,
+  group       = "Subtype",
+  facet =     "name",
+  FDR_facet = T,
+  facet_ncol = 4,
+  ylab        = "Value",
+  hide_ns    = T,
+  palette     = subtype_color,
+  pcol_sig    = ncicolpal[1],
+  facet_scales = 'free_y',
+  output_file = "./Rscripts/Figures/Fig1b.png",
+  y_pos_adjust = c(3,60,7,5),
+  width       = 15,
+  height      = 5,
+  p_off = T
+)
+
+
+
+#Fig1c----
+## difference between SNV and indels
+grch38 <- read_delim(
+  './hg38.fa.fai',
+  delim = '\t',
+  col_names = FALSE
+) #%>% slice(1:24)
+grch38_size <- grch38 %>%
+  filter(X1 %in% paste0('chr', c(1:22, 'X', 'Y', 'M'))) %>%
+  summarise(total = sum(X2)) %>%
+  pull(total)
+tdata2 <- left_join(
+  ucec_sbs96_profile %>% group_by(Tumor_Barcode) %>% summarise(TMB_SNV=sum(Contribution)) %>% mutate(TMB_SNV=log2(1e6*TMB_SNV/grch38_size)),
+  ucec_id83_profile %>% group_by(Tumor_Barcode) %>% summarise(TMB_Indel=sum(Contribution)) %>% mutate(TMB_Indel=log2(1e6*TMB_Indel/grch38_size))
+) %>% 
+  rename(`TMB_SNV\nlog2(mutations/Mb)`=TMB_SNV,`TMB_INDEL\nlog2(mutations/Mb)`=TMB_Indel) %>% 
+  pivot_longer(cols = -c(Tumor_Barcode)) %>% 
+  mutate(across(value, ~ replace_na(., 0))) %>% 
+  mutate(name=fct_inorder(name)) %>% 
+  left_join(subtype_data)
+
+res_burden2 <- plot_group_compare(
+  tdata       = tdata2,
+  value       = value,
+  group       = "Subtype",
+  facet =     "name",
+  FDR_facet = T,
+  facet_ncol = 2,
+  ylab        = "Value",
+  hide_ns    = T,
+  palette     = subtype_color,
+  pcol_sig    = ncicolpal[1],
+  facet_scales = 'free_y',
+  output_file = "./Rscripts/Figures/Fig1c.png",
+  #y_pos_adjust = c(3,60,7,5),
+  width       = 7,
+  height      = 5,
+  #p_off = T
+)
+
+
+# Fig1d---- 
+# WGD ---------------------------------------------------------------------
+load('./Rdata/MCN_data.RData',verbose = T)
+load('./Rdata/ngspurity_data.RData')
+
+subtype_data %>% 
+  left_join(MCN_data) %>% 
+  #mutate(WGD=if_else(WGD=='nWGD',WGD,if_else(WGD2=='WGD2','WGD2',WGD))) %>% 
+  count(Subtype,WGD) %>% 
+  group_by(Subtype) %>% 
+  mutate(n=n/sum(n)) %>% 
+  ggplot(ggplot2::aes(Subtype,n,fill=WGD))+
+  geom_col()+
+  scale_fill_manual(values = c('nWGD'='#007BBD','WGD'='#BB0E3D','WGD2'='#ff7f00'))+
+  labs(x=NULL,y='Percentage',fill='WGD status')+
+  scale_y_continuous(breaks = pretty_breaks(n = 7),labels = percent_format(),expand = expansion(mult = c(0,0)))+
+  theme_ipsum_rc(axis_text_size = 14,axis_title_just = 'm',axis_title_size = 16,grid = 'Y',ticks = F)+
+  theme(axis.text.x = element_text(angle = 90,vjust = 0.5,hjust = 1),
+        #panel.spacing.x = unit(0.4,'cm'),
+        axis.ticks.x = element_blank(),
+        plot.margin = margin(6,4,4,4),
+        #legend.position = 'bottom',
+        legend.text = element_text(size = 14),
+        legend.title = element_text(size = 14),
+        strip.text.x = element_text(hjust = 0.5,face = 'bold',size = 16))
+
+
+ggsave(filename = './Rscripts/Figures/Fig1d.png',width = 4,height = 5)
+
+
+####Fig 1e----
+# Mitochondria copy number ------------------------------------------------
+load('./Rdata/mosdepth.RData',verbose = T)
+load('./Rdata/ngspurity_data.RData',verbose = T)
+load(file = './Rdata/wgsdata.RData',verbose = T)
+load('./Rdata/wgs_clinical.RData',verbose = T)
+
+tdata <- wgsdata %>%
+  left_join(
+    ngspurity %>%
+      select(Tumor_Barcode, Tumor_Purity = BB_Purity, Tumor_Ploidy = BB_Ploidy)
+  ) %>%
+  left_join(
+    mosdepth_mt %>% select(Tumor_Barcode = Barcode, Tumor_Ratio = Ratio)
+  ) %>%
+  left_join(
+    mosdepth_mt %>% select(Normal_Barcode = Barcode, Normal_Ratio = Ratio)
+  ) %>%
+  mutate(R = (Tumor_Purity * Tumor_Ploidy + (1 - Tumor_Purity) * 2)) %>%
+  mutate(Tumor_MT = Tumor_Ratio * R, Normal_MT = Normal_Ratio) %>%
+  mutate(MT_Ratio = log2(Tumor_MT / Normal_MT)) %>% 
+  left_join(wgs_clinical %>% select(Subject,age_at_diagnosis)) %>% 
+  left_join(subtype_data)
+
+tdata %>% 
+  ggplot(ggplot2::aes(x=MT_Ratio,y="Tumor")) +
+  ggbeeswarm::geom_quasirandom(pch = 21, size = 2, width = 0.4, color = "black", stroke = 0.2,fill=ncicolpal[1],alpha=0.6) +
+  ggplot2::geom_boxplot(width = 0.4, fill = NA, color = "gray20", outlier.shape = NA, size = 0.8) +
+  scale_x_continuous(breaks = pretty_breaks(n=7))+
+  labs(x = "log2(Tumor mtDNA/Normal mtDNA)", y = "Tumor") +
+  theme_ipsum_rc(base_size = 13,axis_title_just = 'm', axis_title_size = 14,plot_margin = margin(5.5, 5.5, 5.5, 5.5), plot_title_size = 15,
+                 ticks = T, axis = "X",grid = "X",axis_col = 'black') +
+  theme( axis.text.y = element_blank(),axis.ticks.y = element_blank(),plot.margin = margin(4,4,4,4)
+  ) + guides(fill = "none")
+
+tdata %>% filter(MT_Ratio>0)
+
+plot_group_compare(
+  tdata       = tdata,
+  value       = MT_Ratio,
+  group       = "Subtype",
+  ylab        = "log2(Tumor mtDNA/Normal mtDNA)",
+  hide_ns    = TRUE,
+  palette     = subtype_color,
+  pcol_sig    = ncicolpal[1],
+  output_file = "./Rscripts/figures/Fig1e.png",y_pos_adjust = c(1,5.5,3,5.7,5,5.8),
+  width       = 5,
+  height      = 5
+)
+
+#Fig1f----
+set_wd()
+libztw()
+pdfhr2()
+pdfhr()
+
+# function
+round_up_multiple <- function(x, bases = c(2,3,4,5)) {
+  if (is.infinite(x) || is.na(x)) return(1)
+  candidates <- sapply(bases, function(b) ceiling(x / b) * b)
+  min(candidates)
+}
+
+combined_data <- read_delim('./drivers.tsv',delim = '\t',col_names = T) %>% filter(QVALUE_COMBINATION <0.1)
+smregions_data <- read_delim('./intogene/output/steps/smregions/TCGA_WGS_UCEC.smregions.tsv.gz',delim = '\t')
+oncodrivefml_data <- read_delim('./intogene/output/steps/oncodrivefml/out/TCGA_WGS_UCEC-oncodrivefml.tsv.gz',delim = '\t')
+oncodriveclustl_data <- read_delim('./intogene/output/steps/oncodriveclustl/TCGA_WGS_UCEC/clusters_results.tsv',delim = '\t')
+mutpanning_data <- read_delim('./intogene/output/steps/mutpanning/out/SignificanceFiltered/SignificanceTCGA_WGS_UCEC.txt',delim = '\t')
+hotmaps_data <- read_delim('./intogene/output/steps/hotmaps/TCGA_WGS_UCEC.out.gz',delim = '\t')
+dndscv_data <- read_delim('./intogene/output/steps/dndscv/TCGA_WGS_UCEC.dndscv.tsv.gz',delim = '\t')
+cbase_data <- read_delim('./intogene/output/steps/cbase/TCGA_WGS_UCEC.cbase.tsv.gz',delim = '\t')
+
+sigdata <- bind_rows(
+  smregions_data %>% select(Gene=HUGO_SYMBOL,Q=Q_VALUE) %>% mutate(Method='SMRegions'),
+  oncodrivefml_data %>% select(Gene=SYMBOL,Q=Q_VALUE) %>% mutate(Method='OncodriveFML'),
+  oncodriveclustl_data %>% select(Gene=SYMBOL,Q=P) %>% mutate(Method='OncodriveCLUSTL'),
+  mutpanning_data %>% select(Gene=Name,Q=FDR) %>% mutate(Method='MutPanning'),
+  hotmaps_data %>% select(Gene=GENE,Q=`q-value`) %>% mutate(Method='HotMAPS'),
+  dndscv_data %>% select(Gene=gene_name,Q=qglobal_cv) %>% mutate(Method='dNdScv'),
+  cbase_data %>% select(Gene=gene,Q=q_pos) %>% mutate(Method='CBaSE')
+) %>% 
+  filter(Gene %in% combined_data$SYMBOL)
+
+# process Q-value 0
+minmalQ <- sigdata %>% filter(Q>0) %>% arrange(Q) %>% slice(1) %>% pull(Q)
+sigdata <- sigdata %>% 
+  mutate(Q=if_else(Q==0,minmalQ, Q))
+
+# mutation type data
+load('./Rdata/ucec_maf.RData',verbose = T)
+load('./Rdata/ucec_subtype_data.RData',verbose = T)
+mutdata <- ucec_maf %>% 
+  filter(Tumor_Barcode %in% subtype_data$Tumor_Barcode) %>% 
+  filter(Hugo_Symbol %in% combined_data$SYMBOL) %>% 
+  count(Hugo_Symbol,Variant_Classification)
+
+# freqdata
+
+freqdata <- ucec_maf %>% 
+  filter(Tumor_Barcode %in% subtype_data$Tumor_Barcode) %>% 
+  filter(Hugo_Symbol %in% combined_data$SYMBOL) %>% 
+  select(Subject,Hugo_Symbol) %>% 
+  unique() %>% 
+  left_join(subtype_data) %>% 
+  count(Subtype,Hugo_Symbol) %>% 
+  left_join(subtype_data %>% count(Subtype,name = 'Total')) %>% 
+  mutate(freq=n/Total) %>% 
+  select(-n,-Total) %>% 
+  pivot_wider(names_from = 'Subtype',values_from = 'freq',values_fill = 0)
+
+
+freqdata <- ucec_maf %>% 
+  filter(Tumor_Barcode %in% subtype_data$Tumor_Barcode) %>% 
+  filter(Hugo_Symbol %in% combined_data$SYMBOL) %>% 
+  select(Subject,Hugo_Symbol) %>% 
+  unique() %>% 
+  count(Hugo_Symbol,name = 'nMutSamples') %>% 
+  left_join(freqdata)
+
+# Visualization -----------------------------------------------------------
+gene_levels <- freqdata %>% arrange(desc(nMutSamples)) %>% pull(Hugo_Symbol)
+
+# scale for dual-axis alignment
+max_val <- suppressWarnings(max(freqdata$nMutSamples, na.rm = TRUE))
+scale_y <- round_up_multiple(max_val,bases = 1)
+if (!is.finite(scale_y) || is.na(scale_y)) scale_y <- 1
+
+p1 <- freqdata %>% 
+  mutate(Hugo_Symbol = factor(Hugo_Symbol,levels = gene_levels)) %>% 
+  ggplot()+
+  geom_col(aes(Hugo_Symbol,nMutSamples),fill='#cccccc',col='gray20',linewidth=0.5)+
+  geom_point(aes(x=Hugo_Symbol,y=POLE*scale_y),fill="#BB0E3D",pch=21,col='white',stroke=0.2,size=3)+
+  geom_line(aes(x=Hugo_Symbol,y=POLE*scale_y),color="#BB0E3D",group=1)+
+  geom_point(aes(x=Hugo_Symbol,y=MSI*scale_y),fill="#542788",pch=21,col='white',stroke=0.2,size=3)+
+  geom_line(aes(x=Hugo_Symbol,y=MSI*scale_y),color="#542788",group=1)+
+  geom_point(aes(x=Hugo_Symbol,y=CN_HIGH*scale_y),fill="#007BBD",pch=21,col='white',stroke=0.2,size=3)+
+  geom_line(aes(x=Hugo_Symbol,y=CN_HIGH*scale_y),color="#007BBD",group=1)+
+  geom_point(aes(x=Hugo_Symbol,y=CN_LOW*scale_y),fill="#01665e",pch=21,col='white',stroke=0.2,size=3)+
+  geom_line(aes(x=Hugo_Symbol,y=CN_LOW*scale_y),color="#01665e",group=1)+
+  scale_y_continuous(breaks = pretty_breaks(),expand = expansion(add = c(0,0)),limits = c(0,scale_y),
+                     sec.axis = sec_axis(~./scale_y, name="Frequency (%)",breaks = pretty_breaks()(c(0,1)),labels = 100*pretty_breaks()(c(0,1))))+
+  labs(x=NULL,y='Number of  mutated samples')+
+  theme_minimal(base_size = 14)+ 
+  theme(panel.grid = element_blank(),axis.text.x = element_text(size = 12,angle = 90,hjust = 1,vjust = 0.5,face = 'italic'),
+        axis.ticks.y = element_line(linewidth = 0.5),axis.line = element_line(linewidth =0.5),legend.direction = 'vertical')
+
+p2 <- combined_data %>% 
+  mutate(SYMBOL = factor(SYMBOL,levels = gene_levels)) %>% 
+  ggplot(aes(SYMBOL,"Role",fill=ROLE))+
+  geom_tile()+
+  labs(x=NULL,y=NULL,fill=NULL)+
+  scale_fill_manual(values = c('LoF'='#984ea3','Act'='#ff7f00'),na.value = NA,breaks = c('LoF','Act'))+
+  theme_minimal(base_size = 14)+ 
+  theme(panel.grid = element_blank(),axis.text.x = element_blank(),legend.direction = 'horizontal',axis.text = element_text(size=12),legend.key.height = unit(0.4,'cm'))+
+  panel_border(size = 0.5,color = 'black')
+
+
+novel_genes <- c('MYC','TP63','OGDHL','INPP4A')
+p3 <- combined_data %>% 
+  mutate(SYMBOL = factor(SYMBOL,levels = gene_levels)) %>% 
+  mutate(Novel=if_else(SYMBOL %in% novel_genes,'Novel',NA_character_)) %>% 
+  ggplot(aes(SYMBOL,"Novel driver",fill=Novel))+
+  geom_tile()+
+  labs(x=NULL,y=NULL,fill=NULL)+
+  scale_fill_manual(values = c('Novel'='#1f78b4'),na.value = NA,breaks = 'Novel')+
+  theme_minimal(base_size = 14)+
+  theme(panel.grid = element_blank(),axis.text.x = element_blank(),legend.direction = 'horizontal',axis.text = element_text(size=12),legend.key.height = unit(0.4,'cm'))+
+  panel_border(size = 0.5,color = 'black')
+
+p4 <- combined_data %>% 
+  mutate(SYMBOL = factor(SYMBOL,levels = gene_levels)) %>% 
+  ggplot(aes(SYMBOL,"Combined significance",fill=-log10(QVALUE_COMBINATION)))+
+  geom_tile()+
+  labs(x=NULL,y=NULL,fill=expression(-log[10](italic(q) * "-value")))+
+  scale_fill_material(palette = 'indigo')+
+  theme_minimal(base_size = 14)+ 
+  theme(panel.grid = element_blank(),axis.text.x = element_blank(),legend.direction = 'horizontal',axis.text = element_text(size=12),legend.key.height = unit(0.4,'cm'),legend.key.width = unit(0.8,'cm'))+
+  panel_border(size = 0.5,color = 'black')+
+  guides(fill = guide_colourbar(title.position="top", title.hjust = 0.5))
+
+
+tmp <- read_csv('./oncoplot_colors.csv')
+landscape_colors <- tmp$Color
+names(landscape_colors) <- tmp$Name
+
+p5 <- mutdata %>% 
+  mutate(Hugo_Symbol = factor(Hugo_Symbol,levels = gene_levels)) %>% 
+  ggplot(aes(Hugo_Symbol,n,fill=Variant_Classification))+
+  geom_col(position = 'fill')+
+  labs(x=NULL,y='Types of mutations',fill=NULL)+
+  scale_fill_manual(values = landscape_colors)+
+  theme_minimal(base_size = 14)+ 
+  theme(panel.grid = element_blank(),axis.ticks.y = element_line(linewidth = 0.5),axis.text.x = element_blank(),legend.direction = 'horizontal',axis.text = element_text(size=12),legend.key.height = unit(0.4,'cm'),legend.key.width = unit(0.8,'cm'))+guides(fill=guide_legend(nrow = 4))
+
+
+p6 <- sigdata %>% 
+  mutate(Gene = factor(Gene,levels = gene_levels)) %>% 
+  ggplot(aes(Gene,Method,fill=-log10(Q)))+
+  geom_point(size = 6,pch=21,stroke=0.25)+
+  labs(x=NULL,y='Driver detection algorithm',fill=expression(-log[10](italic(q) * "-value")))+
+  scale_fill_viridis_c()+
+  theme_minimal(base_size = 14)+
+  theme(panel.grid = element_blank(),axis.text.x = element_blank(),legend.direction = 'horizontal',axis.text = element_text(size=12),legend.key.height = unit(0.4,'cm'),legend.key.width = unit(0.8,'cm'))+
+  panel_border(size = 0.5,color = 'black')+
+  guides(fill = guide_colourbar(title.position="top", title.hjust = 0.5))
+
+
+p <- plot_grid(p1,p2,p3,p4,p5,p6,align = 'v',axis = 'lr',ncol = 1,rel_heights = c(9,1,1,1,5,5))
+
+ggsave(filename = './Rscripts/figures/Fig1f.png',plot = p,width = 15,height = 9)
+
+#Fig1g----
+library(maftools)
+library(rstatix)
+load('./Rdata/ucec_subtype_data.RData')
+load('./Rdata/wgsdata.RData',verbose = T)
+## load total MAF
+load('./Rdata/ucec_maf.RData')
+
+# Multiple mutations ------------------------------------------------------
+drivers <- read_delim('./drivers.tsv',delim = '\t',col_names = T) %>% filter(QVALUE_COMBINATION<0.1)
+# Multiple driver mutation frequency by subtype ---------------------------
+tdata0 <- ucec_maf %>% 
+  filter(Hugo_Symbol %in% drivers$SYMBOL) %>% 
+  count(Tumor_Barcode,Hugo_Symbol) %>% 
+  left_join(subtype_data)
+
+genelevs <- tdata0 %>% count(Hugo_Symbol,sort=T) %>% pull(Hugo_Symbol)
+
+tmp <- read_csv('./oncoplot_colors.csv')
+landscape_colors <- tmp$Color
+names(landscape_colors) <- tmp$Name
+
+tdata2 <- tdata0 %>% 
+  left_join(ucec_maf %>% select(Tumor_Barcode,Hugo_Symbol,Variant_Classification)) %>% 
+  count(Mmut=if_else(n>1,"Multiple_Mutatons","Single_Mutation"),Subtype,Gene_Name=Hugo_Symbol,Variant_Classification) %>% 
+  mutate(Gene_Name = factor(Gene_Name,levels = genelevs))
+
+
+load('./Rdata/DP_info_data.RData',verbose = T)
+tmp <- ucec_maf %>% filter(Hugo_Symbol %in% drivers$SYMBOL) %>% mutate(ID=paste(str_remove(Chromosome,'chr'),Start_Position,Reference_Allele,Tumor_Seq_Allele2,sep=':')) %>% select(Tumor_Barcode,ID,Variant_Classification2=Variant_Classification)
+DP_info_data <- DP_info_data %>% filter(Gene_Name %in% drivers$SYMBOL)
+DP_info_data <- DP_info_data %>% left_join(tmp) %>% filter(!is.na(Variant_Classification2))
+
+tdata3 <- tdata0 %>% 
+  rename(Gene_Name=Hugo_Symbol) %>% 
+  left_join(DP_info_data %>% select(Tumor_Barcode,Gene_Name,Clone)) %>% 
+  count(Mmut=if_else(n>1,"Multiple_Mutatons","Single_Mutation"),Subtype,Gene_Name,Clone) %>% 
+  mutate(Gene_Name = factor(Gene_Name,levels = genelevs)) %>% 
+  filter(!is.na(Clone))
+
+# summary plot
+
+odata1 <- tdata0 %>%
+  count(Subtype,Mmut=if_else(n>1,"Multiple_Mutatons","Single_Mutation"))
+
+p1 <- odata1 %>% 
+  ggplot()+
+  geom_col(aes(Subtype,n,fill=Mmut),position = 'fill')+
+  #facet_grid(.~Subtype,scale="free_x",space = "free")+
+  labs(x=NULL,y='Proportion',fill='Mutations')+
+  scale_fill_manual(values = c("#BB0E3D","#01665e"))+
+  scale_y_continuous(breaks = pretty_breaks(),expand = expansion(add = c(0,0)))+
+  scale_x_discrete(expand = expansion(add=c(0,0)))+
+  theme_ipsum_rc(base_size = 14,axis_title_size = 16,axis_title_just = 'm' ,axis = T,grid = FALSE,ticks = F)+
+  theme(plot.margin = margin(6,4,4,4),panel.spacing = unit(x = 0.1,'cm'),panel.grid = element_blank(), axis.ticks.x = element_line(linewidth = 0.5),legend.direction = 'horizontal',legend.position = 'top',axis.line = element_blank())+
+  guides(fill=guide_legend(nrow = 2))+
+  panel_border(color = 'black',size=0.5)+
+  coord_flip()
+
+odata2 <- tdata2 %>% group_by(Subtype,Variant_Classification) %>% summarise(n=sum(n)) %>% ungroup()
+
+p2 <- odata2 %>%
+  ggplot(aes(Subtype,n,fill=Variant_Classification))+
+  geom_col(position = 'fill')+
+  #facet_wrap(~Mmut)+
+  #facet_grid(Mmut~Subtype,scale="free_x",space = "free")+
+  labs(x=NULL,y='Proportion',fill='Classification')+
+  scale_fill_manual(values = landscape_colors)+
+  scale_x_discrete(expand = expansion(add=c(0,0)))+
+  scale_y_continuous(breaks = pretty_breaks(),expand = expansion(add = c(0,NA)))+
+  theme_ipsum_rc(base_size = 14,axis_title_size = 16,axis_title_just = 'm' ,axis = T,grid = FALSE,ticks = F)+
+  theme(plot.margin = margin(6,4,4,4),panel.spacing = unit(x = 0.1,'cm'),panel.grid = element_blank(),axis.text.y=element_blank(),axis.ticks.x = element_line(linewidth = 0.5),legend.direction = 'horizontal',legend.position = 'top',axis.line = element_blank(),strip.text.x = element_blank())+
+  guides(fill=guide_legend(nrow = 2))+
+  panel_border(color = 'black',size=0.5)+
+  coord_flip()
+
+odata3 <- tdata3 %>% group_by(Subtype,Clone) %>% summarise(n=sum(n)) %>% ungroup()
+
+p3 <- odata3 %>%
+  ggplot(aes(Subtype,n,fill=Clone))+
+  geom_col(position = 'fill')+
+  #facet_grid(Mmut~Subtype,scale="free_x",space = "free")+
+  labs(x=NULL,y='Proportion',fill='Clonality')+
+  scale_fill_manual(values = c(N="#f0027f",Y='#01665e'),labels=c('Subclone','Clone'))+
+  scale_x_discrete(expand = expansion(add=c(0,0)))+
+  scale_y_continuous(breaks = pretty_breaks(),expand = expansion(add = c(0,NA)))+
+  theme_ipsum_rc(base_size = 14,axis_title_size = 16,axis_title_just = 'm' ,axis = T,grid = FALSE,ticks = F)+
+  theme(plot.margin = margin(6,4,4,4),panel.spacing = unit(x = 0.1,'cm'),panel.grid = element_blank(),axis.text.y = element_blank(),axis.ticks.x = element_line(linewidth = 0.5),legend.direction = 'horizontal',legend.position = 'top',axis.line = element_blank(),strip.text.x = element_blank())+
+  guides(fill=guide_legend(nrow = 2,))+
+  panel_border(color = 'black',size=0.5)+
+  coord_flip()
+
+plot_grid(p1,p2,p3,align = 'h',axis = 'tb',nrow = 1)
+ggsave(filename = './Rscripts/Figures/Fig1g.png',width = 14,height = 3)
