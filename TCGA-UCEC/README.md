@@ -1,5 +1,5 @@
 
-## Deep whole-genome sequencing reveals distinct mutational mechanisms shaping endometrial cancer
+## Endogenous mutational mechanisms and metabolic context shape endometrial cancer
 
 This repository contains R code used to generate primary and supplementary visualizations for the TCGA-UCEC project. It supports the manuscript "Deep whole-genome sequencing reveals distinct mutational mechanisms shaping endometrial cancer".
 

@@ -1,5 +1,5 @@
 ---
-title: "Whole-genome sequencing reveals distinct mutational mechanisms shaping endometrial cancer"
+title: "Endogenous mutational mechanisms and metabolic context shape endometrial cancerr"
 author: "Tongwu Zhang"
 date: "`r Sys.Date()`"
 output:
