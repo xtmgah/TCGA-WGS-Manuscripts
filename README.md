@@ -8,4 +8,4 @@ The following WGS-based analyses are included or planned for inclusion in this r
 - [**A Thiopurine-like Mutagenic Process Defines TGCT Subtypes**](https://github.com/xtmgah/TCGA-WGS-Mansucripts/tree/main/TCGA-TGCT)
 
 ### Uterine Corpus Endometrial Carcinoma (UCEC)
-- [**Deep whole-genome sequencing reveals distinct mutational mechanisms shaping endometrial cancer**](https://github.com/xtmgah/TCGA-WGS-Mansucripts/tree/main/TCGA-UCEC)
+- [**Endogenous mutational mechanisms and metabolic context shape endometrial cancer**](https://github.com/xtmgah/TCGA-WGS-Mansucripts/tree/main/TCGA-UCEC)
