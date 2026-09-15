@@ -1,0 +1,93 @@
+---
+title: "Extended Data Fig. 2: Driver associations with CCF-based heterogeneity"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<style>
+body, h1, h2, h3, h4, table {font-family: 'Roboto Condensed', sans-serif;}
+body {font-size: 17px; line-height: 1.5;}
+pre {font-size: 13px;}
+table {font-size: 15px;}
+h2 {margin-top: 1.4em;}
+</style>
+
+[PTC overview](../README.md) · [Input definitions](../data/input_manifest.tsv) · [Analysis script](ExtendedDataFig2.R)
+
+## Overview
+
+Cohort-specific analyses compare CCF-based MATH scores between tumors with and without selected driver alterations.
+
+## Analyses
+
+### MATH definition
+
+Cancer cell fraction (CCF) values are summarized within each tumor as `100 × mad(CCF) / median(CCF)`. R's `mad()` uses its default normal-consistency scaling constant. This analysis uses CCF-based MATH; a separately calculated VAF-based summary is not the plotted outcome.
+
+### a. Driver-association summary
+
+For each eligible alteration category and cohort, a Wilcoxon test compares MATH scores between alteration-positive and alteration-negative tumors. The horizontal axis shows the log2 ratio of group medians; the vertical axis shows the unadjusted P value. Holm-adjusted P values are also calculated within each cohort.
+
+### b. Alteration-stratified distributions
+
+Alteration categories with a nominal P value below 0.05 in any cohort are selected for violin and box plots. Distributions are separated by alteration presence and cohort. Selection uses nominal significance, so these plots are descriptive follow-ups to the association tests.
+
+## Inputs
+
+The [input definitions](../data/input_manifest.tsv) describe the expected files and R objects. Participant-level inputs are supplied separately in `PTC_INPUT_DIR`.
+
+| Input | Purpose |
+| --- | --- |
+| `wgsdata_tp.RData` | Cohort membership and colors. |
+| `DP_info_data.RData` | Mutation-level CCF and VAF values. |
+| `Genome_landscape_manual_final.RData` | Curated driver categories and pooled fusion categories. |
+
+## Usage
+
+Run from the `PTC` directory after following the [setup instructions](../README.md). Use an output directory for your local results. Available plots are exported as PDF and PNG with Roboto Condensed typography.
+
+```bash
+Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" ExtendedDataFig2
+```
+
+This page displays code without running the analysis. Local plot previews are optional through the `include_figures` and `figure_dir` rendering parameters; previews are disabled by default.
+
+## R code
+
+The figure entry point is `run_ExtendedDataFig2(input_dir, output_dir)`.
+
+Shared analysis functions: [evolution_helpers.R](../functions/evolution_helpers.R).
+
+Input loading, plot export, and typography are provided by [ptc_runtime.R](../functions/ptc_runtime.R).
+
+```{r code-source-1, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/ExtendedDataFig2.R', warn = FALSE), collapse = '\n'), '\n```\n', sep = '')
+```
+
+```{r local-figures, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  cat('## Local figures\n\n')
+  files <- file.path(params$figure_dir, c("ExtendedDataFig2a.png","ExtendedDataFig2b.png"))
+  for (p in files) {
+    if (file.exists(p)) {
+      cat(sprintf('<img alt="Extended Data Fig. 2: Driver associations with CCF-based heterogeneity" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    } else {
+      cat('Local plot not found: ', basename(p), '\n\n', sep = '')
+    }
+  }
+}
+```

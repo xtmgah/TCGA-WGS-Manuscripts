@@ -1,0 +1,95 @@
+---
+title: "Supplementary Fig. 3: CCF-based heterogeneity by driver group"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<style>
+body, h1, h2, h3, h4, table {font-family: 'Roboto Condensed', sans-serif;}
+body {font-size: 17px; line-height: 1.5;}
+pre {font-size: 13px;}
+table {font-size: 15px;}
+h2 {margin-top: 1.4em;}
+</style>
+
+[PTC overview](../README.md) · [Input definitions](../data/input_manifest.tsv) · [Analysis script](SupplementaryFig3.R)
+
+## Overview
+
+These cohort-stratified analyses summarize the relationship between curated driver alterations and CCF-based MATH scores. They use the shared implementation described in [Extended Data Fig. 2](ExtendedDataFig2.html).
+
+## Analyses
+
+### a. Association tests
+
+MATH is calculated as `100 × mad(CCF) / median(CCF)` within each tumor, using R's default MAD scaling. Wilcoxon tests compare alteration-positive and alteration-negative tumors separately by cohort. The plot shows the log2 ratio of group medians and unadjusted P values; Holm adjustment is calculated within each cohort.
+
+### b. Score distributions
+
+Violin plots with box-plot overlays show MATH distributions by alteration presence and cohort. Alteration categories are selected when a nominal association P value is below 0.05 in any cohort. The plotted outcome is CCF-based MATH.
+
+## Inputs
+
+The [input definitions](../data/input_manifest.tsv) describe the expected files and R objects. Participant-level inputs are supplied separately in `PTC_INPUT_DIR`.
+
+| Input | Purpose |
+| --- | --- |
+| `wgsdata_tp.RData` | Cohort membership and colors. |
+| `DP_info_data.RData` | Mutation-level CCF and VAF values. |
+| `Genome_landscape_manual_final.RData` | Curated alteration categories. |
+
+## Usage
+
+Run from the `PTC` directory after following the [setup instructions](../README.md). Use an output directory for your local results. Available plots are exported as PDF and PNG with Roboto Condensed typography.
+
+```bash
+Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" SupplementaryFig3
+```
+
+This page displays code without running the analysis. Local plot previews are optional through the `include_figures` and `figure_dir` rendering parameters; previews are disabled by default.
+
+## R code
+
+The figure entry point is `run_SupplementaryFig3(input_dir, output_dir)`.
+
+Shared analysis functions: [evolution_helpers.R](../functions/evolution_helpers.R).
+
+Input loading, plot export, and typography are provided by [ptc_runtime.R](../functions/ptc_runtime.R).
+
+```{r code-source-1, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/SupplementaryFig3.R', warn = FALSE), collapse = '\n'), '\n```\n', sep = '')
+```
+
+### ExtendedDataFig2.R
+
+```{r code-source-2, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/ExtendedDataFig2.R', warn = FALSE), collapse = '\n'), '\n```\n', sep = '')
+```
+
+```{r local-figures, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  cat('## Local figures\n\n')
+  files <- file.path(params$figure_dir, c("SupplementaryFig3a.png","SupplementaryFig3b.png"))
+  for (p in files) {
+    if (file.exists(p)) {
+      cat(sprintf('<img alt="Supplementary Fig. 3: CCF-based heterogeneity by driver group" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    } else {
+      cat('Local plot not found: ', basename(p), '\n\n', sep = '')
+    }
+  }
+}
+```

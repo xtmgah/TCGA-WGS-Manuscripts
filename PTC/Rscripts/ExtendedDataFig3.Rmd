@@ -1,0 +1,78 @@
+---
+title: "Extended Data Fig. 3: Mutation-cluster examples"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<style>
+body, h1, h2, h3, h4, table {font-family: 'Roboto Condensed', sans-serif;}
+body {font-size: 17px; line-height: 1.5;}
+pre {font-size: 13px;}
+table {font-size: 15px;}
+h2 {margin-top: 1.4em;}
+</style>
+
+[PTC overview](../README.md) · [Input definitions](../data/input_manifest.tsv) · [Analysis script](ExtendedDataFig3.R)
+
+## Overview
+
+The panels illustrate mutation clustering within individual tumors and the relationship between mutation-level allele fractions, estimated cancer cell fractions, and cluster assignments.
+
+## Analyses
+
+### a–b. Within-tumor mutation clusters
+
+DPClust assigns mutations to populations with different inferred cellular fractions. Sample-level cluster visualizations require the fitted clustering output and its plotting inputs.
+
+The plotting implementation for these example panels is not included. The available mutation-assignment table is insufficient to regenerate fitted density displays without the corresponding model output.
+
+## Inputs
+
+The [input definitions](../data/input_manifest.tsv) describe the expected files and R objects. Participant-level inputs are supplied separately in `PTC_INPUT_DIR`.
+
+| Input | Purpose |
+| --- | --- |
+| `DP_info_data.RData` | Mutation-level values and assigned clusters available to other PTC analyses. |
+| DPClust model and plotting inputs | Required for the example density displays; not included in this module. |
+
+## Usage
+
+Run from the `PTC` directory after following the [setup instructions](../README.md).
+
+```bash
+Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" ExtendedDataFig3
+```
+
+The figure entry point does not currently produce plots.
+
+This page displays code without running the analysis. Local plot previews are optional through the `include_figures` and `figure_dir` rendering parameters; previews are disabled by default.
+
+## R code
+
+The figure entry point is `run_ExtendedDataFig3(input_dir, output_dir)`.
+
+Input loading, plot export, and typography are provided by [ptc_runtime.R](../functions/ptc_runtime.R).
+
+```{r code-source-1, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/ExtendedDataFig3.R', warn = FALSE), collapse = '\n'), '\n```\n', sep = '')
+```
+
+```{r local-figures, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  cat('No local plot implementation is available for this figure.\n')
+}
+```

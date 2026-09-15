@@ -1,5 +1,0 @@
-resource	genome_build	sha256	origin	sensitivity
-refs/hg38_cytoBand.txt.gz	GRCh38	57304474186c2a9d6e636918639fcddb76de5a099d410de4bb04a86923b7498c	Verified GRCh38 primary chromosome subset; original reference hashes in refs/reference_checks.json	non-participant reference metadata
-refs/hg38_primary.fai	GRCh38	3e19e59444bfdca9f4eaef84900cfb42f8eb531a3081512eac51e661702ac361	Verified GRCh38 primary chromosome subset; original reference hashes in refs/reference_checks.json	non-participant reference metadata
-refs/oncoplot_colors.csv	not coordinate-specific	23c60832dbbbecddebc30829f0c08449e1d1504f1440a740bab4917c00781012	Historical author plotting palette	non-participant reference metadata
-refs/reference_checks.json	not coordinate-specific	f4b9fa0046d63c989caf25df27b75a9dfa0050fab4741ec654a32da40d8f860f	Validation of bundled GRCh38 resource lengths	non-participant reference metadata

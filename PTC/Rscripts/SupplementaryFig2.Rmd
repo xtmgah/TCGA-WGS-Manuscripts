@@ -1,0 +1,79 @@
+---
+title: "Supplementary Fig. 2: Minimum detectable cancer cell fraction"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<style>
+body, h1, h2, h3, h4, table {font-family: 'Roboto Condensed', sans-serif;}
+body {font-size: 17px; line-height: 1.5;}
+pre {font-size: 13px;}
+table {font-size: 15px;}
+h2 {margin-top: 1.4em;}
+</style>
+
+[PTC overview](../README.md) · [Input definitions](../data/input_manifest.tsv) · [Analysis script](SupplementaryFig2.R)
+
+## Overview
+
+This figure concerns the lower cellular fraction at which a mutation or subclone can be detected and how this quantity varies across driver-defined tumor groups.
+
+## Analyses
+
+### Detection sensitivity
+
+A minimum detectable cancer cell fraction (CCF) depends on the detection rule and sequencing context, including coverage, purity, and copy number. It must be distinguished from the observed CCF of a detected mutation.
+
+The threshold calculation, grouping procedure, and plotting implementation are not included. The module therefore does not estimate detection thresholds from the available coverage or purity summaries.
+
+## Inputs
+
+The [input definitions](../data/input_manifest.tsv) describe the expected files and R objects. Participant-level inputs are supplied separately in `PTC_INPUT_DIR`.
+
+| Input | Purpose |
+| --- | --- |
+| Detection model and parameters | Required to define the minimum detectable CCF. |
+| Sequencing and copy-number measurements | Coverage, purity, and relevant allele-specific copy-number information. |
+| Driver-group definitions | Required to summarize thresholds by alteration group. |
+
+## Usage
+
+Run from the `PTC` directory after following the [setup instructions](../README.md).
+
+```bash
+Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" SupplementaryFig2
+```
+
+The figure entry point does not currently produce plots.
+
+This page displays code without running the analysis. Local plot previews are optional through the `include_figures` and `figure_dir` rendering parameters; previews are disabled by default.
+
+## R code
+
+The figure entry point is `run_SupplementaryFig2(input_dir, output_dir)`.
+
+Input loading, plot export, and typography are provided by [ptc_runtime.R](../functions/ptc_runtime.R).
+
+```{r code-source-1, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/SupplementaryFig2.R', warn = FALSE), collapse = '\n'), '\n```\n', sep = '')
+```
+
+```{r local-figures, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  cat('No local plot implementation is available for this figure.\n')
+}
+```

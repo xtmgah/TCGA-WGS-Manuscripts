@@ -1,0 +1,98 @@
+---
+title: "Fig. 2: Clonal and subclonal chromosome 22q loss"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<style>
+body, h1, h2, h3, h4, table {font-family: 'Roboto Condensed', sans-serif;}
+body {font-size: 17px; line-height: 1.5;}
+pre {font-size: 13px;}
+table {font-size: 15px;}
+h2 {margin-top: 1.4em;}
+</style>
+
+[PTC overview](../README.md) · [Input definitions](../data/input_manifest.tsv) · [Analysis script](Fig2.R)
+
+## Overview
+
+Copy-number analyses describe the genomic distribution, cellular fraction, and driver associations of chromosome 22q loss in PTC. Clonal and subclonal states are evaluated separately.
+
+## Analyses
+
+### a. Genome-wide copy-number frequencies
+
+Copy-number segments are summarized in 1-Mb bins and plotted as gain and loss frequencies. The module explicitly evaluates the higher-fraction and lower-fraction copy-number states in separate rows. The available implementation provides a two-state frequency view.
+
+### b. Chromosome 22 copy-number heatmap
+
+Segment copy number is expressed relative to a diploid or genome-doubled baseline. The heatmap separates clonal and subclonal states and groups tumors by cohort. Tumors are ordered using the copy-number state of their longest chromosome 22 segment; neutral segments remain visible.
+
+### c. Cellular fraction of subclonal deletion segments
+
+Box plots and individual points summarize the cellular fraction of chromosome 22 deletion segments across cohorts. Each observation is a qualifying segment with a positive subclonal fraction and copy-number loss, so a tumor can contribute multiple observations. This panel does not add statistical-comparison labels.
+
+### d. Associations with driver alterations
+
+Two-sided Fisher exact tests compare driver alteration presence with clonal or subclonal chromosome 22 loss. The available implementation plots log2 odds ratios against −log10 of the unadjusted P value. Gene labels use Holm-adjusted significance within each deletion category. An adjusted-P-value-axis version is not implemented.
+
+## Inputs
+
+The [input definitions](../data/input_manifest.tsv) describe the expected files and R objects. Participant-level inputs are supplied separately in `PTC_INPUT_DIR`.
+
+| Input | Purpose |
+| --- | --- |
+| `wgsdata_tp.RData` | Cohort membership and colors. |
+| `ngspurity_data.RData` | Battenberg segment states, cellular fractions, purity, and whole-genome-duplication annotations. |
+| `Genome_landscape_manual_final.RData` | Curated alterations for association testing. |
+| [External GRCh38 cytobands](../data/README.md#genome-reference) | Chromosome and centromere coordinates supplied through `PTC_REFERENCE_DIR` for the genome-wide frequency view. |
+
+## Usage
+
+Run from the `PTC` directory after following the [setup instructions](../README.md). Use an output directory for your local results. Available plots are exported as PDF and PNG with Roboto Condensed typography.
+
+```bash
+Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" Fig2
+```
+
+This page displays code without running the analysis. Local plot previews are optional through the `include_figures` and `figure_dir` rendering parameters; previews are disabled by default.
+
+## R code
+
+The figure entry point is `run_Fig2(input_dir, output_dir)`.
+
+Shared analysis functions: [cnv_helpers.R](../functions/cnv_helpers.R), [group_comparison.R](../functions/group_comparison.R).
+
+Input loading, plot export, and typography are provided by [ptc_runtime.R](../functions/ptc_runtime.R).
+
+```{r code-source-1, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/Fig2.R', warn = FALSE), collapse = '\n'), '\n```\n', sep = '')
+```
+
+```{r local-figures, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  cat('## Local figures\n\n')
+  files <- file.path(params$figure_dir, c("Fig2a_states.png","Fig2b.png","Fig2c.png","Fig2d_raw_p.png"))
+  for (p in files) {
+    if (file.exists(p)) {
+      cat(sprintf('<img alt="Fig. 2: Clonal and subclonal chromosome 22q loss" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    } else {
+      cat('Local plot not found: ', basename(p), '\n\n', sep = '')
+    }
+  }
+}
+```

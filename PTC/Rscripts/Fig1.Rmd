@@ -1,0 +1,115 @@
+---
+title: "Fig. 1: Cohort characteristics and genomic landscape"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<style>
+body, h1, h2, h3, h4, table {font-family: 'Roboto Condensed', sans-serif;}
+body {font-size: 17px; line-height: 1.5;}
+pre {font-size: 13px;}
+table {font-size: 15px;}
+h2 {margin-top: 1.4em;}
+</style>
+
+[PTC overview](../README.md) · [Input definitions](../data/input_manifest.tsv) · [Analysis script](Fig1.R)
+
+## Overview
+
+Whole-genome sequencing characterizes driver alterations and structural variation in papillary thyroid carcinoma (PTC). The analyses compare TCGA-THCA, Chornobyl-unexposed, and Chornobyl-exposed tumors.
+
+## Cohorts
+
+The bundled [cohort summary](../data/wgs_data.RData) contains aggregate tumor totals and cohort colors. Tumor-level analyses use the separate inputs listed below.
+
+```{r cohort-summary, echo=FALSE}
+public_cohort <- new.env(parent = emptyenv())
+load("data/wgs_data.RData", envir = public_cohort)
+knitr::kable(public_cohort$wgs_data, col.names = c("Cohort", "Tumors"), row.names = FALSE)
+```
+
+## Analyses
+
+### a. Cohort characteristics
+
+Age at diagnosis, median sequencing coverage, and tumor purity are summarized with box plots and individual observations. Pairwise Wilcoxon tests use Benjamini–Hochberg adjustment. The module exports separate age, coverage, and purity plots; coverage includes tumor and normal samples. A combined overview layout is not included.
+
+### b. Driver mutation frequencies
+
+Distinct tumor–gene driver mutation events are counted within the analysis cohort and divided by the corresponding overall or cohort-specific denominator. IntOGen annotations provide the predicted mode of action used to color gene labels.
+
+### c. Structural-variant breakpoint density
+
+Both breakends of each structural variant contribute to counts in 5-Mb GRCh38 windows. Counts are divided by the number of tumors in each cohort. The module exports separate cohort plots; a combined layout and gene hotspot annotations are not included.
+
+### d–f. Structural-variant distributions
+
+Circos plots connect structural-variant breakends in TCGA-THCA (d), Chornobyl-unexposed (e), and Chornobyl-exposed (f) tumors. Link colors distinguish structural-variant types. Genomic coordinates and the chromosome ideogram use GRCh38.
+
+### g–i. Genomic alteration landscape
+
+Oncoprints summarize curated driver mutations, fusions, TERT alterations, and clonal or subclonal chromosome 22q loss in TCGA-THCA (g), Chornobyl-exposed (h), and Chornobyl-unexposed (i) tumors. Mutation burden appears above each tumor column, with alteration frequencies beside the gene rows.
+
+## Inputs
+
+The [input definitions](../data/input_manifest.tsv) describe the expected files and R objects. Participant-level inputs are supplied separately in `PTC_INPUT_DIR`.
+
+| Input | Purpose |
+| --- | --- |
+| `wgsdata_tp.RData` | Analysis cohort and cohort colors. |
+| `wgs_clinical.RData`, `wgs_metrics.RData`, `ngspurity_data.RData` | Diagnosis age, sequencing coverage, and tumor purity. |
+| `Genome_landscape_manual_final.RData`, `wgs_covdata_tp.RData` | Curated alterations, mutation burden, and frequency denominators. |
+| `intogene_drivers.RData` | Driver-gene annotations and mode of action. |
+| `1170_manta_meerkat_union_window50_highquality.txt`, `svdata.RData` | Structural variants for breakpoint-density and Circos plots. |
+| [External GRCh38 references](../data/README.md#genome-reference) | Chromosome lengths and cytobands supplied through `PTC_REFERENCE_DIR`. |
+| [Alteration color palette](../config/oncoplot_colors.csv) | Display colors for the oncoprints. |
+
+## Usage
+
+Run from the `PTC` directory after following the [setup instructions](../README.md). Use an output directory for your local results. Available plots are exported as PDF and PNG with Roboto Condensed typography.
+
+```bash
+Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" Fig1
+```
+
+This page displays code without running the analysis. Local plot previews are optional through the `include_figures` and `figure_dir` rendering parameters; previews are disabled by default.
+
+## R code
+
+The figure entry point is `run_Fig1(input_dir, output_dir)`.
+
+Shared analysis functions: [group_comparison.R](../functions/group_comparison.R), [landscape_helpers.R](../functions/landscape_helpers.R).
+
+Input loading, plot export, and typography are provided by [ptc_runtime.R](../functions/ptc_runtime.R).
+
+```{r code-source-1, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/Fig1.R', warn = FALSE), collapse = '\n'), '\n```\n', sep = '')
+```
+
+```{r local-figures, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  cat('## Local figures\n\n')
+  files <- file.path(params$figure_dir, c("Fig1a_age.png","Fig1a_depth.png","Fig1a_purity.png","Fig1b.png","Fig1c_TCGA_THCA.png","Fig1c_Chornobyl_Unexposed.png","Fig1c_Chornobyl_Exposed.png","Fig1d.png","Fig1e.png","Fig1f.png","Fig1g.png","Fig1h.png","Fig1i.png"))
+  for (p in files) {
+    if (file.exists(p)) {
+      cat(sprintf('<img alt="Fig. 1: Cohort characteristics and genomic landscape" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    } else {
+      cat('Local plot not found: ', basename(p), '\n\n', sep = '')
+    }
+  }
+}
+```

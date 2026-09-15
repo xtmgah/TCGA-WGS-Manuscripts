@@ -1,5 +1,5 @@
 # TCGA-WGS-Manuscripts
-This repository contains reproducible code, pipelines, and resources used in whole-genome sequencing (WGS)-based analyses of cancer samples from The Cancer Genome Atlas (TCGA). It serves as a centralized collection of manuscript-associated code for various pan-cancer and cancer-type-specific projects.
+This repository contains reproducible code, pipelines, and resources used in whole-genome sequencing (WGS)-based analyses of cancer samples from The Cancer Genome Atlas (TCGA) and related study cohorts. It serves as a centralized collection of manuscript-associated code for various pan-cancer and cancer-type-specific projects.
 
 ## Manuscripts
 The following WGS-based analyses are included or planned for inclusion in this repository:
@@ -11,4 +11,4 @@ The following WGS-based analyses are included or planned for inclusion in this r
 - [**Endogenous mutational mechanisms and metabolic context shape endometrial cancer**](https://github.com/xtmgah/TCGA-WGS-Mansucripts/tree/main/TCGA-UCEC)
 
 ### Papillary Thyroid Carcinoma (PTC)
-- [**Driver-defined evolutionary routes in papillary thyroid cancer**](TCGA-PTC/README.md)
+- [**Driver-defined evolutionary routes in papillary thyroid cancer**](PTC/README.md)

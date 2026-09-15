@@ -1,0 +1,98 @@
+---
+title: "Fig. 3: Tumor heterogeneity and subclonal architecture"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<style>
+body, h1, h2, h3, h4, table {font-family: 'Roboto Condensed', sans-serif;}
+body {font-size: 17px; line-height: 1.5;}
+pre {font-size: 13px;}
+table {font-size: 15px;}
+h2 {margin-top: 1.4em;}
+</style>
+
+[PTC overview](../README.md) · [Input definitions](../data/input_manifest.tsv) · [Analysis script](Fig3.R)
+
+## Overview
+
+These analyses concern mutation-level heterogeneity, its relationship to driver alterations, and the detection of subclonal populations. The module provides MATH-score preparation, but the plotting and model implementations for panels a–e are incomplete.
+
+## Analyses
+
+### a–c. MATH scores and driver associations
+
+The preparation function computes mutant-allele tumor heterogeneity (MATH) summaries separately from cancer cell fraction (CCF) and variant allele fraction (VAF). For either variable, the score is `100 × mad(x) / median(x)`, using the default scaling constant in R's `mad()` function. The CCF and VAF summaries are distinct measures and should be labeled accordingly.
+
+The cohort-stratified CCF-based association and distribution analyses are implemented in [Extended Data Fig. 2](ExtendedDataFig2.html). The pooled plots for Fig. 3 are not implemented.
+
+### d. Subclone detectability
+
+A plotting implementation for normalized reads per chromosomal copy (NRPCC) and its detection threshold is not available in this module. Sequencing coverage and purity alone do not specify the threshold calculation.
+
+### e. Driver alterations and subclone number
+
+The module does not implement the driver-specific subclone-number analysis.
+
+## Inputs
+
+The [input definitions](../data/input_manifest.tsv) describe the expected files and R objects. Participant-level inputs are supplied separately in `PTC_INPUT_DIR`.
+
+| Input | Purpose |
+| --- | --- |
+| `wgsdata_tp.RData` | Analysis cohort and cohort labels. |
+| `DP_info_data.RData` | Mutation-level CCF and VAF values and cluster assignments. |
+| `Genome_landscape_manual_final.RData` | Curated driver alterations loaded by the shared preparation functions. |
+
+## Usage
+
+Run from the `PTC` directory after following the [setup instructions](../README.md).
+
+```bash
+Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" Fig3
+```
+
+The MATH preparation can be called directly in R:
+
+```{r prepare-math-example, eval=FALSE}
+source("functions/ptc_runtime.R")
+source("functions/evolution_helpers.R")
+source("Rscripts/Fig3.R")
+math_scores <- prepare_Fig3_math(Sys.getenv("PTC_INPUT_DIR"))
+```
+
+The figure entry point does not currently produce plots.
+
+This page displays code without running the analysis. Local plot previews are optional through the `include_figures` and `figure_dir` rendering parameters; previews are disabled by default.
+
+## R code
+
+The figure entry point is `run_Fig3(input_dir, output_dir)`.
+
+Shared analysis functions: [evolution_helpers.R](../functions/evolution_helpers.R).
+
+Input loading, plot export, and typography are provided by [ptc_runtime.R](../functions/ptc_runtime.R).
+
+```{r code-source-1, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/Fig3.R', warn = FALSE), collapse = '\n'), '\n```\n', sep = '')
+```
+
+```{r local-figures, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  cat('No local plot implementation is available for this figure.\n')
+}
+```

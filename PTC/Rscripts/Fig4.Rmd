@@ -1,0 +1,103 @@
+---
+title: "Fig. 4: Mutation-cluster architecture and driver associations"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<style>
+body, h1, h2, h3, h4, table {font-family: 'Roboto Condensed', sans-serif;}
+body {font-size: 17px; line-height: 1.5;}
+pre {font-size: 13px;}
+table {font-size: 15px;}
+h2 {margin-top: 1.4em;}
+</style>
+
+[PTC overview](../README.md) · [Input definitions](../data/input_manifest.tsv) · [Analysis script](Fig4.R)
+
+## Overview
+
+Mutation clusters describe the distribution of cancer cell fractions and the relative mutation burden carried by clonal and subclonal populations. Driver associations are examined using the resulting tumor groups.
+
+## Analyses
+
+### a. Cancer cell fraction distributions
+
+Kernel-density curves compare mutation-cluster CCF distributions across cohorts. Dashed reference lines mark the CCF positions specified in the plotting code.
+
+### b. Mutation burden within clusters
+
+Each point represents a mutation cluster. Position on the horizontal axis gives CCF; vertical position and point size give the fraction of assigned mutations in that cluster. A tumor enters the high-subclonal-mutation-burden group when a nonclonal cluster contains more mutations than the sum assigned to its clonal clusters. Cellular fraction and mutation fraction describe different properties.
+
+### c–d. Driver associations
+
+Fisher exact tests assess associations between each eligible driver category and the high-subclonal-mutation-burden group. Panel c pools cohorts; panel d stratifies by cohort. Plots show log2 odds ratios and unadjusted P values. Holm-adjusted P values are also calculated, while the plotted reference lines use nominal and Bonferroni thresholds.
+
+### e. Evolutionary schematic
+
+A conceptual schematic illustrates alternative relationships among driver events and clonal or subclonal chromosome 22q loss. Branch lengths are illustrative and do not estimate elapsed time.
+
+## Inputs
+
+The [input definitions](../data/input_manifest.tsv) describe the expected files and R objects. Participant-level inputs are supplied separately in `PTC_INPUT_DIR`.
+
+| Input | Purpose |
+| --- | --- |
+| `wgsdata_tp.RData` | Cohort membership and colors. |
+| `DP_info_data.RData` | Cluster CCF, mutation assignments, clonal labels, and mutation totals. |
+| `Genome_landscape_manual_final.RData` | Driver mutations, fusions, and copy-number alteration categories. |
+
+## Usage
+
+Run from the `PTC` directory after following the [setup instructions](../README.md). Use an output directory for your local results. Available plots are exported as PDF and PNG with Roboto Condensed typography.
+
+```bash
+Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" Fig4
+```
+
+This page displays code without running the analysis. Local plot previews are optional through the `include_figures` and `figure_dir` rendering parameters; previews are disabled by default.
+
+## R code
+
+The figure entry point is `run_Fig4(input_dir, output_dir)`.
+
+Shared analysis functions: [evolution_helpers.R](../functions/evolution_helpers.R).
+
+Input loading, plot export, and typography are provided by [ptc_runtime.R](../functions/ptc_runtime.R).
+
+```{r code-source-1, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/Fig4.R', warn = FALSE), collapse = '\n'), '\n```\n', sep = '')
+```
+
+### Fig4_schematic.R
+
+```{r code-source-2, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/Fig4_schematic.R', warn = FALSE), collapse = '\n'), '\n```\n', sep = '')
+```
+
+```{r local-figures, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  cat('## Local figures\n\n')
+  files <- file.path(params$figure_dir, c("Fig4a.png","Fig4b.png","Fig4c.png","Fig4d.png","Fig4e.png"))
+  for (p in files) {
+    if (file.exists(p)) {
+      cat(sprintf('<img alt="Fig. 4: Mutation-cluster architecture and driver associations" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    } else {
+      cat('Local plot not found: ', basename(p), '\n\n', sep = '')
+    }
+  }
+}
+```

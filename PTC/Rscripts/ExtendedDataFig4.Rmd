@@ -1,0 +1,94 @@
+---
+title: "Extended Data Fig. 4: BRAF, TERT, and tumor timing"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<style>
+body, h1, h2, h3, h4, table {font-family: 'Roboto Condensed', sans-serif;}
+body {font-size: 17px; line-height: 1.5;}
+pre {font-size: 13px;}
+table {font-size: 15px;}
+h2 {margin-top: 1.4em;}
+</style>
+
+[PTC overview](../README.md) · [Input definitions](../data/input_manifest.tsv) · [Analysis script](ExtendedDataFig4.R)
+
+## Overview
+
+TCGA-THCA tumors are grouped by BRAF and TERT alteration presence to compare estimated MRCA age, diagnosis age, and APOBEC-associated mutagenesis.
+
+## Analyses
+
+### a. Estimated MRCA age
+
+Box plots compare estimated age at the most recent common ancestor (MRCA) across BRAF-only, TERT-only, BRAF-plus-TERT, and remaining tumors. Timing estimates use the 1× acceleration model. Groups are ordered by median MRCA age.
+
+### b. Age at diagnosis
+
+The same alteration groups are compared for diagnosis age and ordered by their median diagnosis age. Panels a and b use two-sided pairwise Wilcoxon tests with Benjamini–Hochberg adjustment.
+
+### c. APOBEC-associated mutagenesis
+
+APOBEC activity is defined by combined SBS2 and SBS13 contributions exceeding 50 mutations and exceeding 5% of the signature burden. Stacked bars show the proportion meeting both criteria within each alteration group.
+
+## Inputs
+
+The [input definitions](../data/input_manifest.tsv) describe the expected files and R objects. Participant-level inputs are supplied separately in `PTC_INPUT_DIR`.
+
+| Input | Purpose |
+| --- | --- |
+| `wgsdata_tp.RData`, `wgs_covdata_tp.RData`, `wgs_clinical.RData` | Cohort and clinical data used by the common input loader. |
+| `Genome_landscape_manual_final.RData` | BRAF and TERT alteration groups. |
+| `thyroid_evolution_analysis/Chronological_timing_short.RData` | Estimated MRCA age. |
+| `thyroid_mutational_signatures_tp_final.RData` | Absolute and fractional SBS2 and SBS13 contributions. |
+
+## Usage
+
+Run from the `PTC` directory after following the [setup instructions](../README.md). Use an output directory for your local results. Available plots are exported as PDF and PNG with Roboto Condensed typography.
+
+```bash
+Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" ExtendedDataFig4
+```
+
+This page displays code without running the analysis. Local plot previews are optional through the `include_figures` and `figure_dir` rendering parameters; previews are disabled by default.
+
+## R code
+
+The figure entry point is `run_ExtendedDataFig4(input_dir, output_dir)`.
+
+Shared analysis functions: [age_timing_helpers.R](../functions/age_timing_helpers.R).
+
+Input loading, plot export, and typography are provided by [ptc_runtime.R](../functions/ptc_runtime.R).
+
+```{r code-source-1, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/ExtendedDataFig4.R', warn = FALSE), collapse = '\n'), '\n```\n', sep = '')
+```
+
+```{r local-figures, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  cat('## Local figures\n\n')
+  files <- file.path(params$figure_dir, c("ExtendedDataFig4a.png","ExtendedDataFig4b.png","ExtendedDataFig4c.png"))
+  for (p in files) {
+    if (file.exists(p)) {
+      cat(sprintf('<img alt="Extended Data Fig. 4: BRAF, TERT, and tumor timing" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    } else {
+      cat('Local plot not found: ', basename(p), '\n\n', sep = '')
+    }
+  }
+}
+```

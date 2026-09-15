@@ -1,0 +1,106 @@
+---
+title: "Fig. 5: Age, radiation exposure, and driver associations"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<style>
+body, h1, h2, h3, h4, table {font-family: 'Roboto Condensed', sans-serif;}
+body {font-size: 17px; line-height: 1.5;}
+pre {font-size: 13px;}
+table {font-size: 15px;}
+h2 {margin-top: 1.4em;}
+</style>
+
+[PTC overview](../README.md) · [Input definitions](../data/input_manifest.tsv) · [Analysis script](Fig5.R)
+
+## Overview
+
+These analyses relate driver alterations to age at diagnosis, radiation-exposure variables, and estimated tumor latency. Timing analyses use the supplied chronological estimates under the 1× acceleration model; they do not infer chronological timing from sequencing reads.
+
+## Analyses
+
+### a. Alteration associations with age and exposure
+
+Binomial regression models alteration presence using diagnosis age, tumor purity, sex, ancestry principal components, exposure dose, and age at exposure. The model matrix includes tumors with at least one curated alteration and evaluates eligible alteration categories. Benjamini–Hochberg adjustment is applied within each reported predictor. Effects are log-odds coefficients.
+
+### b–d. Alteration frequencies by diagnosis age
+
+Age-category plots show TERT alteration frequency (b), BRAF driver mutation frequency (c), and fusion frequency (d) within each cohort. Frequencies use cohort- and age-specific denominators; point size represents the denominator. Categories with no observed events receive a zero frequency.
+
+### e. Clinical covariates and latency
+
+A linear model relates estimated latency to tumor purity, sex, exposure dose, age at exposure, and ancestry principal components. The plot shows regression coefficients with confidence intervals. Diagnosis age is not an additional predictor in this model.
+
+### f. Driver alterations and latency
+
+Separate linear models add each eligible alteration category to the latency model. The plot shows the alteration coefficient and its Holm-adjusted P value.
+
+### g. Driver alterations and MRCA age
+
+The driver-association model for estimated most recent common ancestor (MRCA) age is not implemented.
+
+### Exposure-variable handling
+
+Dose is capped at 1,000 in the input dose units, and missing dose is set to zero. The logistic model assigns missing age at exposure a value of 100. For latency models, missing exposure values in matched clinical records are first set to zero; unmatched age-at-exposure values receive 100. These definitions are part of the implemented models.
+
+## Inputs
+
+The [input definitions](../data/input_manifest.tsv) describe the expected files and R objects. Participant-level inputs are supplied separately in `PTC_INPUT_DIR`.
+
+| Input | Purpose |
+| --- | --- |
+| `wgsdata_tp.RData`, `wgs_covdata_tp.RData` | Cohort labels, diagnosis-age categories, purity, sex, and ancestry covariates. |
+| `wgs_clinical.RData` | Exposure dose and age at exposure. |
+| `Genome_landscape_manual_final.RData` | Curated alteration categories. |
+| `thyroid_evolution_analysis/Chronological_timing_short.RData` | Estimated latency and MRCA age under the selected timing model. |
+
+## Usage
+
+Run from the `PTC` directory after following the [setup instructions](../README.md). Use an output directory for your local results. Available plots are exported as PDF and PNG with Roboto Condensed typography.
+
+```bash
+Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" Fig5
+```
+
+This page displays code without running the analysis. Local plot previews are optional through the `include_figures` and `figure_dir` rendering parameters; previews are disabled by default.
+
+## R code
+
+The figure entry point is `run_Fig5(input_dir, output_dir)`.
+
+Shared analysis functions: [age_timing_helpers.R](../functions/age_timing_helpers.R).
+
+Input loading, plot export, and typography are provided by [ptc_runtime.R](../functions/ptc_runtime.R).
+
+```{r code-source-1, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/Fig5.R', warn = FALSE), collapse = '\n'), '\n```\n', sep = '')
+```
+
+```{r local-figures, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  cat('## Local figures\n\n')
+  files <- file.path(params$figure_dir, c("Fig5a.png","Fig5b.png","Fig5c.png","Fig5d.png","Fig5e.png","Fig5f.png"))
+  for (p in files) {
+    if (file.exists(p)) {
+      cat(sprintf('<img alt="Fig. 5: Age, radiation exposure, and driver associations" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    } else {
+      cat('Local plot not found: ', basename(p), '\n\n', sep = '')
+    }
+  }
+}
+```
