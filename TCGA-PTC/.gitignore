@@ -1,0 +1,19 @@
+# Private inputs and generated analysis outputs stay local.
+data/*
+!data/README.md
+!data/input_manifest.tsv
+!data/reference_manifest.tsv
+!data/refs/
+config/local.*
+Rscripts/Figures/
+validation_outputs/
+*.RData
+*.rda
+*.rds
+.Rhistory
+.RData
+.Rproj.user/
+.DS_Store
+
+__pycache__/
+*.py[cod]
