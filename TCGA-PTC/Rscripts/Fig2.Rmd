@@ -1,0 +1,169 @@
+---
+title: "Driver-defined evolutionary routes in papillary thyroid cancer"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE)
+provenance <- read.delim('provenance/figure_provenance.tsv', check.names=FALSE, stringsAsFactors=FALSE)
+```
+
+<style>body, h1, h2, h3, h4, table {font-family:'Roboto Condensed',sans-serif;} body {font-size:17px;} pre {font-size:13px;} .table {font-size:15px;} .note {border-left:3px solid #007BBD;padding:12px 16px;background:#f5f9fb;}</style>
+
+## Overview
+
+**Fig. 2.** This page follows the UCEC figure-by-figure documentation format.
+The source manuscript defines each panel below. Every panel links its Keynote object,
+original filename, historical code, required inputs and cleaned implementation.
+
+<div class="note">This is a documentation build. It does not execute the private-data
+analysis. Recorded reproduction status comes from the dated local validation audit.
+Missing final generators and related historical outputs are explicitly distinguished.</div>
+
+[Package README](../README.md) · [Master provenance](../provenance/figure_provenance.tsv) ·
+[Methods requiring review](../provenance/methodology_review.md) · [Input schema](../data/input_manifest.tsv)
+
+## Libraries and execution
+
+Run from the `TCGA-PTC` directory with the required private inputs and Roboto Condensed installed.
+
+```{r execute-example, eval=FALSE}
+# Runs this figure in a fresh R process; outputs include per-panel execution status.
+# Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" Fig2
+```
+
+The executable code appears below and is also available as [Fig2.R](Fig2.R).
+Shared functions are in the package's `functions/` directory.
+
+## Fig. 2a
+
+a, Genome-wide frequencies of clonal (top) and subclonal (bottom) somatic copy-number gains, losses, amplifications and homozygous deletions inferred using Battenberg. Chromosome boundaries are indicated.
+
+**Status:** source code partially identified. <br>
+**Original file:** `TP_SCNA_Freq.pdf`. <br>
+**Keynote:** slide 3, object `1283562`; entire imported object. <br>
+**Historical source:** `TP_bb_heatmap_freq.R` — 21-335 (active CN state55;both plot assignments331-333). <br>
+**Cleaned code:** [Fig2.R](Fig2.R) (`Rscripts/Fig2.R:37 (run_Fig2)`).
+
+**Inputs:** `wgsdata_tp.RData;ngspurity_data.RData;cytoBand.txt.gz`.
+
+Do not silently repair two-state methodology. Record chr21 frequency filtering (306-308) and centromere treatment (224-234) as original scientific decisions. Saved script assigns p_freq_clone<-p_freq and p_freq_subclone<-p_freq without recomputing state, producing identical rows in sequential replay. Clone/subclone switch appears only as commented line56. Reproduction of manuscript two-state panel blocked until historical execution state recovered. Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+```{r preview-Fig2-a, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  files <- file.path(params$figure_dir, c("Fig2a_state_reconstruction.png"))
+  for (p in files) {
+    if (file.exists(p)) cat(sprintf('<img alt="Local validation plot" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    else cat('Expected local plot is absent: ', basename(p), '\n\n')
+  }
+}
+```
+
+## Fig. 2b
+
+b, Copy-number states across chromosome 22q in tumors with clonal or subclonal 22q loss, grouped by cohort.
+
+**Status:** reproduced. <br>
+**Original file:** `heatmap_all_segements_chr22qdel.pdf`. <br>
+**Keynote:** slide 3, object `1283257`; entire imported object. <br>
+**Historical source:** `TP_bb_heatmap_freq.R` — 21-42;344-395;410-432. <br>
+**Cleaned code:** [Fig2.R](Fig2.R) (`Rscripts/Fig2.R:37 (run_Fig2)`).
+
+**Inputs:** `wgsdata_tp.RData;ngspurity_data.RData`.
+
+This minimal block does not require CNTools, valr, or genome-wide frequency pipeline. Manuscript says tumors with loss; source heatmap data retains all chr22 samples, rendering neutral samples white. Not executed yet; exact local input snapshots present. Needs independent comparison to embedded PDF; retain historical largest-segment rule. Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+```{r preview-Fig2-b, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  files <- file.path(params$figure_dir, c("Fig2b.png"))
+  for (p in files) {
+    if (file.exists(p)) cat(sprintf('<img alt="Local validation plot" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    else cat('Expected local plot is absent: ', basename(p), '\n\n')
+  }
+}
+```
+
+## Fig. 2c
+
+c, Estimated cancer cell fraction (CCF) of subclonal 22q loss across the three cohorts. Points represent individual tumors. Box plots show the median (center line), interquartile range (box) and whiskers extending to 1.5× the interquartile range.
+
+**Status:** reproduced. <br>
+**Original file:** `TP_chr22q_del_subclone_frac.pdf`. <br>
+**Keynote:** slide 3, object `1298923`; entire imported object. <br>
+**Historical source:** `TP_bb_heatmap_freq.R` — 21-42;344-395;519-538. <br>
+**Cleaned code:** [Fig2.R](Fig2.R) (`Rscripts/Fig2.R:37 (run_Fig2)`).
+
+**Inputs:** `wgsdata_tp.RData;ngspurity_data.RData`.
+
+Potential repeated per-tumor points must be audited, not silently deduplicated. Not executed yet; exact local snapshots and helper available. Source contains one row per qualifying segment with no per-tumor deduplication; legend says individual tumors. Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+```{r preview-Fig2-c, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  files <- file.path(params$figure_dir, c("Fig2c.png"))
+  for (p in files) {
+    if (file.exists(p)) cat(sprintf('<img alt="Local validation plot" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    else cat('Expected local plot is absent: ', basename(p), '\n\n')
+  }
+}
+```
+
+## Fig. 2d
+
+d, Associations of clonal (left) and subclonal (right) 22q loss with recurrent mutations and oncogenic fusions. The x axes show log2 odds ratios and the y axes show −log10(FDR) from two-sided Fisher’s exact tests. Events with FDR < 0.05 are labelled.
+
+**Status:** source code partially identified. <br>
+**Original file:** `chr22q_del_clonality_alterations.pdf`. <br>
+**Keynote:** slide 3, object `1353120`; entire imported object. <br>
+**Historical source:** `TP_bb_heatmap_freq.R` — 21-42;344-395;439-511. <br>
+**Cleaned code:** [Fig2.R](Fig2.R) (`Rscripts/Fig2.R:37 (run_Fig2)`).
+
+**Inputs:** `wgsdata_tp.RData;ngspurity_data.RData;Genome_landscape_manual_final.RData`.
+
+Source removes only Gene==chr22q, not chr22q_Clone/chr22q_Subclone; self-association entries may therefore be retained from final curated data. Source raw-P y-axis disagrees with manuscript FDR y-axis. Variable FDR uses default Holm, not BH. Exact source output can be replayed, but scientific fidelity to legend requires review. Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+```{r preview-Fig2-d, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  files <- file.path(params$figure_dir, c("Fig2d_related_raw_p.png"))
+  for (p in files) {
+    if (file.exists(p)) cat(sprintf('<img alt="Local validation plot" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    else cat('Expected local plot is absent: ', basename(p), '\n\n')
+  }
+}
+```
+
+## Cleaned executable source
+
+The code displayed here is read from the executable `.R` file at render time,
+so the report and source cannot silently diverge.
+
+```{r code-source, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/Fig2.R', warn=FALSE), collapse='\n'), '\n```\n', sep='')
+```
+
+## Validation and limitations
+
+```{r validation-table, echo=FALSE}
+z <- provenance[provenance$figure_id == 'Fig. 2', c('manuscript_id','reproducibility_status','local_original_match')]
+knitr::kable(z, col.names=c('Panel','Reproduction status','Embedded versus archived original'))
+```
+
+A byte-identical archived original confirms artifact identity; it does not by itself
+validate cleaned code. Scientific/version discrepancies are documented in the
+[methodology review](../provenance/methodology_review.md).
+
+## Documentation build environment
+
+```{r documentation-session, echo=FALSE}
+cat(R.version.string)
+```

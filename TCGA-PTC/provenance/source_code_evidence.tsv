@@ -1,0 +1,47 @@
+manuscript_id	original_plot_filename	source_script	source_line	export_evidence
+Fig. 1a	study2_overview.pdf	TP_Comparision.R		No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Fig. 1b	intogene_drivers3.pdf	Intogene_drivers.R	126	ggsave(file='intogene_drivers3.pdf',width = 5,height = 5, device = cairo_pdf)
+Fig. 1c	ALL_Tumor_Recurrent_p1_combined.pdf	Recurrent_SV_Plot.R		No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Fig. 1d	SV_circos_plot_thca.pdf	Meerkat/SV_circosplot.R	34	#pdf('SV_circos_plot_thca.pdf',height = 5,width = 5,family = 'Roboto Condensed')
+Fig. 1e	SV_circos_plot_unexposed.pdf	Meerkat/SV_circosplot.R	35	#pdf('SV_circos_plot_unexposed.pdf',height = 5,width = 5,family = 'Roboto Condensed')
+Fig. 1f	SV_circos_plot_exposed.pdf	Meerkat/SV_circosplot.R	36	#pdf('SV_circos_plot_exposed.pdf',height = 5,width = 5,family = 'Roboto Condensed')
+Fig. 1g	Genome_landscape_tcga.pdf	TP_Comparision.R	2876	pfilename = 'Genome_landscape_tcga.pdf'
+Fig. 1h	Genome_landscape_exposed.pdf	TP_Comparision.R	2891	pfilename = 'Genome_landscape_exposed.pdf'
+Fig. 1i	Genome_landscape_chornobyl_unexposed.pdf	TP_Comparision.R	2883	pfilename = 'Genome_landscape_chornobyl_unexposed.pdf'
+Fig. 2a	TP_SCNA_Freq.pdf	TP_bb_heatmap_freq.R	335	ggsave(p_freq_all,width = 8,height = 5.5,device = cairo_pdf(),filename = 'TP_SCNA_Freq.pdf')
+Fig. 2b	heatmap_all_segements_chr22qdel.pdf	TP_bb_heatmap_freq.R	432	ggsave('heatmap_all_segements_chr22qdel.pdf',width = 3.5,height = 6,plot = p_heatmap,device = cairo_pdf)
+Fig. 2c	TP_chr22q_del_subclone_frac.pdf	TP_bb_heatmap_freq.R	534	"output_file = ""TP_chr22q_del_subclone_frac.pdf"",   # omit to just get the plot object"
+Fig. 2d	chr22q_del_clonality_alterations.pdf	TP_bb_heatmap_freq.R	511	ggsave(filename = 'chr22q_del_clonality_alterations.pdf',plot = p,width = 8,height = 6,device = cairo_pdf())
+Fig. 3a	tp_tumor_hetrogenerity_math_ccf2.pdf	TP_Comparision.R		No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Fig. 3b	tp_tumor_hetrogenerity_math_ccf_drivers_all.pdf	TP_Comparision.R		No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Fig. 3c	tp_tumor_hetrogenerity_math_ccf_drivers2_all.pdf	TP_Comparision.R		No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Fig. 3d	NRPCC_threshold.pdf			No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Fig. 3e	drivers_number_subclones.pdf	TP_Comparision.R		No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Fig. 4a	TP_mutation_cluster_distribution.pdf	TP_Comparision.R	2218	ggsave('TP_mutation_cluster_distribution.pdf',width = 6,height = 4,device = cairo_pdf)
+Fig. 4b	TP_mutation_cluster_clonality.pdf	TP_Comparision.R	2187	ggsave('TP_mutation_cluster_clonality.pdf',width = 12,height = 6,device = cairo_pdf)
+Fig. 4c	TP_largesubclonal_association.pdf	TP_Comparision.R	2310	ggsave(file='TP_largesubclonal_association.pdf',width = 6,height = 4,device = cairo_pdf)
+Fig. 4d	TP_largesubclonal_association2.pdf	TP_Comparision.R	2352	ggsave(file='TP_largesubclonal_association2.pdf',width = 9,height = 4,device = cairo_pdf)
+Fig. 4e		Keynote native shapes		No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Fig. 5a	TP_genomiclandscape_associaiton.pdf	TP_Comparision.R	3215	ggsave(filename = 'TP_genomiclandscape_associaiton.pdf',width = 7,height = 5,device = cairo_pdf )
+Fig. 5b	age_tert.pdf	TP_Comparision.R	3001	ggsave(filename = 'age_tert.pdf',width = 6,height = 4,device = cairo_pdf)
+Fig. 5c	age_braf.pdf	TP_Comparision.R	2950	ggsave(filename = 'age_braf.pdf',width = 6,height = 4,device = cairo_pdf)
+Fig. 5d	age_fusion.pdf	TP_Comparision.R	2975	ggsave(filename = 'age_fusion.pdf',width = 6,height = 4,device = cairo_pdf)
+Fig. 5e	TP_Latency_associaiton_exposure.pdf	TP_Comparision.R	3489	ggsave(filename = 'TP_Latency_associaiton_exposure.pdf',width = 6,height = 3.5,device = cairo_pdf)
+Fig. 5f	TP_latency_drivergenes_association.pdf	TP_Comparision.R	3553	ggsave(file='TP_latency_drivergenes_association.pdf',width = 6,height = 4,device = cairo_pdf)
+Fig. 5g	TP_MRCA_drivergenes_association.pdf	TP_Comparision.R		No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Fig. 6a	tp_age_clock_mutation_acc.pdf	Segmented_breakpoint_analysis.R	107	ggsave(filename = 'tp_age_clock_mutation_acc.pdf',width = 12,height = 5,device = cairo_pdf)
+Fig. 6b	tp_age_clock_mutation_acc.pdf	Segmented_breakpoint_analysis.R	107	ggsave(filename = 'tp_age_clock_mutation_acc.pdf',width = 12,height = 5,device = cairo_pdf)
+Extended Data Fig. 1	TP_genomic_alterations2_final_tmp.pdf	TP_Comparision.R	705	"output_file = ""TP_genomic_alterations2_final_tmp.pdf"","
+Extended Data Fig. 2a	tp_tumor_hetrogenerity_math_ccf_drivers.pdf	TP_Comparision.R	2513	ggsave(filename = 'tp_tumor_hetrogenerity_math_ccf_drivers.pdf',width = 8,height = 5,device = cairo_pdf())
+Extended Data Fig. 2b	tp_tumor_hetrogenerity_math_ccf_drivers2.pdf	TP_Comparision.R	2534	ggsave(filename = 'tp_tumor_hetrogenerity_math_ccf_drivers2.pdf',width = 11,height = 8,device = cairo_pdf())
+Extended Data Fig. 3a	TCGA-EL-A3H3-01A-11D-A85S-36_DPClust.pdf			No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Extended Data Fig. 3b	TCGA-EM-A3FJ-01A-11D-A85U-36_DPClust.pdf			No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Extended Data Fig. 4a	TP_mrca_group_braf_tert.pdf	TP_Comparision.R	3434	"output_file = ""TP_mrca_group_braf_tert.pdf"",   # omit to just get the plot object"
+Extended Data Fig. 4b	age_tert_braf.pdf	TP_Comparision.R	3033	"output_file = ""age_tert_braf.pdf"","
+Extended Data Fig. 4c	tp_apobec_braf_tert.pdf	TP_Comparision.R	1691	ggsave(filename = 'tp_apobec_braf_tert.pdf',width = 5,height = 5,device = cairo_pdf())
+Supplementary Fig. 1a	TCGA-BJ-A2P4-01A-11D-A85F-36_SCNA.pdf			No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Supplementary Fig. 1b	TCGA-DJ-A2PS-01A-11D-A85G-36_SCNA.pdf			No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Supplementary Fig. 1c	TCGA-BJ-A3PT-01A-12D-A85F-36_SCNA.pdf			No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Supplementary Fig. 2	drivers_minCCF.pdf			No exact literal export; see reviewed dynamic/related/native trace and source_code_location.
+Supplementary Fig. 3a	tp_tumor_hetrogenerity_math_ccf_drivers.pdf	TP_Comparision.R	2513	ggsave(filename = 'tp_tumor_hetrogenerity_math_ccf_drivers.pdf',width = 8,height = 5,device = cairo_pdf())
+Supplementary Fig. 3b	tp_tumor_hetrogenerity_math_ccf_drivers2.pdf	TP_Comparision.R	2534	ggsave(filename = 'tp_tumor_hetrogenerity_math_ccf_drivers2.pdf',width = 11,height = 8,device = cairo_pdf())

@@ -1,0 +1,143 @@
+---
+title: "Driver-defined evolutionary routes in papillary thyroid cancer"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE)
+provenance <- read.delim('provenance/figure_provenance.tsv', check.names=FALSE, stringsAsFactors=FALSE)
+```
+
+<style>body, h1, h2, h3, h4, table {font-family:'Roboto Condensed',sans-serif;} body {font-size:17px;} pre {font-size:13px;} .table {font-size:15px;} .note {border-left:3px solid #007BBD;padding:12px 16px;background:#f5f9fb;}</style>
+
+## Overview
+
+**Fig. 3.** This page follows the UCEC figure-by-figure documentation format.
+The source manuscript defines each panel below. Every panel links its Keynote object,
+original filename, historical code, required inputs and cleaned implementation.
+
+<div class="note">This is a documentation build. It does not execute the private-data
+analysis. Recorded reproduction status comes from the dated local validation audit.
+Missing final generators and related historical outputs are explicitly distinguished.</div>
+
+[Package README](../README.md) · [Master provenance](../provenance/figure_provenance.tsv) ·
+[Methods requiring review](../provenance/methodology_review.md) · [Input schema](../data/input_manifest.tsv)
+
+## Libraries and execution
+
+Run from the `TCGA-PTC` directory with the required private inputs and Roboto Condensed installed.
+
+```{r execute-example, eval=FALSE}
+# Runs this figure in a fresh R process; outputs include per-panel execution status.
+# Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" Fig3
+```
+
+The executable code appears below and is also available as [Fig3.R](Fig3.R).
+Shared functions are in the package's `functions/` directory.
+
+## Fig. 3a
+
+a, Ridgeline distributions of MATH scores across the three cohorts; vertical lines indicate cohort medians.
+
+**Status:** source code partially identified. <br>
+**Original file:** `tp_tumor_hetrogenerity_math_ccf2.pdf`. <br>
+**Keynote:** slide 4, object `1303194`; entire imported object. <br>
+**Historical source:** `TP_Comparision.R` — 2366-2410. <br>
+**Cleaned code:** [Fig3.R](Fig3.R) (`Rscripts/Fig3.R:8 (run_Fig3)`).
+
+**Inputs:** `wgsdata_tp.RData;DP_info_data.RData`.
+
+Exact final filename and ridgeline plot code absent; related historical export is box/point comparison. Manuscript describes VAF dispersion but historical plotted object is MATH_CCF. Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+## Fig. 3b
+
+b, Associations of recurrent genomic alterations with MATH score in the combined cohort. The x axis shows the log2 fold change in MATH between alteration-positive and alteration-negative tumors, and the y axis shows −log10(FDR). The horizontal dotted line denotes FDR = 0.05.
+
+**Status:** source code partially identified. <br>
+**Original file:** `tp_tumor_hetrogenerity_math_ccf_drivers_all.pdf`. <br>
+**Keynote:** slide 4, object `1305162`; entire imported object. <br>
+**Historical source:** `TP_Comparision.R` — 2366-2387;2461-2513. <br>
+**Cleaned code:** [Fig3.R](Fig3.R) (`Rscripts/Fig3.R:8 (run_Fig3)`).
+
+**Inputs:** `wgsdata_tp.RData;DP_info_data.RData;Genome_landscape_manual_final.RData`.
+
+Exact combined-cohort filename and generating code absent. Historical code is stratified by Study2 and uses raw-P y-axis; cannot relabel it as combined-FDR panel. Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+## Fig. 3c
+
+c, MATH score distributions stratified by TERT-promoter mutation, BRAF mutation, KRAS mutation and clonal 22q-loss status.
+
+**Status:** source code partially identified. <br>
+**Original file:** `tp_tumor_hetrogenerity_math_ccf_drivers2_all.pdf`. <br>
+**Keynote:** slide 4, object `1305537`; entire imported object. <br>
+**Historical source:** `TP_Comparision.R` — 2366-2387;2461-2490;2520-2534. <br>
+**Cleaned code:** [Fig3.R](Fig3.R) (`Rscripts/Fig3.R:8 (run_Fig3)`).
+
+**Inputs:** `wgsdata_tp.RData;DP_info_data.RData;Genome_landscape_manual_final.RData`.
+
+Exact combined-cohort filename and generating code absent. Current historical plot facets by Study2; manuscript panel combines cohorts. Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+## Fig. 3d
+
+d, Minimum CCF of detected mutation clusters as a function of the number of reads per tumor chromosomal copy (NRPCC). Each point represents one tumor and colour indicates the number of inferred subclones; marginal CCF distributions are shown at right.
+
+**Status:** unresolved. <br>
+**Original file:** `NRPCC_threshold.pdf`. <br>
+**Keynote:** slide 4, object `1285819`; entire imported object. <br>
+**Historical source:** `unresolved` — . <br>
+**Cleaned code:** [Fig3.R](Fig3.R) (`Rscripts/Fig3.R:8 (run_Fig3)`).
+
+**Inputs:** `Potential inputs only: ngspurity_data.RData;wgs_covdata_tp.RData;DP_info_data.RData`.
+
+Input suggestions are conceptual candidates, not a recovered dependency graph. Do not invent NRPCC or minimum-detection methodology. No NRPCC, NRPCC_threshold, min_ccf, or minimum-CCF plotting logic found in any biowulf R/Rmd. Formula, threshold, cluster filtering and plotting code unverified. Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+## Fig. 3e
+
+e, Distribution of the number of detected subclones across major genomic alteration groups. Counts are shown within bars.
+
+**Status:** source code partially identified. <br>
+**Original file:** `drivers_number_subclones.pdf`. <br>
+**Keynote:** slide 4, object `1285891`; entire imported object. <br>
+**Historical source:** `TP_Comparision.R` — 2115-2152;2461-2465 related only. <br>
+**Cleaned code:** [Fig3.R](Fig3.R) (`Rscripts/Fig3.R:8 (run_Fig3)`).
+
+**Inputs:** `ngspurity_data.RData;wgsdata_tp.RData;Genome_landscape_manual_final.RData`.
+
+Exact filename and driver-stratified subclone-count plotting logic absent. Manuscript >=50 mutation cluster threshold is not enforced in related count block. Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+## Cleaned executable source
+
+The code displayed here is read from the executable `.R` file at render time,
+so the report and source cannot silently diverge.
+
+```{r code-source, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/Fig3.R', warn=FALSE), collapse='\n'), '\n```\n', sep='')
+```
+
+## Validation and limitations
+
+```{r validation-table, echo=FALSE}
+z <- provenance[provenance$figure_id == 'Fig. 3', c('manuscript_id','reproducibility_status','local_original_match')]
+knitr::kable(z, col.names=c('Panel','Reproduction status','Embedded versus archived original'))
+```
+
+A byte-identical archived original confirms artifact identity; it does not by itself
+validate cleaned code. Scientific/version discrepancies are documented in the
+[methodology review](../provenance/methodology_review.md).
+
+## Documentation build environment
+
+```{r documentation-session, echo=FALSE}
+cat(R.version.string)
+```

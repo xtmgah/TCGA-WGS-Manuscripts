@@ -1,0 +1,12 @@
+{
+  "manuscript_figures": 13,
+  "manuscript_panels_or_unpanelled_figures": 46,
+  "provenance_rows": 46,
+  "keynote_imported_pdf_objects": 44,
+  "unique_original_filenames": 42,
+  "status_counts": {
+    "source code partially identified": 9,
+    "reproduced": 30,
+    "unresolved": 7
+  }
+}

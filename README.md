@@ -9,3 +9,6 @@ The following WGS-based analyses are included or planned for inclusion in this r
 
 ### Uterine Corpus Endometrial Carcinoma (UCEC)
 - [**Endogenous mutational mechanisms and metabolic context shape endometrial cancer**](https://github.com/xtmgah/TCGA-WGS-Mansucripts/tree/main/TCGA-UCEC)
+
+### Papillary Thyroid Carcinoma (PTC)
+- [**Driver-defined evolutionary routes in papillary thyroid cancer**](TCGA-PTC/README.md)

@@ -1,0 +1,193 @@
+---
+title: "Driver-defined evolutionary routes in papillary thyroid cancer"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE)
+provenance <- read.delim('provenance/figure_provenance.tsv', check.names=FALSE, stringsAsFactors=FALSE)
+```
+
+<style>body, h1, h2, h3, h4, table {font-family:'Roboto Condensed',sans-serif;} body {font-size:17px;} pre {font-size:13px;} .table {font-size:15px;} .note {border-left:3px solid #007BBD;padding:12px 16px;background:#f5f9fb;}</style>
+
+## Overview
+
+**Fig. 4.** This page follows the UCEC figure-by-figure documentation format.
+The source manuscript defines each panel below. Every panel links its Keynote object,
+original filename, historical code, required inputs and cleaned implementation.
+
+<div class="note">This is a documentation build. It does not execute the private-data
+analysis. Recorded reproduction status comes from the dated local validation audit.
+Missing final generators and related historical outputs are explicitly distinguished.</div>
+
+[Package README](../README.md) · [Master provenance](../provenance/figure_provenance.tsv) ·
+[Methods requiring review](../provenance/methodology_review.md) · [Input schema](../data/input_manifest.tsv)
+
+## Libraries and execution
+
+Run from the `TCGA-PTC` directory with the required private inputs and Roboto Condensed installed.
+
+```{r execute-example, eval=FALSE}
+# Runs this figure in a fresh R process; outputs include per-panel execution status.
+# Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" Fig4
+```
+
+The executable code appears below and is also available as [Fig4.R](Fig4.R).
+Shared functions are in the package's `functions/` directory.
+
+## Fig. 4a
+
+a, Distributions of inferred CCFs for clonal and subclonal mutation clusters across the three cohorts. Dashed lines indicate the recurrent subclonal peak at CCF 0.20–0.25 and the clonal peak near 1.0.
+
+**Status:** reproduced. <br>
+**Original file:** `TP_mutation_cluster_distribution.pdf`. <br>
+**Keynote:** slide 5, object `1286060`; entire imported object. <br>
+**Historical source:** `TP_Comparision.R` — 2157-2171;2206-2218. <br>
+**Cleaned code:** [Fig4.R](Fig4.R) (`Rscripts/Fig4.R:3 (run_Fig4)`).
+
+**Inputs:** `wgsdata_tp.RData;DP_info_data.RData;Genome_landscape_manual_final.RData`.
+
+Executed on source snapshots; rendered embedded-vs-cleaned plot inspected. Cluster distributions, point geometry and association direction/P values correspond. Styling/canvas refreshed.  Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+```{r preview-Fig4-a, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  files <- file.path(params$figure_dir, c("Fig4a.png"))
+  for (p in files) {
+    if (file.exists(p)) cat(sprintf('<img alt="Local validation plot" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    else cat('Expected local plot is absent: ', basename(p), '\n\n')
+  }
+}
+```
+
+## Fig. 4b
+
+b, Relationship between CCF and the proportion of mutations assigned to each cluster, stratified by cohort and subclonal mutation-burden state. Red points denote clonal clusters; cyan and green points denote mutation-rich and mutation-poor subclonal clusters, respectively; point size represents the proportion of mutations assigned to each cluster.
+
+**Status:** reproduced. <br>
+**Original file:** `TP_mutation_cluster_clonality.pdf`. <br>
+**Keynote:** slide 5, object `1286112`; entire imported object. <br>
+**Historical source:** `TP_Comparision.R` — 2157-2187. <br>
+**Cleaned code:** [Fig4.R](Fig4.R) (`Rscripts/Fig4.R:3 (run_Fig4)`).
+
+**Inputs:** `wgsdata_tp.RData;DP_info_data.RData;Genome_landscape_manual_final.RData`.
+
+Executed on source snapshots; rendered embedded-vs-cleaned plot inspected. Cluster distributions, point geometry and association direction/P values correspond. Styling/canvas refreshed.  Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+```{r preview-Fig4-b, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  files <- file.path(params$figure_dir, c("Fig4b.png"))
+  for (p in files) {
+    if (file.exists(p)) cat(sprintf('<img alt="Local validation plot" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    else cat('Expected local plot is absent: ', basename(p), '\n\n')
+  }
+}
+```
+
+## Fig. 4c
+
+c, Associations of recurrent genomic alterations with high versus low subclonal mutation burden in the combined cohort.
+
+**Status:** reproduced. <br>
+**Original file:** `TP_largesubclonal_association.pdf`. <br>
+**Keynote:** slide 5, object `1286201`; entire imported object. <br>
+**Historical source:** `TP_Comparision.R` — 2157-2165;2255-2310. <br>
+**Cleaned code:** [Fig4.R](Fig4.R) (`Rscripts/Fig4.R:3 (run_Fig4)`).
+
+**Inputs:** `wgsdata_tp.RData;DP_info_data.RData;Genome_landscape_manual_final.RData`.
+
+Executed on source snapshots; rendered embedded-vs-cleaned plot inspected. Cluster distributions, point geometry and association direction/P values correspond. Styling/canvas refreshed. Upper line is fixed P=0.05/12 (Bonferroni), not FDR; p.adjust default Holm preserved. Embedded pooled plot is recovered from pooled source block; local same-name PDF was overwritten with cohort-faceted version. Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+```{r preview-Fig4-c, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  files <- file.path(params$figure_dir, c("Fig4c.png"))
+  for (p in files) {
+    if (file.exists(p)) cat(sprintf('<img alt="Local validation plot" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    else cat('Expected local plot is absent: ', basename(p), '\n\n')
+  }
+}
+```
+
+## Fig. 4d
+
+d, Corresponding associations within each cohort. In c,d, the x axes show log2 odds ratios from Fisher’s exact tests and the y axes show −log10(P values). Horizontal dashed lines denote P < 0.05 (lower) and FDR < 0.05 (upper); alterations with P < 0.05 are labelled.
+
+**Status:** reproduced. <br>
+**Original file:** `TP_largesubclonal_association2.pdf`. <br>
+**Keynote:** slide 5, object `1286256`; entire imported object. <br>
+**Historical source:** `TP_Comparision.R` — 2157-2165;2255-2270;2314-2352. <br>
+**Cleaned code:** [Fig4.R](Fig4.R) (`Rscripts/Fig4.R:3 (run_Fig4)`).
+
+**Inputs:** `wgsdata_tp.RData;DP_info_data.RData;Genome_landscape_manual_final.RData`.
+
+Executed on source snapshots; rendered embedded-vs-cleaned plot inspected. Cluster distributions, point geometry and association direction/P values correspond. Styling/canvas refreshed. Upper line is fixed P=0.05/12 (Bonferroni), not FDR; p.adjust default Holm preserved.  Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+```{r preview-Fig4-d, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  files <- file.path(params$figure_dir, c("Fig4d.png"))
+  for (p in files) {
+    if (file.exists(p)) cat(sprintf('<img alt="Local validation plot" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    else cat('Expected local plot is absent: ', basename(p), '\n\n')
+  }
+}
+```
+
+## Fig. 4e
+
+e, Schematic phylogenetic trees illustrating a BRAF-associated architecture characterized by mutation-rich subclonal expansion, with subclonal 22q loss in a subset of tumors (top), and a clonal-dominant architecture associated with KRAS, TERT-promoter mutation, oncogenic fusions or clonal 22q loss, including BRAF plus TERT tumors (bottom). Schematics summarize recurrent associations and do not imply a fixed order of evolutionary events.
+
+**Status:** reproduced. <br>
+**Original file:** `not applicable — native Keynote artwork`. <br>
+**Keynote:** slide 5, object `1317724;1317726;1317758;1317725;1317770;1317774;1317790;1317825;1317817;1317755;1317809;1317804;1317759;1317819;1317745;1317811;1317739;1317729;1317732;1317749;1317756`; two native schematic groups. <br>
+**Historical source:** `Keynote native shapes` — slide 5 native object geometry/labels. <br>
+**Cleaned code:** [Fig4_schematic.R](Fig4_schematic.R) (`Rscripts/Fig4_schematic.R:8 (run_Fig4_schematic)`).
+
+**Inputs:** `No private data required / original inputs unresolved; see notes`.
+
+Native schematic recreated from recovered geometry and labels. No original R generator or imported filename exists; clean R recreation is new and explicitly identified. Native Keynote schematic made of editable shapes, lines and text in top-level groups 1317724 and 1317726. No imported plot file exists for this panel; absence is established by exhaustive image inventory.
+
+```{r preview-Fig4-e, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  files <- file.path(params$figure_dir, c("Fig4e.png"))
+  for (p in files) {
+    if (file.exists(p)) cat(sprintf('<img alt="Local validation plot" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    else cat('Expected local plot is absent: ', basename(p), '\n\n')
+  }
+}
+```
+
+## Cleaned executable source
+
+The code displayed here is read from the executable `.R` file at render time,
+so the report and source cannot silently diverge.
+
+```{r code-source, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/Fig4.R', warn=FALSE), collapse='\n'), '\n```\n', sep='')
+```
+
+## Validation and limitations
+
+```{r validation-table, echo=FALSE}
+z <- provenance[provenance$figure_id == 'Fig. 4', c('manuscript_id','reproducibility_status','local_original_match')]
+knitr::kable(z, col.names=c('Panel','Reproduction status','Embedded versus archived original'))
+```
+
+A byte-identical archived original confirms artifact identity; it does not by itself
+validate cleaned code. Scientific/version discrepancies are documented in the
+[methodology review](../provenance/methodology_review.md).
+
+## Documentation build environment
+
+```{r documentation-session, echo=FALSE}
+cat(R.version.string)
+```

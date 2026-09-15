@@ -1,0 +1,97 @@
+---
+title: "Driver-defined evolutionary routes in papillary thyroid cancer"
+author: "Tongwu Zhang"
+date: "2026-09-15"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    self_contained: true
+params:
+  include_figures: false
+  figure_dir: "Rscripts/Figures"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE)
+provenance <- read.delim('provenance/figure_provenance.tsv', check.names=FALSE, stringsAsFactors=FALSE)
+```
+
+<style>body, h1, h2, h3, h4, table {font-family:'Roboto Condensed',sans-serif;} body {font-size:17px;} pre {font-size:13px;} .table {font-size:15px;} .note {border-left:3px solid #007BBD;padding:12px 16px;background:#f5f9fb;}</style>
+
+## Overview
+
+**Extended Data Fig. 1.** This page follows the UCEC figure-by-figure documentation format.
+The source manuscript defines each panel below. Every panel links its Keynote object,
+original filename, historical code, required inputs and cleaned implementation.
+
+<div class="note">This is a documentation build. It does not execute the private-data
+analysis. Recorded reproduction status comes from the dated local validation audit.
+Missing final generators and related historical outputs are explicitly distinguished.</div>
+
+[Package README](../README.md) · [Master provenance](../provenance/figure_provenance.tsv) ·
+[Methods requiring review](../provenance/methodology_review.md) · [Input schema](../data/input_manifest.tsv)
+
+## Libraries and execution
+
+Run from the `TCGA-PTC` directory with the required private inputs and Roboto Condensed installed.
+
+```{r execute-example, eval=FALSE}
+# Runs this figure in a fresh R process; outputs include per-panel execution status.
+# Rscript Rscripts/run_all.R "$PTC_INPUT_DIR" "$PTC_OUTPUT_DIR" ExtendedDataFig1
+```
+
+The executable code appears below and is also available as [ExtendedDataFig1.R](ExtendedDataFig1.R).
+Shared functions are in the package's `functions/` directory.
+
+## Extended Data Fig. 1
+
+Extended Data Fig. 1: Genomic alteration burden across PTC WGS cohorts. Tumor mutation burden (TMB; mutations per megabase), percentage of genome altered (PGA), number of structural-variant (SV) events and number of transposable-element (TE) events across the three cohorts. SV and TE counts are shown on a log2 scale. Points represent individual tumors; box plots show the median (center line), interquartile range (box) and whiskers extending to 1.5× the interquartile range. FDR-adjusted P values for the indicated cohort comparisons are shown above brackets.
+
+**Status:** reproduced. <br>
+**Original file:** `TP_genomic_alterations2_final_tmp.pdf`. <br>
+**Keynote:** slide 8, object `1298216`; entire imported object. <br>
+**Historical source:** `TP_Comparision.R` — 621-652 preparation;692-712 export. <br>
+**Cleaned code:** [ExtendedDataFig1.R](ExtendedDataFig1.R) (`Rscripts/ExtendedDataFig1.R:5 (run_ExtendedDataFig1)`).
+
+**Inputs:** `wgsdata_tp.RData;thyroid_burden_tp.RData`.
+
+Saved intermediate replay; four burden distributions and cohort comparisons visually verified. Small printed P differences in the last digits are recorded; no method change. Shared helper computes BH by facet. Imported original PDF filename recovered verbatim from Metadata.iwa preferred_file_name; visible label and plot content confirmed in native Keynote PDF.
+
+```{r preview-ExtendedDataFig1-whole, echo=FALSE, results='asis'}
+if (isTRUE(params$include_figures)) {
+  files <- file.path(params$figure_dir, c("ExtendedDataFig1.png"))
+  for (p in files) {
+    if (file.exists(p)) cat(sprintf('<img alt="Local validation plot" src="%s" style="max-width:100%%;height:auto;" />', knitr::image_uri(p)))
+    else cat('Expected local plot is absent: ', basename(p), '\n\n')
+  }
+}
+```
+
+## Cleaned executable source
+
+The code displayed here is read from the executable `.R` file at render time,
+so the report and source cannot silently diverge.
+
+```{r code-source, echo=FALSE, results='asis'}
+cat('```r\n', paste(readLines('Rscripts/ExtendedDataFig1.R', warn=FALSE), collapse='\n'), '\n```\n', sep='')
+```
+
+## Validation and limitations
+
+```{r validation-table, echo=FALSE}
+z <- provenance[provenance$figure_id == 'Extended Data Fig. 1', c('manuscript_id','reproducibility_status','local_original_match')]
+knitr::kable(z, col.names=c('Panel','Reproduction status','Embedded versus archived original'))
+```
+
+A byte-identical archived original confirms artifact identity; it does not by itself
+validate cleaned code. Scientific/version discrepancies are documented in the
+[methodology review](../provenance/methodology_review.md).
+
+## Documentation build environment
+
+```{r documentation-session, echo=FALSE}
+cat(R.version.string)
+```
