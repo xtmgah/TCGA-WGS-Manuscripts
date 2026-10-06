@@ -1,0 +1,1414 @@
+{
+  "status": "PASS",
+  "date": "2026-10-06",
+  "panels_reviewed": 49,
+  "matched_text_spans": 1556,
+  "packaged_inputs_unchanged": 168,
+  "original_files_unchanged": 206,
+  "numerical_check_results_unchanged": true,
+  "ac2_verification_unchanged": true,
+  "pdf_text_regressions_passed": 2,
+  "figures": [
+    {
+      "figure": 1,
+      "comparison": {
+        "text": {
+          "actual_spans": 360,
+          "reference_spans": 360,
+          "extra_text_spans": [],
+          "missing_text_spans": [],
+          "max_origin_difference_pt": 6.103515625e-05,
+          "color_differences": []
+        },
+        "resolutions": {
+          "150": {
+            "exact_pixels": false,
+            "changed_pixel_fraction": 4.588945230938669e-05,
+            "material_pixel_fraction": 0.0,
+            "maximum_channel_difference": 2,
+            "pixels": 1525405,
+            "actual_pixel_sha256": "3166ca721d018aaf6270467edeec632509636dcd8b3e1c0e416d1f0eab78608b",
+            "reference_pixel_sha256": "7b006760ab76ca0fa3fe1c70a40f970f3938db0f8b6217c6617f8051b6403b1a"
+          },
+          "300": {
+            "exact_pixels": false,
+            "changed_pixel_fraction": 4.0495162385601166e-05,
+            "material_pixel_fraction": 0.0,
+            "maximum_channel_difference": 13,
+            "pixels": 6099494,
+            "actual_pixel_sha256": "c144dde86297d94c003355771deb57e5d12193050cac0238d4831aab36820a8d",
+            "reference_pixel_sha256": "2aae9563e2e7a95fb3022a6a319b7da0290be2708ed65ba1b8266084570aee6a"
+          }
+        },
+        "panels": [
+          {
+            "panel": "1a",
+            "bounds_mm": [
+              4,
+              17,
+              172,
+              33.5
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 0.000345878853461012,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 2,
+                "pixels": 202383
+              },
+              "300": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 0.00030618417660009125,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 13,
+                "pixels": 806704
+              }
+            }
+          },
+          {
+            "panel": "1b",
+            "bounds_mm": [
+              4,
+              51.833333333333336,
+              61.89473684210526,
+              46
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 99824
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 398208
+              }
+            }
+          },
+          {
+            "panel": "1c",
+            "bounds_mm": [
+              67.89473684210526,
+              51.833333333333336,
+              61.89473684210526,
+              46
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 99824
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 398208
+              }
+            }
+          },
+          {
+            "panel": "1d",
+            "bounds_mm": [
+              131.78947368421052,
+              51.833333333333336,
+              44.21052631578947,
+              46
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 71264
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 284512
+              }
+            }
+          },
+          {
+            "panel": "1e",
+            "bounds_mm": [
+              4,
+              99.16666666666669,
+              172,
+              12
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 73224
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 288544
+              }
+            }
+          },
+          {
+            "panel": "1f",
+            "bounds_mm": [
+              4,
+              112.5,
+              121.0,
+              60
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 254180
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 1015300
+              }
+            }
+          },
+          {
+            "panel": "1g",
+            "bounds_mm": [
+              127.0,
+              112.5,
+              49.0,
+              60
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 102950
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 411090
+              }
+            }
+          },
+          {
+            "panel": "1h",
+            "bounds_mm": [
+              4.0,
+              173.83333333333337,
+              28.333333333333332,
+              65
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 64680
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 257280
+              }
+            }
+          },
+          {
+            "panel": "1i",
+            "bounds_mm": [
+              32.33333333333333,
+              173.83333333333337,
+              28.333333333333332,
+              65
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 65065
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 258048
+              }
+            }
+          },
+          {
+            "panel": "1j",
+            "bounds_mm": [
+              60.666666666666664,
+              173.83333333333337,
+              28.333333333333332,
+              65
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 64680
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 258048
+              }
+            }
+          },
+          {
+            "panel": "1k",
+            "bounds_mm": [
+              91,
+              173.83333333333337,
+              85,
+              65
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 193655
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 771840
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "figure": 2,
+      "comparison": {
+        "text": {
+          "actual_spans": 329,
+          "reference_spans": 329,
+          "extra_text_spans": [],
+          "missing_text_spans": [],
+          "max_origin_difference_pt": 9.1552734375e-05,
+          "color_differences": []
+        },
+        "resolutions": {
+          "150": {
+            "exact_pixels": false,
+            "changed_pixel_fraction": 1.0190751765388512e-05,
+            "material_pixel_fraction": 0.0,
+            "maximum_channel_difference": 4,
+            "pixels": 1570051,
+            "actual_pixel_sha256": "d6860a2b10046c9e1d1f68b645cfaea4f25864a43e2e904d49cff4dc99585a0d",
+            "reference_pixel_sha256": "a7a2fac27983f4359f1aee1a6637a048dd481e94f25bdfb9f3045b5ad534f0d4"
+          },
+          "300": {
+            "exact_pixels": false,
+            "changed_pixel_fraction": 1.0672056001852797e-05,
+            "material_pixel_fraction": 0.0,
+            "maximum_channel_difference": 6,
+            "pixels": 6278078,
+            "actual_pixel_sha256": "64f16ca6660ffc9634d1bc6dd3619f20f263efb08f8fd3812c15a2927e4cf95f",
+            "reference_pixel_sha256": "c5f0b3e98ad4923e6d53ab4c6fc9540b282bd8e9a2dc02785bda116e48c697a5"
+          }
+        },
+        "panels": [
+          {
+            "panel": "2a",
+            "bounds_mm": [
+              4,
+              17,
+              172,
+              41.5
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 250182
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 997712
+              }
+            }
+          },
+          {
+            "panel": "2b",
+            "bounds_mm": [
+              4,
+              60.5,
+              172,
+              41.5
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 250182
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 997712
+              }
+            }
+          },
+          {
+            "panel": "2c",
+            "bounds_mm": [
+              4,
+              104,
+              85,
+              49
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 145870
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 582900
+              }
+            }
+          },
+          {
+            "panel": "2d",
+            "bounds_mm": [
+              91,
+              104,
+              85,
+              49
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 145870
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 582900
+              }
+            }
+          },
+          {
+            "panel": "2e",
+            "bounds_mm": [
+              4,
+              155,
+              108,
+              42
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 159111
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 634172
+              }
+            }
+          },
+          {
+            "panel": "2f",
+            "bounds_mm": [
+              114,
+              155,
+              62,
+              42
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 91383
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 364301
+              }
+            }
+          },
+          {
+            "panel": "2g",
+            "bounds_mm": [
+              4,
+              199,
+              46,
+              47
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 75894
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 302464
+              }
+            }
+          },
+          {
+            "panel": "2h",
+            "bounds_mm": [
+              52,
+              199,
+              38,
+              47
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 3.19744204636291e-05,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 1,
+                "pixels": 62550
+              },
+              "300": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 0.00011215971543477912,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 6,
+                "pixels": 249644
+              }
+            }
+          },
+          {
+            "panel": "2i",
+            "bounds_mm": [
+              90,
+              199,
+              38,
+              47
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 0.00020783373301358913,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 4,
+                "pixels": 62550
+              },
+              "300": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 0.00015587529976019186,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 4,
+                "pixels": 250200
+              }
+            }
+          },
+          {
+            "panel": "2j",
+            "bounds_mm": [
+              130,
+              199,
+              46,
+              47
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 1.3176272169077925e-05,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 1,
+                "pixels": 75894
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 302464
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "figure": 3,
+      "comparison": {
+        "text": {
+          "actual_spans": 177,
+          "reference_spans": 177,
+          "extra_text_spans": [],
+          "missing_text_spans": [],
+          "max_origin_difference_pt": 6.103515625e-05,
+          "color_differences": []
+        },
+        "resolutions": {
+          "150": {
+            "exact_pixels": true,
+            "changed_pixel_fraction": 0.0,
+            "material_pixel_fraction": 0.0,
+            "maximum_channel_difference": 0,
+            "pixels": 1256466,
+            "actual_pixel_sha256": "88204f9c8fafc75523b8395b0b0b2c79c962f6d10baf3b88ba7d776e0dbfc32e",
+            "reference_pixel_sha256": "88204f9c8fafc75523b8395b0b0b2c79c962f6d10baf3b88ba7d776e0dbfc32e"
+          },
+          "300": {
+            "exact_pixels": false,
+            "changed_pixel_fraction": 4.637980722720811e-05,
+            "material_pixel_fraction": 0.0,
+            "maximum_channel_difference": 6,
+            "pixels": 5023738,
+            "actual_pixel_sha256": "762331b7b08eaa8f71076e5bf7b1edd6405e8f6d4c9786a8faaf1b5ec757c7b0",
+            "reference_pixel_sha256": "4ba1e1e90c62d3a67538ab4d83f71b9015d7d5df01b3e0c15ab24413f8663024"
+          }
+        },
+        "panels": [
+          {
+            "panel": "3a",
+            "bounds_mm": [
+              4,
+              13,
+              40,
+              52
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 72996
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 290895
+              }
+            }
+          },
+          {
+            "panel": "3b",
+            "bounds_mm": [
+              46,
+              13,
+              31,
+              52
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 56672
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 225705
+              }
+            }
+          },
+          {
+            "panel": "3c",
+            "bounds_mm": [
+              79,
+              13,
+              31,
+              52
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 56672
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 225705
+              }
+            }
+          },
+          {
+            "panel": "3d",
+            "bounds_mm": [
+              112,
+              13,
+              31,
+              52
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 56672
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 225705
+              }
+            }
+          },
+          {
+            "panel": "3e",
+            "bounds_mm": [
+              145,
+              13,
+              31,
+              52
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 56672
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 225705
+              }
+            }
+          },
+          {
+            "panel": "3f",
+            "bounds_mm": [
+              4,
+              68,
+              64,
+              50
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 112184
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 447387
+              }
+            }
+          },
+          {
+            "panel": "3g",
+            "bounds_mm": [
+              70,
+              68,
+              106,
+              50
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 185592
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 740523
+              }
+            }
+          },
+          {
+            "panel": "3h",
+            "bounds_mm": [
+              4,
+              121,
+              172,
+              74
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 445446
+              },
+              "300": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 0.00013104611923509563,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 6,
+                "pixels": 1778000
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "figure": 4,
+      "comparison": {
+        "text": {
+          "actual_spans": 399,
+          "reference_spans": 399,
+          "extra_text_spans": [],
+          "missing_text_spans": [],
+          "max_origin_difference_pt": 4.57763671875e-05,
+          "color_differences": []
+        },
+        "resolutions": {
+          "150": {
+            "exact_pixels": false,
+            "changed_pixel_fraction": 1.910765956010346e-05,
+            "material_pixel_fraction": 8.91690779471495e-06,
+            "maximum_channel_difference": 199,
+            "pixels": 1570051,
+            "actual_pixel_sha256": "3409fb45d4ab695ec3105d0f52f4ec830c40fcdfeb1dba966d40cc456ae8bf53",
+            "reference_pixel_sha256": "c1e0b1afe70006bbc6ea2ff1c35c6dccddc0ec4d42e0d0a46c35ef50e34c172f"
+          },
+          "300": {
+            "exact_pixels": false,
+            "changed_pixel_fraction": 1.1468478091543303e-05,
+            "material_pixel_fraction": 8.76064298659558e-06,
+            "maximum_channel_difference": 226,
+            "pixels": 6278078,
+            "actual_pixel_sha256": "7bc49f5c8a2daa165e6f1b1059d77671b2d8b7a5605ab8b73b8797b475b96a0c",
+            "reference_pixel_sha256": "e79266d521086345ba62f8b91d7ceac50ff4d2daf7084be9d92730f46c58e466"
+          }
+        },
+        "panels": [
+          {
+            "panel": "4a",
+            "bounds_mm": [
+              4,
+              17,
+              172,
+              35
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 211536
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 843280
+              }
+            }
+          },
+          {
+            "panel": "4b",
+            "bounds_mm": [
+              4,
+              53,
+              172,
+              35
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 211536
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 843280
+              }
+            }
+          },
+          {
+            "panel": "4c",
+            "bounds_mm": [
+              4,
+              89,
+              172,
+              35
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 211536
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 841248
+              }
+            }
+          },
+          {
+            "panel": "4d",
+            "bounds_mm": [
+              4,
+              127,
+              105,
+              42
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 154629
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 616777
+              }
+            }
+          },
+          {
+            "panel": "4e",
+            "bounds_mm": [
+              111,
+              127,
+              65,
+              42
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 95865
+              },
+              "300": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 7.859657947686117e-06,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 7,
+                "pixels": 381696
+              }
+            }
+          },
+          {
+            "panel": "4f",
+            "bounds_mm": [
+              4,
+              171,
+              121,
+              39
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 166112
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 660660
+              }
+            }
+          },
+          {
+            "panel": "4g",
+            "bounds_mm": [
+              127,
+              171,
+              49,
+              39
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 0.00044589774078478004,
+                "material_pixel_fraction": 0.00020808561236623066,
+                "maximum_channel_difference": 199,
+                "pixels": 67280
+              },
+              "300": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 0.0002579458538007761,
+                "material_pixel_fraction": 0.00020560901389916935,
+                "maximum_channel_difference": 226,
+                "pixels": 267498
+              }
+            }
+          },
+          {
+            "panel": "4h",
+            "bounds_mm": [
+              4.0,
+              212,
+              41.5,
+              33
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 48216
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 191981
+              }
+            }
+          },
+          {
+            "panel": "4i",
+            "bounds_mm": [
+              47.5,
+              212,
+              41.5,
+              33
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 48216
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 191981
+              }
+            }
+          },
+          {
+            "panel": "4j",
+            "bounds_mm": [
+              91.0,
+              212,
+              41.5,
+              33
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 48216
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 191981
+              }
+            }
+          },
+          {
+            "panel": "4k",
+            "bounds_mm": [
+              134.5,
+              212,
+              41.5,
+              33
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 48216
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 191981
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "figure": 5,
+      "comparison": {
+        "text": {
+          "actual_spans": 291,
+          "reference_spans": 291,
+          "extra_text_spans": [],
+          "missing_text_spans": [],
+          "max_origin_difference_pt": 0.000152587890625,
+          "color_differences": []
+        },
+        "resolutions": {
+          "150": {
+            "exact_pixels": false,
+            "changed_pixel_fraction": 0.00022618045030126856,
+            "material_pixel_fraction": 8.84504554250771e-06,
+            "maximum_channel_difference": 115,
+            "pixels": 1582807,
+            "actual_pixel_sha256": "d3ff8c605faa19776e12137ec22a4f045841ee53e61f92dbdf461c127ebb239d",
+            "reference_pixel_sha256": "6292a40e7b567ddf2b40a887dd42202582bbcc8679c5815008417504fa9db63a"
+          },
+          "300": {
+            "exact_pixels": false,
+            "changed_pixel_fraction": 0.00014141026641694194,
+            "material_pixel_fraction": 4.266008037159142e-06,
+            "maximum_channel_difference": 236,
+            "pixels": 6329102,
+            "actual_pixel_sha256": "c6bfab0b08f18e75a5541905c4ac82ecaab4e432a277bc2412ad7aa28a5f2568",
+            "reference_pixel_sha256": "b3a05bb2c0c81c7d9c7e537ba4f0dcafb87e7d5d26711382f3bbc160fbebe4c4"
+          }
+        },
+        "panels": [
+          {
+            "panel": "5a",
+            "bounds_mm": [
+              4,
+              13.0,
+              56,
+              64.0
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 125828
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 501134
+              }
+            }
+          },
+          {
+            "panel": "5b",
+            "bounds_mm": [
+              64,
+              13.0,
+              48,
+              64.0
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 108015
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 429976
+              }
+            }
+          },
+          {
+            "panel": "5c",
+            "bounds_mm": [
+              116,
+              13.0,
+              60,
+              64.0
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 134545
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 536713
+              }
+            }
+          },
+          {
+            "panel": "5d",
+            "bounds_mm": [
+              4,
+              79.0,
+              172,
+              67.0
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 403749
+              },
+              "300": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 1609344
+              }
+            }
+          },
+          {
+            "panel": "5e",
+            "bounds_mm": [
+              4,
+              148.0,
+              31,
+              70.0
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 0.00011814744801512288,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 2,
+                "pixels": 76176
+              },
+              "300": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 7.248549466407916e-05,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 7,
+                "pixels": 303509
+              }
+            }
+          },
+          {
+            "panel": "5f",
+            "bounds_mm": [
+              36.66666666666667,
+              148,
+              30.666666666666668,
+              70
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 0.0006237723629027976,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 3,
+                "pixels": 75348
+              },
+              "300": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 0.0008460997798141912,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 8,
+                "pixels": 300201
+              }
+            }
+          },
+          {
+            "panel": "5g",
+            "bounds_mm": [
+              69.33333333333334,
+              148,
+              30.666666666666668,
+              70
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 75348
+              },
+              "300": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 2.6575600940776272e-05,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 15,
+                "pixels": 301028
+              }
+            }
+          },
+          {
+            "panel": "5h",
+            "bounds_mm": [
+              104,
+              148,
+              72,
+              70
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 0.0015195844957020708,
+                "material_pixel_fraction": 1.7010274205620193e-05,
+                "maximum_channel_difference": 115,
+                "pixels": 176364
+              },
+              "300": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 0.0007431331231341746,
+                "material_pixel_fraction": 8.525427798862424e-06,
+                "maximum_channel_difference": 236,
+                "pixels": 703777
+              }
+            }
+          },
+          {
+            "panel": "5i",
+            "bounds_mm": [
+              4,
+              220,
+              172,
+              29
+            ],
+            "resolutions": {
+              "150": {
+                "exact_pixels": true,
+                "changed_pixel_fraction": 0.0,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 0,
+                "pixels": 174924
+              },
+              "300": {
+                "exact_pixels": false,
+                "changed_pixel_fraction": 3.013016230114093e-05,
+                "material_pixel_fraction": 0.0,
+                "maximum_channel_difference": 11,
+                "pixels": 696976
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "milestone": "Panel visual review before statistical expansion; current statistical evidence is in statistical_recomputation_checks.json"
+}

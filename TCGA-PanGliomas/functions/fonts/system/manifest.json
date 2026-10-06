@@ -1,0 +1,21 @@
+{
+  "purpose": "Exact fonts for deterministic Matplotlib selection and macOS Cairo registration",
+  "license": "Apache-2.0; see ../LICENSE.txt and embedded name-table license metadata",
+  "files": [
+    {
+      "path": "RobotoCondensed-Italic-VariableFont_wght.ttf",
+      "sha256": "3284e34b9106b36f4cc8d874dd43cc8935fe66d1cd0245a75e5c645f358c9f33",
+      "version": "3.008; 2023"
+    },
+    {
+      "path": "RobotoCondensed-SemiBoldItalic.ttf",
+      "sha256": "03f0e6698f56216a00c4833e2bcbfd42e1e5c8afc554f3a835d666a843af9b5f",
+      "version": "3.008; 2023"
+    },
+    {
+      "path": "RobotoCondensed-VariableFont_wght.ttf",
+      "sha256": "671104185b28b697fe32b8507f38839257c07a7280741b28533dd34a76af7534",
+      "version": "3.008; 2023"
+    }
+  ]
+}

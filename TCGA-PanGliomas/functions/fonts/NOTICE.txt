@@ -1,0 +1,12 @@
+Roboto Condensed fonts, copied unchanged from the project rendering environment.
+Regular and Bold: Copyright 2014 Google Inc. All rights reserved.
+Italic: Copyright 2011 Google Inc. All rights reserved.
+Licensed under the Apache License, Version 2.0. See LICENSE.txt.
+
+system/ contains unchanged Roboto Condensed 3.008 (2023) variable regular,
+variable italic and SemiBoldItalic files used by the reviewed rendering
+environment. Copyright 2011 Google Inc. All Rights Reserved. Their embedded
+license metadata also specifies Apache License 2.0. See system/manifest.json
+for checksums. The variable faces are registered with macOS for Cairo; Python
+selects bundled font files explicitly. The original static files remain in
+use for PDF overlays, ReportLab, and selected Matplotlib styles.

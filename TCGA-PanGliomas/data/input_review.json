@@ -1,0 +1,1908 @@
+{
+  "version": "main-figures-1-5-data-review-v1",
+  "date": "2026-10-06",
+  "public_storage": "Git repository only",
+  "private_storage": "Author-held Box and/or Biowulf; no public links or public account access",
+  "request_policy": "Contact the corresponding authors; provision is subject to applicable institutional and source-data permissions. A request is not automatic authorization.",
+  "classification_scope": "Operational file-by-file release routing under the author instruction; not a certification of study-specific DAC or institutional permissions. Unknown individual-data provenance stays request-only.",
+  "aggregate_scope": "Only intrinsic manuscript figure-support summaries and model geometry; no general-purpose individual-genome resource.",
+  "policy_sources": [
+    "https://gdc.cancer.gov/access-data/data-access-processes-and-tools",
+    "https://gdc.cancer.gov/access-data/data-access-policies",
+    "https://www.genome.gov/about-nhgri/Policies-Guidance/Data-Sharing-Policies-and-Expectations/GSR-update-FAQs"
+  ],
+  "inputs": [
+    {
+      "id": "input_001",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_dimensions/staging/panels/M2_a_plotted_values.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata. Previously hashed by the renderer but not used in any calculation or drawing.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_002",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_dimensions/staging/panels/M2_b_plotted_values.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata. Previously hashed by the renderer but not used in any calculation or drawing.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_003",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_a_event_labels.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_004",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_a_ordering.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_005",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_a_violin.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_006",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_b_event_labels.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_007",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_b_ordering.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_008",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_b_violin.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_009",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_c_event_labels.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_010",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_c_ordering.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_011",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_c_violin.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_012",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_d_event_labels.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_013",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_d_ordering.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_014",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_d_violin.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_015",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_e_subtype_composition_display.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_016",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_f_size_encoding.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_017",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_group_specific_event_selection.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_018",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M1_group_specific_shared_event_matches.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_019",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_a_event_labels.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_020",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_a_ordering.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_021",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_a_violin.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_022",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_b_event_labels.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_023",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_b_ordering.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_024",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_b_violin.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_025",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_c_curve_values.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_026",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_c_risk_counts.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_027",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_d_display_contrasts.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_028",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_e_CIC_event_summary.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_029",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_e_CIC_retained_regions.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_030",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_e_CIC_specimen_calls.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_031",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_e_changed_cells.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_032",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_e_copy_number_calls.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_033",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_e_plotted_cells.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_034",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_e_sample_order.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_035",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M2_f_saved_model_predictions.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_036",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M4_a_event_labels.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_037",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M4_a_ordering.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_038",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M4_a_violin.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_039",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M4_b_event_labels.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_040",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M4_b_ordering.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_041",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M4_b_violin.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_042",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M4_c_event_labels.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_043",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M4_c_ordering.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_044",
+      "source_logical_path": "manuscript/revision_2026-09-30_figure_refinement/staging/derived/M4_c_violin.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_045",
+      "source_logical_path": "results/PL-output/plackett_luce_astro_g2_g3/tcga_astro_DN1_mergedseg_G1.txt",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Tumour_Name",
+        "chr",
+        "startpos",
+        "endpos",
+        "CNA",
+        "ID"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/R/render_figure2.R"
+    },
+    {
+      "id": "input_046",
+      "source_logical_path": "results/PL-output/plackett_luce_astro_g2_g3/tcga_astro_DN2_mergedseg_G1.txt",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Tumour_Name",
+        "chr",
+        "startpos",
+        "endpos",
+        "CNA",
+        "ID"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/R/render_figure2.R"
+    },
+    {
+      "id": "input_047",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/curated_feature_calls.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Feature ID",
+        "Classification",
+        "Oncogenes",
+        "All genes",
+        "Subject",
+        "Tumor_Barcode",
+        "filter_passing",
+        "max_cn",
+        "context"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_048",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/amplicon_subject_table.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_049",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/ecdna_candidate_features.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Feature ID",
+        "Classification",
+        "Oncogenes",
+        "All genes",
+        "Subject",
+        "Tumor_Barcode",
+        "filter_passing",
+        "max_cn",
+        "context",
+        "DN_Group"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_050",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/ecdna_positive_subject_denominators.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_051",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/ecdna_subject_gene_context.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_052",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_a_amplicon_global_fisher.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_053",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_a_amplicon_pairwise_fisher.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_054",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_a_amplicon_patient_counts.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_055",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_a_amplicon_rates.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_056",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_a_architecture_burden_global_tests.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_057",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_a_architecture_burden_pairwise_tests.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_058",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_b_ecdna_oncogene_burden.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_059",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_b_ecdna_oncogene_burden_global_test.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_060",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_b_ecdna_oncogene_burden_pairwise_tests.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_061",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_b_summary.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_062",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_c_oncogene_one_vs_rest_fisher.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_063",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_c_oncogene_prevalence.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_064",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_d_cooccurrence_context_prevalence.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_065",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_d_cooccurrence_nodes.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_066",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_d_cooccurrence_pairs.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_067",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_d_cooccurrence_top_genes.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_068",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_d_cooccurrence_tumor_denominators.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_069",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_e_candidate_sensitivity_global_test.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_070",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_e_candidate_sensitivity_pairwise_tests.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_071",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_e_egfr_copy_number_candidate_sensitivity.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_072",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_e_egfr_ecdna_copy_number.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_073",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_e_egfr_expression.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Subject",
+        "DN_Group",
+        "EGFR_expression"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_074",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_e_egfr_fusion_classes.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [
+        "DN_Group",
+        "Architecture",
+        "n_subjects",
+        "total_subjects",
+        "pct_subjects"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_075",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_e_global_tests.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_076",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_e_pairwise_tests.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_077",
+      "source_logical_path": "results/analysis/amplicon_classifier_2_update_2026-10-02/current/figure5/panel_e_summary.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_078",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/analysis/GBM_primary_group_roster.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Subject",
+        "DN_Group"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/python/ac2_aggregate.py; functions/R/ac2_statistics.R; figure5 renderers"
+    },
+    {
+      "id": "input_079",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/analysis/curated_specimen_roster.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_080",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/ecdna/amplicons/gbm_dn3_amplicon_subject_table.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_081",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure3/source-data/panel-i/patient_column_key.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Subject",
+        "route",
+        "column_index",
+        "CT_component_SVs",
+        "CT_span_Mb",
+        "hist_grade",
+        "grade_explicit"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/python/render_figure3.py"
+    },
+    {
+      "id": "input_082",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure3/source-data/panel-i/patient_gene_matrix.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Subject",
+        "gene",
+        "CT_overlap",
+        "AMP",
+        "CN0",
+        "LOH_main",
+        "LOH_secondary",
+        "missing_CN"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/python/render_figure3.py"
+    },
+    {
+      "id": "input_083",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure4/derived-data/gain-timing/gbm_dn3_panel_d_gain_timing_curve.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_084",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure4/derived-data/gain-timing/gbm_dn3_panel_d_gain_timing_global_permutation.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_085",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure4/derived-data/gain-timing/gbm_dn3_panel_d_gain_timing_stats.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_086",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure4/derived-data/pcawg-timing/gbm_dn3_pcawg_timing_pie_bins.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_087",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure4/derived-data/pcawg-timing/gbm_dn3_pcawg_timing_pie_summary.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_088",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure4/derived-data/publication-panels/figure4_six_metric_pairwise_tests.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_089",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure4/derived-data/publication-panels/figure4_six_metric_values.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Tumor_Barcode",
+        "DN_Group",
+        "metric",
+        "value"
+      ],
+      "transform": "select_columns",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_090",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/panel_a_amplicon_rates.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_091",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/panel_b_ecdna_oncogene_burden.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_092",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/panel_b_ecdna_oncogene_burden_pairwise_tests.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_093",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/panel_c_oncogene_one_vs_rest_fisher.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_094",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/panel_c_oncogene_prevalence.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_095",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/panel_d_cooccurrence_context_prevalence.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_096",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/panel_d_cooccurrence_nodes.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_097",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/panel_d_cooccurrence_pairs.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_098",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/panel_d_cooccurrence_tumor_denominators.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_099",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/panel_e_egfr_ecdna_copy_number.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_100",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/panel_e_egfr_expression.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_101",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/panel_e_egfr_fusion_classes.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_102",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/panel_e_pairwise_tests.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_103",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure5/derived-data/row4-source/figure4_hallmark_gsea_top4_nonredundant.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [
+        "Contrast",
+        "Pathway",
+        "NES",
+        "Absolute_NES",
+        "FDR",
+        "Enriched_Group",
+        "Comparator_Group",
+        "Minus_Log10_FDR_Capped",
+        "Pathway_Family",
+        "Pathway_Label",
+        "Pathway_Facet"
+      ],
+      "transform": "select_columns",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_104",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/inputs/plackett_luce_gbm_g3/tcga_gbm_DN1_matrix_coresp_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_105",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/inputs/plackett_luce_gbm_g3/tcga_gbm_DN1_matrix_out_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_106",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/inputs/plackett_luce_gbm_g3/tcga_gbm_DN1_mergedseg_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_107",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/inputs/plackett_luce_gbm_g3/tcga_gbm_DN2_matrix_coresp_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_108",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/inputs/plackett_luce_gbm_g3/tcga_gbm_DN2_matrix_out_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_109",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/inputs/plackett_luce_gbm_g3/tcga_gbm_DN2_mergedseg_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_110",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/inputs/plackett_luce_gbm_g3/tcga_gbm_DN3_matrix_coresp_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_111",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/inputs/plackett_luce_gbm_g3/tcga_gbm_DN3_matrix_out_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_112",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/inputs/plackett_luce_gbm_g3/tcga_gbm_DN3_mergedseg_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_113",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/rna/analysis/GBM_state_analysis_metadata.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Subject",
+        "DN_Group",
+        "dominant_state",
+        "BB_Purity",
+        "RNA_Center"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/R/recompute.R; functions/R/recompute_extended.R"
+    },
+    {
+      "id": "input_114",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/rna/analysis/GBM_state_composition.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_115",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/rna/analysis/GBM_state_global.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [
+        "Purity_Source",
+        "Model",
+        "Test",
+        "Outcome",
+        "N",
+        "Statistic",
+        "DF",
+        "P"
+      ],
+      "transform": "displayed_RNA_test_only",
+      "consumer": "functions/R/recompute.R; functions/R/recompute_extended.R"
+    },
+    {
+      "id": "input_116",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/rna/de/pairwise_diverging_de_counts_data.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_117",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/survival/analysis/ASTRO_cox_data.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found. Required ancestry covariates are retained for exact Cox-model reproduction.",
+      "retain_columns": [
+        "Subject",
+        "group",
+        "os_time",
+        "os_event",
+        "age10",
+        "sex",
+        "purity10",
+        "grade",
+        "PC1_z",
+        "PC2_z"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/R/recompute.R; functions/R/recompute_extended.R"
+    },
+    {
+      "id": "input_118",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/survival/analysis/ASTRO_km_data.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Subject",
+        "group",
+        "os_time",
+        "os_event"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/R/recompute.R; functions/R/recompute_extended.R"
+    },
+    {
+      "id": "input_119",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/survival/analysis/Figure2d_display_contrasts.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_120",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/survival/analysis/Figure4e_display_contrasts.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_121",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/survival/analysis/GBM_cox_data.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found. Required ancestry covariates are retained for exact Cox-model reproduction.",
+      "retain_columns": [
+        "Subject",
+        "group",
+        "os_time",
+        "os_event",
+        "age10",
+        "sex",
+        "purity10",
+        "PC1_z",
+        "PC2_z"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/R/recompute.R; functions/R/recompute_extended.R"
+    },
+    {
+      "id": "input_122",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/survival/analysis/GBM_km_data.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Subject",
+        "group",
+        "os_time",
+        "os_event"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/R/recompute.R; functions/R/recompute_extended.R"
+    },
+    {
+      "id": "input_123",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/survival/analysis/all_KM_tests.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "primary_survival_analyses_only",
+      "consumer": "functions/R/recompute.R; functions/R/recompute_extended.R"
+    },
+    {
+      "id": "input_124",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/survival/analysis/all_cox_terms.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "primary_survival_analyses_only",
+      "consumer": "functions/R/recompute.R; functions/R/recompute_extended.R"
+    },
+    {
+      "id": "input_125",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/figures/figure1/derived-data/panel_e_pl_group_subtype_composition.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_126",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/figures/figure1/derived-data/panel_f_pcawg_timing_bins.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_127",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/figures/figure1/derived-data/panel_f_pcawg_timing_events.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_128",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/figures/figure1/derived-data/panel_g_gain_timing_curve.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_129",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/figures/figure1/derived-data/panel_g_gain_timing_global_permutation.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_130",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/figures/figure1/derived-data/panel_g_gain_timing_summary.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_131",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/figures/figure1/derived-data/panel_h_chronological_pairwise_tests.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_132",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/figures/figure1/derived-data/panel_h_chronological_timing_values.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_133",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/figures/figure1/derived-data/panel_i_bic_model_selection.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_134",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/figures/figure1/derived-data/panel_shared_subtype_counts.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_135",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/preparation/pooled/tcga_all_glioma_matrix_coresp_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_136",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/preparation/pooled/tcga_all_glioma_matrix_out_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_137",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/preparation/pooled/tcga_all_glioma_mergedseg_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_138",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/preparation/pooled_G3_display/tcga_all_glioma_DN1_matrix_coresp_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_139",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/preparation/pooled_G3_display/tcga_all_glioma_DN1_matrix_out_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_140",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/preparation/pooled_G3_display/tcga_all_glioma_DN1_mergedseg_G1.txt",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [
+        "chr",
+        "startpos",
+        "endpos",
+        "CNA",
+        "noevent",
+        "ID"
+      ],
+      "transform": "unique_event_definitions",
+      "consumer": "functions/python/group_specific.py"
+    },
+    {
+      "id": "input_141",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/preparation/pooled_G3_display/tcga_all_glioma_DN2_matrix_coresp_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_142",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/preparation/pooled_G3_display/tcga_all_glioma_DN2_matrix_out_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_143",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/preparation/pooled_G3_display/tcga_all_glioma_DN2_mergedseg_G1.txt",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [
+        "chr",
+        "startpos",
+        "endpos",
+        "CNA",
+        "noevent",
+        "ID"
+      ],
+      "transform": "unique_event_definitions",
+      "consumer": "functions/python/group_specific.py"
+    },
+    {
+      "id": "input_144",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/preparation/pooled_G3_display/tcga_all_glioma_DN3_matrix_coresp_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_145",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/preparation/pooled_G3_display/tcga_all_glioma_DN3_matrix_out_G1.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_146",
+      "source_logical_path": "results/analysis/pooled_814_rerun_2026-09-28/preparation/pooled_G3_display/tcga_all_glioma_DN3_mergedseg_G1.txt",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [
+        "chr",
+        "startpos",
+        "endpos",
+        "CNA",
+        "noevent",
+        "ID"
+      ],
+      "transform": "unique_event_definitions",
+      "consumer": "functions/python/group_specific.py"
+    },
+    {
+      "id": "input_147",
+      "source_logical_path": "results/analysis/rna_adjustment_corrections_2026-09-16/analysis/ASTRO_plate_adjusted_DESeq2.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_148",
+      "source_logical_path": "results/figures/figure2/derived-data/astro_age_mrca_latency_primary_2p5x_sample_table.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Subject",
+        "Tumor_Barcode",
+        "Evo_Group",
+        "age_at_diagnosis_years",
+        "acceleration",
+        "latency_years",
+        "age_mrca_years"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/R/render_figure2.R"
+    },
+    {
+      "id": "input_149",
+      "source_logical_path": "results/figures/figure2/derived-data/astro_age_mrca_latency_primary_tests.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_150",
+      "source_logical_path": "results/figures/figure2/derived-data/diagnostics/astro_focused_data_allele_specific_cn.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/R/render_figure2.R"
+    },
+    {
+      "id": "input_151",
+      "source_logical_path": "results/figures/figure2/derived-data/diagnostics/astro_focused_data_allele_specific_cn_components.tsv",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_152",
+      "source_logical_path": "results/figures/figure2/derived-data/diagnostics/astro_focused_data_feature.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/R/render_figure2.R"
+    },
+    {
+      "id": "input_153",
+      "source_logical_path": "results/figures/figure2/derived-data/diagnostics/astro_focused_data_mutation.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/R/render_figure2.R"
+    },
+    {
+      "id": "input_154",
+      "source_logical_path": "results/figures/figure2/derived-data/diagnostics/astro_focused_data_promoter.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/R/render_figure2.R"
+    },
+    {
+      "id": "input_155",
+      "source_logical_path": "results/figures/figure2/derived-data/diagnostics/astro_focused_sample_order.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Tumor_Barcode",
+        "Evo_Group"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/R/render_figure2.R"
+    },
+    {
+      "id": "input_156",
+      "source_logical_path": "results/figures/figure2/derived-data/diagnostics/tp53_copy_number_analysis_data.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Subject",
+        "Tumor_Barcode",
+        "Evo_Group",
+        "total_cn_raw",
+        "mutant_copies_raw",
+        "total_cn_display",
+        "mutant_copies_display"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/R/render_figure2.R"
+    },
+    {
+      "id": "input_157",
+      "source_logical_path": "results/figures/figure2/derived-data/diagnostics/tp53_copy_number_model_terms.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_158",
+      "source_logical_path": "results/figures/figure3/derived-data/figure3_gain_timing_curve.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_159",
+      "source_logical_path": "results/figures/figure3/derived-data/figure3_gain_timing_stats.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_160",
+      "source_logical_path": "results/figures/figure3/derived-data/figure3_sample_metrics.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [
+        "Tumor_Barcode",
+        "any_hc_ct",
+        "hc_ct_chr_count",
+        "multi_hc_ct",
+        "max_hc_cluster_size",
+        "max_hc_osc_cn_segments",
+        "Evo_Group",
+        "high_quality_sv_count",
+        "interchrom_sv_count",
+        "inversion_sv_count",
+        "translocation_sv_count",
+        "ddr_alteration_burden",
+        "checkpoint_driver_burden",
+        "chr12_13_checkpoint_burden",
+        "TP53_PL_max_mutant_copies",
+        "TL_Ratio",
+        "fraction_genome_altered",
+        "aneuploidy_score",
+        "BB_Ploidy",
+        "genomic_instability_cox_score_z",
+        "tumor_break_load",
+        "TERT_expr",
+        "ATRX_expr",
+        "TERT_promoter_hotspot",
+        "arm_cna_burden",
+        "telomere_recombination_ssgsea_score",
+        "cin70_score",
+        "cin25_score",
+        "hrd_loh_segments",
+        "hrd_loh_mb",
+        "TP53_PL_max_mutant_copies_capped5",
+        "log2_TP53_PL_mutant_copies_plus1",
+        "interchrom_sv_fraction"
+      ],
+      "transform": "select_columns",
+      "consumer": "functions/R/recompute.R; functions/R/recompute_extended.R"
+    },
+    {
+      "id": "input_161",
+      "source_logical_path": "results/figures/figure3/derived-data/figure3_specificity_fingerprint.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_162",
+      "source_logical_path": "results/figures/figure3/derived-data/figure3_tert_promoter_test.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_163",
+      "source_logical_path": "results/figures/figure3/derived-data/figure3_tests.tsv",
+      "route": "git",
+      "classification": "git_figure_support_aggregate",
+      "rationale": "Project-generated cohort summary, model/plot geometry, test result or event definition supporting the manuscript; no individual participant records or identifiers are retained.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_164",
+      "source_logical_path": "scripts/functions/oncoplot_colors.csv",
+      "route": "git",
+      "classification": "git_project_style",
+      "rationale": "Project plot color definitions; no human data.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "main-figure renderers and verification"
+    },
+    {
+      "id": "input_165",
+      "source_logical_path": "scripts/plackett-luce/Ordering_Model/reference_files/all_gene_gr_hg38.Rdata",
+      "route": "author_request",
+      "classification": "request_reference_provenance",
+      "rationale": "Reduced to the CIC interval used by the plot; upstream annotation release/licensing provenance was not established.",
+      "retain_columns": [],
+      "transform": "CIC_interval_only",
+      "consumer": "functions/R/render_figure2.R"
+    },
+    {
+      "id": "input_166",
+      "source_logical_path": "scripts/plackett-luce/Ordering_Model/reference_files/cytoBand_hg38.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_167",
+      "source_logical_path": "scripts/plackett-luce/Ordering_Model/reference_files/dataset_wgd_status.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_168",
+      "source_logical_path": "scripts/plackett-luce/Ordering_Model/reference_files/driver_gene_list.txt",
+      "route": "retired",
+      "classification": "excluded_unused",
+      "rationale": "Unused by current Figures 1\u20135: legacy/superseded analysis, duplicate plotting input, or regenerated drawing metadata.",
+      "retain_columns": [],
+      "transform": "retire",
+      "consumer": "none in current entrypoints"
+    },
+    {
+      "id": "input_169",
+      "source_logical_path": "results/analysis/bcor_reclassification_2026-09-21/figures/figure4/derived-data/gain-timing/gbm_dn3_panel_d_gain_timing_sample_sums.tsv",
+      "route": "author_request",
+      "classification": "request_measured_data",
+      "rationale": "Individual clinical/molecular measurements or detailed segment/feature values; local source lineage is known, but an explicit open-redistribution record for this custom derived table was not found.",
+      "retain_columns": [],
+      "transform": "unchanged",
+      "consumer": "functions/R/recompute.R; functions/R/recompute_extended.R"
+    }
+  ]
+}

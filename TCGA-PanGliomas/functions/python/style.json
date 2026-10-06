@@ -1,0 +1,15 @@
+{
+  "font_family": "Roboto Condensed",
+  "width_mm": 180,
+  "maximum_height_mm": 250,
+  "margin_mm": 4,
+  "figure_title_pt": 12,
+  "panel_letter_pt": 10,
+  "panel_title_pt": 8,
+  "subplot_title_pt": 7.5,
+  "axis_title_pt": 6.5,
+  "axis_text_pt": 6.5,
+  "legend_pt": 6.5,
+  "dense_text_pt": 6,
+  "panel_letter_band_mm": 3.5
+}

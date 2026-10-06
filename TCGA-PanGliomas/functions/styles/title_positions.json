@@ -1,0 +1,522 @@
+{
+  "1": {
+    "titles": [
+      {
+        "text": "Subtype composition (%)",
+        "origin": [
+          13.606366157531738,
+          299.24407958984375
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "MRCA age",
+        "origin": [
+          35.09020233154297,
+          510.3779296875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 0
+      },
+      {
+        "text": "Age at diagnosis",
+        "origin": [
+          105.4016342163086,
+          510.3779296875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 0
+      },
+      {
+        "text": "Latency",
+        "origin": [
+          199.78421020507812,
+          510.3779296875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 0
+      },
+      {
+        "text": "Within-subtype model selection",
+        "origin": [
+          328.9986877441406,
+          510.33258056640625
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 0
+      },
+      {
+        "text": "Copy-number gain timing",
+        "origin": [
+          143.45306396484375,
+          336.5196838378906
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 0
+      },
+      {
+        "text": "Cumulative gain timing",
+        "origin": [
+          393.2514343261719,
+          336.4261474609375
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 0
+      }
+    ]
+  },
+  "2": {
+    "titles": [
+      {
+        "text": "Multivariable Cox model for OS",
+        "origin": [
+          328.3652038574219,
+          313.1345520019531
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "Mutation and copy-number landscape",
+        "origin": [
+          104.0494384765625,
+          457.70928955078125
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 0
+      },
+      {
+        "text": "CIC event prevalence",
+        "origin": [
+          377.1476135253906,
+          457.70147705078125
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "TP53",
+        "origin": [
+          35.1594352722168,
+          582.4259033203125
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Italic",
+        "color": 2236962
+      },
+      {
+        "text": " mutant-copy dosage",
+        "origin": [
+          50.99943542480469,
+          582.4259033203125
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "Differentially expressed genes",
+        "origin": [
+          386.1107177734375,
+          583.176513671875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 0
+      },
+      {
+        "text": "MRCA age",
+        "origin": [
+          184.8798370361328,
+          582.9619140625
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2171169
+      },
+      {
+        "text": "Age at diagnosis",
+        "origin": [
+          282.6283874511719,
+          582.9619140625
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2171169
+      },
+      {
+        "text": "Overall survival by ordering group",
+        "origin": [
+          78.85101318359375,
+          313.1345520019531
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      }
+    ]
+  },
+  "3": {
+    "titles": [
+      {
+        "text": "Timing of chromosome gains",
+        "origin": [
+          55.95124816894531,
+          212.59844970703125
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2171169
+      },
+      {
+        "text": "Genomic feature differences",
+        "origin": [
+          303.785400390625,
+          212.59844970703125
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "Copy-number alterations at selected genes overlapping chromothripsis",
+        "origin": [
+          143.7500762939453,
+          361.4172668457031
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "CT prevalence",
+        "origin": [
+          55.55085372924805,
+          55.27557373046875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2171169
+      },
+      {
+        "text": "SV burden",
+        "origin": [
+          164.34483337402344,
+          55.27557373046875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2171169
+      },
+      {
+        "text": "Telomere ratio",
+        "origin": [
+          251.5268096923828,
+          55.27557373046875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2171169
+      },
+      {
+        "text": "TERT",
+        "origin": [
+          341.43927001953125,
+          55.27557373046875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Italic",
+        "color": 2171169
+      },
+      {
+        "text": " expression",
+        "origin": [
+          357.49005126953125,
+          55.27557373046875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2171169
+      },
+      {
+        "text": "TERT",
+        "origin": [
+          441.1915283203125,
+          55.27557373046875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Italic",
+        "color": 2171169
+      },
+      {
+        "text": " promoter",
+        "origin": [
+          457.2423095703125,
+          55.27557373046875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2171169
+      },
+      {
+        "text": "hotspots",
+        "origin": [
+          450.6915283203125,
+          63.779510498046875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2171169
+      }
+    ]
+  },
+  "4": {
+    "titles": [
+      {
+        "text": "Copy-number gain timing",
+        "origin": [
+          143.4362335205078,
+          502.346435546875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 0
+      },
+      {
+        "text": "Cumulative gain timing",
+        "origin": [
+          393.2300720214844,
+          502.2528991699219
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 0
+      },
+      {
+        "text": "Latency",
+        "origin": [
+          57.489501953125,
+          619.2762451171875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "MATH",
+        "origin": [
+          183.98458862304688,
+          619.2762451171875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "PGA",
+        "origin": [
+          309.96368408203125,
+          619.2762451171875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "Ploidy",
+        "origin": [
+          430.4147644042969,
+          619.2762451171875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "Overall survival",
+        "origin": [
+          135.74551391601562,
+          381.8197021484375
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "Adjusted Cox model",
+        "origin": [
+          373.85968017578125,
+          378.3314208984375
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      }
+    ]
+  },
+  "5": {
+    "titles": [
+      {
+        "text": "Hallmark",
+        "origin": [
+          422.34014892578125,
+          438.1104736328125
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "enrichment",
+        "origin": [
+          418.78546142578125,
+          446.1104736328125
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "expression",
+        "origin": [
+          138.340087890625,
+          445.2198486328125
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "classes",
+        "origin": [
+          236.6460723876953,
+          446.1104736328125
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "Dominant RNA state",
+        "origin": [
+          200.45663452148438,
+          641.2440185546875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "Amplicon architecture",
+        "origin": [
+          55.95866775512695,
+          54.47239685058594
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "Oncogene burden",
+        "origin": [
+          221.76914978027344,
+          54.47239685058594
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "ecDNA oncogene prevalence",
+        "origin": [
+          368.6551513671875,
+          54.47239685058594
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "ecDNA oncogene co-occurrence",
+        "origin": [
+          204.5399932861328,
+          241.55906677246094
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "copy number",
+        "origin": [
+          46.53826141357422,
+          445.29803466796875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "EGFR",
+        "origin": [
+          147.3826904296875,
+          437.9932861328125
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Italic",
+        "color": 2236962
+      },
+      {
+        "text": "EGFR",
+        "origin": [
+          229.74441528320312,
+          438.1495361328125
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Italic",
+        "color": 2236962
+      },
+      {
+        "text": " fusion",
+        "origin": [
+          246.03347778320312,
+          438.1495361328125
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      },
+      {
+        "text": "EGFR",
+        "origin": [
+          47.05846405029297,
+          437.99334716796875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Italic",
+        "color": 2236962
+      },
+      {
+        "text": " ecDNA",
+        "origin": [
+          63.34752655029297,
+          437.99334716796875
+        ],
+        "size": 8.0,
+        "font": "RobotoCondensed-Regular",
+        "color": 2236962
+      }
+    ]
+  }
+}

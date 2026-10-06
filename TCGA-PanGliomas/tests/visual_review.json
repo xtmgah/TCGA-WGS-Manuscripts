@@ -1,0 +1,120 @@
+{
+  "status": "PASS",
+  "review_date": "2026-10-06",
+  "reviewer": "Codex visual review",
+  "scope": "All 49 main-figure panels; current manuscript copies in reference/figures",
+  "method": "Full-page inspection, panel crops, exact difference maps at 150 and 300 dpi, and enlarged comparisons of residual regions. No reference artwork is used to render.",
+  "exact_pixel_identity_claimed": false,
+  "author_release_approval": false,
+  "figures": {
+    "1": {
+      "status": "PASS",
+      "reference_pdf_sha256": "256a395a6bca15b0ed2de85537cf7f7c4717d329e8a93dd933c7948198977641",
+      "pixel_sha256": {
+        "150": "3166ca721d018aaf6270467edeec632509636dcd8b3e1c0e416d1f0eab78608b",
+        "300": "c144dde86297d94c003355771deb57e5d12193050cac0238d4831aab36820a8d"
+      },
+      "panels": [
+        "1a",
+        "1b",
+        "1c",
+        "1d",
+        "1e",
+        "1f",
+        "1g",
+        "1h",
+        "1i",
+        "1j",
+        "1k"
+      ],
+      "corrections": "Centered lower-panel titles and model headings; restored legend spacing and heading positions.",
+      "remaining_differences": "Small rasterization, path-boundary and glyph-edge residuals; no unresolved panel layout or scientific-mark discrepancy."
+    },
+    "2": {
+      "status": "PASS",
+      "reference_pdf_sha256": "c7889cc97cd7e512a79c282b863e560453de4d657f0c0b883de50d15741d56fa",
+      "pixel_sha256": {
+        "150": "d6860a2b10046c9e1d1f68b645cfaea4f25864a43e2e904d49cff4dc99585a0d",
+        "300": "64f16ca6660ffc9634d1bc6dd3619f20f263efb08f8fd3812c15a2927e4cf95f"
+      },
+      "panels": [
+        "2a",
+        "2b",
+        "2c",
+        "2d",
+        "2e",
+        "2f",
+        "2g",
+        "2h",
+        "2i",
+        "2j"
+      ],
+      "corrections": "Restored native Cairo placement, solid survival curves, inset legends, title alignment and font sizes.",
+      "remaining_differences": "Small rasterization, path-boundary and glyph-edge residuals; no unresolved panel layout or scientific-mark discrepancy."
+    },
+    "3": {
+      "status": "PASS",
+      "reference_pdf_sha256": "2f85a6d299b643a7b3b61eb7df20f2357d95e6b4dc0878b0f163f2cb4b193d07",
+      "pixel_sha256": {
+        "150": "88204f9c8fafc75523b8395b0b0b2c79c962f6d10baf3b88ba7d776e0dbfc32e",
+        "300": "762331b7b08eaa8f71076e5bf7b1edd6405e8f6d4c9786a8faaf1b5ec757c7b0"
+      },
+      "panels": [
+        "3a",
+        "3b",
+        "3c",
+        "3d",
+        "3e",
+        "3f",
+        "3g",
+        "3h"
+      ],
+      "corrections": "Restored first-row margins, titles, italic TERT, cohort key, timing inset legend, matrix keys and footnotes.",
+      "remaining_differences": "Small rasterization, path-boundary and glyph-edge residuals; no unresolved panel layout or scientific-mark discrepancy."
+    },
+    "4": {
+      "status": "PASS",
+      "reference_pdf_sha256": "66925b9c1e30b3781882711c097a20e65484e29894c5e5ff67de4bbb56d5b625",
+      "pixel_sha256": {
+        "150": "3409fb45d4ab695ec3105d0f52f4ec830c40fcdfeb1dba966d40cc456ae8bf53",
+        "300": "7bc49f5c8a2daa165e6f1b1059d77671b2d8b7a5605ab8b73b8797b475b96a0c"
+      },
+      "panels": [
+        "4a",
+        "4b",
+        "4c",
+        "4d",
+        "4e",
+        "4f",
+        "4g",
+        "4h",
+        "4i",
+        "4j",
+        "4k"
+      ],
+      "corrections": "Restored native Cairo placement, titles, survival/risk-table spacing, significance key, black cohort labels and timing-key backgrounds.",
+      "remaining_differences": "Small rasterization, path-boundary and glyph-edge residuals; no unresolved panel layout or scientific-mark discrepancy."
+    },
+    "5": {
+      "status": "PASS",
+      "reference_pdf_sha256": "5f9fb26e6dc1c9379d899a02dacddcfa773449993046707d67d30f4ebbc2e779",
+      "pixel_sha256": {
+        "150": "d3ff8c605faa19776e12137ec22a4f045841ee53e61f92dbdf461c127ebb239d",
+        "300": "c6bfab0b08f18e75a5541905c4ac82ecaab4e432a277bc2412ad7aa28a5f2568"
+      },
+      "panels": [
+        "5a",
+        "5b",
+        "5c",
+        "5d",
+        "5e",
+        "5f",
+        "5g",
+        "5h",
+        "5i"
+      ],
+      "corrections": "Restored black cohort labels, parenthesized bold group headings, italic EGFR and the outside-right fusion legend.",
+      "remaining_differences": "Small rasterization, path-boundary and glyph-edge residuals; no unresolved panel layout or scientific-mark discrepancy."
+    }
+  }
+}

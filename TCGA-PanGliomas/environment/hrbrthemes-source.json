@@ -1,0 +1,11 @@
+{
+  "package": "hrbrthemes",
+  "version": "0.9.3",
+  "url": "https://cloud.r-project.org/src/contrib/hrbrthemes_0.9.3.tar.gz",
+  "archive_url": "https://cloud.r-project.org/src/contrib/Archive/hrbrthemes/hrbrthemes_0.9.3.tar.gz",
+  "sha256": "931d7f65524d090dfff3950e4dd0c850a8bf8bd6b406d65e8683d4d93742729f",
+  "original_snapshot_version": "0.9.2",
+  "original_snapshot_github_commit": "d3fd02949fc201c6db616ccaffbb9858aec6fd2b",
+  "theme_function_used": "theme_ipsum_rc",
+  "theme_source_difference": "Documentation comment only; function code identical between downloaded sources."
+}

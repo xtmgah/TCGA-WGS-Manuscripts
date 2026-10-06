@@ -1,0 +1,44 @@
+---
+title: "Fig. 4: Inferred event ordering and molecular phenotypes in GBM"
+output:
+  html_document:
+    self_contained: true
+    theme: readable
+params:
+  rebuild: true
+  output_dir: null
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE,message=FALSE,warning=FALSE)
+repo <- normalizePath(file.path(dirname(knitr::current_input(dir=TRUE)),'..'))
+out <- if(is.null(params$output_dir))file.path(repo,'outputs')else params$output_dir
+```
+
+This standalone package includes the statistical recomputation and data-minimization milestones. Rebuilding requires the author-request inputs described in [data access](../data/external/README.md), alongside the Git inputs. Survival models, displayed Cox contrasts, the gain-timing permutation and all 18 pairwise metric tests are recomputed. Reference artwork is used only for comparison. Panel-level visual review against the current manuscript is complete; small rendering residuals are documented. A future changed render requires renewed review. See the [statistical methods](../docs/STATISTICAL_RECOMPUTATION.md), [scope](../docs/REPRODUCTION_SCOPE.md) and [validation record](../docs/VALIDATION.md).
+
+```{r reproduce}
+source(file.path(repo,'functions/R/entrypoint.R'))
+if(params$rebuild)run_reproduction(repo,c('--figures','4','--output-dir',out))
+stopifnot(file.exists(file.path(out,'figures/Figure_4.png')))
+```
+
+```{r figure, echo=FALSE, out.width="100%"}
+knitr::include_graphics(file.path(out,'figures/Figure_4.png'))
+```
+
+The original manuscript captions and displayed event-label mappings are retained in [reference/main_figure_captions.txt](../reference/main_figure_captions.txt).
+
+The figure is available as a vector PDF in `outputs/figures/Figure_4.pdf`.
+
+```{r statistics}
+checks <- jsonlite::fromJSON(file.path(out,'verification/statistical_verification.json'),simplifyVector=FALSE)
+summary <- do.call(rbind,lapply(names(checks$checks),function(k){
+ z<-checks$checks[[k]];data.frame(check=k,pass=z$pass,max_absolute_error=z$maximum_absolute_error)
+}))
+knitr::kable(summary,digits=10,caption='Shared numerical regression checks for this build')
+```
+
+```{r session}
+sessionInfo()
+```

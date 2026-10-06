@@ -1,0 +1,228 @@
+{
+  "status": "PASS",
+  "date": "2026-10-06",
+  "scope": "New macOS arm64 R/Python installation; second platform deferred by user; no container test",
+  "R": "4.5.1",
+  "Python": "3.12.13",
+  "Pandoc": "3.12",
+  "Cairo": "1.18.4",
+  "hrbrthemes": "0.9.3",
+  "new_R_and_Python_interpreters": true,
+  "all_packages_installed_into_new_prefix": true,
+  "Python_user_site_disabled": true,
+  "old_R_Python_Homebrew_primary_package_and_original_project_reads_blocked": true,
+  "reference_PDF_reads_blocked_during_build": true,
+  "full_build_seconds": 101.21,
+  "active_inputs_verified": 105,
+  "numerical_checks": 141,
+  "numeric_entries_compared": 1064,
+  "ac2_tables": 30,
+  "statistical_regression_tests": 12,
+  "python_regression_tests": 14,
+  "entrypoint_isolation_tests": 2,
+  "pip_check": "PASS",
+  "HTML_reports_rendered": 6,
+  "visual_status": "REVIEWED_MATCH",
+  "panels_reviewed": 49,
+  "figures": [
+    {
+      "figure": 1,
+      "status": "REVIEWED_MATCH",
+      "identical_to_pre_environment_milestone_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "figure": 2,
+      "status": "REVIEWED_MATCH",
+      "identical_to_pre_environment_milestone_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "figure": 3,
+      "status": "REVIEWED_MATCH",
+      "identical_to_pre_environment_milestone_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "figure": 4,
+      "status": "REVIEWED_MATCH",
+      "identical_to_pre_environment_milestone_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "figure": 5,
+      "status": "REVIEWED_MATCH",
+      "identical_to_pre_environment_milestone_dpi": [
+        150,
+        300
+      ]
+    }
+  ],
+  "cairo_normalization_panels": [
+    {
+      "panel": "M2_g",
+      "spaces": 15,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M2_f",
+      "spaces": 6,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M2_d",
+      "spaces": 27,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M2_e",
+      "spaces": 43,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M4_d",
+      "spaces": 22,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M4_e",
+      "spaces": 30,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M2_c",
+      "spaces": 18,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M3_d",
+      "spaces": 7,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M3_e",
+      "spaces": 7,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M3_f",
+      "spaces": 11,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M3_b",
+      "spaces": 8,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M3_c",
+      "spaces": 6,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M3_a",
+      "spaces": 6,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M4_h",
+      "spaces": 12,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M4_i",
+      "spaces": 12,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M4_k",
+      "spaces": 12,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    },
+    {
+      "panel": "M4_j",
+      "spaces": 12,
+      "pixels_preserved_dpi": [
+        150,
+        300
+      ]
+    }
+  ],
+  "legacy_panels_unchanged_by_normalizer": 46,
+  "original_project_files_hash_verified_unchanged": 207,
+  "scientific_methods_or_tolerances_changed": false,
+  "all_105_packaged_inputs_unchanged": true,
+  "rendering_and_test_code_match_validated_copy": true,
+  "rmarkdown_executable_rebuild": {
+    "status": "PASS",
+    "figure": 1,
+    "rebuild": true,
+    "output_pdf_sha256": "4309dad95f76368264a52165d65a863925d4dd96e120f1075576bc40dc43ba3b",
+    "runtime": "fresh macOS environment",
+    "font_cache": "fresh dedicated output cache",
+    "matches_reviewed_pixels_dpi": [
+      150,
+      300
+    ]
+  },
+  "recipe_resolves_to_exact_installed_conda_builds": true,
+  "explicit_bundled_font_selection": true,
+  "second_platform": "Deferred at user request",
+  "containers": "Not tested; not requested"
+}

@@ -1,0 +1,31 @@
+{
+  "description": "Manuscript reference pages used only for comparison, never as render inputs.",
+  "source_snapshot": "Local project as inspected 2026-10-06; Figure 5 uses AC2 update dated 2026-10-02.",
+  "figures": [
+    {
+      "figure": 1,
+      "source": "results/publication/main_figures/Figure_1.pdf",
+      "sha256": "256a395a6bca15b0ed2de85537cf7f7c4717d329e8a93dd933c7948198977641"
+    },
+    {
+      "figure": 2,
+      "source": "results/publication/main_figures/Figure_2.pdf",
+      "sha256": "c7889cc97cd7e512a79c282b863e560453de4d657f0c0b883de50d15741d56fa"
+    },
+    {
+      "figure": 3,
+      "source": "results/publication/main_figures/Figure_3.pdf",
+      "sha256": "2f85a6d299b643a7b3b61eb7df20f2357d95e6b4dc0878b0f163f2cb4b193d07"
+    },
+    {
+      "figure": 4,
+      "source": "results/publication/main_figures/Figure_4.pdf",
+      "sha256": "66925b9c1e30b3781882711c097a20e65484e29894c5e5ff67de4bbb56d5b625"
+    },
+    {
+      "figure": 5,
+      "source": "results/publication/main_figures/Figure_5.pdf",
+      "sha256": "5f9fb26e6dc1c9379d899a02dacddcfa773449993046707d67d30f4ebbc2e779"
+    }
+  ]
+}

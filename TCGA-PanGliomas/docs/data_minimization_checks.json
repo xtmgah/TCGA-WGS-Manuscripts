@@ -1,0 +1,106 @@
+{
+  "status": "PASS",
+  "source_inputs": 169,
+  "active_inputs": 105,
+  "retired_inputs": 64,
+  "git_inputs": 70,
+  "request_inputs": 35,
+  "request_compressed_bytes": 762970,
+  "git_compressed_bytes": 15329046,
+  "previous_external_compressed_bytes": 8508654,
+  "columns_removed_from_retained_tables": 416,
+  "column_entries_removed_with_retired_files": 679,
+  "reduced_tables": 27,
+  "all_source_inputs_hash_verified": true,
+  "selected_cell_strings_and_relative_row_order_preserved": true,
+  "date": "2026-10-06",
+  "primary_build_seconds": 90.02,
+  "numerical_checks": 141,
+  "numeric_entries_compared": 1064,
+  "numerical_verification_unchanged": true,
+  "ac2_tables": 30,
+  "ac2_verification_unchanged": true,
+  "statistical_regression_tests": 12,
+  "release_contract_tests": 7,
+  "input_contract_tests": "PASS",
+  "visual_status": "REVIEWED_MATCH",
+  "compared_dpi": [
+    150,
+    300
+  ],
+  "original_project_files_unchanged": 207,
+  "public_storage": "Git only",
+  "private_storage": "Author-held Box/Biowulf; no public links",
+  "study_specific_access_permissions_certified": false,
+  "pdf_text_regression_tests": 2,
+  "git_only_input_check": "PASS",
+  "public_audit_identifier_scan": "PASS",
+  "all_active_input_schemas_verified": true,
+  "archive_relocation": {
+    "status": "PASS",
+    "fresh_workspace": true,
+    "rebuild_seconds": 74.22,
+    "original_project_primary_package_and_reference_reads_blocked_during_build": true,
+    "all_three_statistical_audits_identical": true,
+    "all_105_packaged_inputs_identical": true,
+    "runtime_entrypoints_dependencies_reports_and_visual_pins_match_export": true,
+    "no_local_runtime_config_in_export": true,
+    "original_project_files_unchanged": 207,
+    "figures": [
+      {
+        "figure": 1,
+        "pixel_identical_after_relocation": true,
+        "pixel_identical_after_relocation_dpi": [
+          150,
+          300
+        ],
+        "manuscript_visual_status": "REVIEWED_MATCH"
+      },
+      {
+        "figure": 2,
+        "pixel_identical_after_relocation": true,
+        "pixel_identical_after_relocation_dpi": [
+          150,
+          300
+        ],
+        "manuscript_visual_status": "REVIEWED_MATCH"
+      },
+      {
+        "figure": 3,
+        "pixel_identical_after_relocation": true,
+        "pixel_identical_after_relocation_dpi": [
+          150,
+          300
+        ],
+        "manuscript_visual_status": "REVIEWED_MATCH"
+      },
+      {
+        "figure": 4,
+        "pixel_identical_after_relocation": true,
+        "pixel_identical_after_relocation_dpi": [
+          150,
+          300
+        ],
+        "manuscript_visual_status": "REVIEWED_MATCH"
+      },
+      {
+        "figure": 5,
+        "pixel_identical_after_relocation": true,
+        "pixel_identical_after_relocation_dpi": [
+          150,
+          300
+        ],
+        "manuscript_visual_status": "REVIEWED_MATCH"
+      }
+    ]
+  },
+  "export_access_checks": {
+    "status": "PASS",
+    "public_archive_input_files": 70,
+    "request_archive_input_files": 35,
+    "request_inputs_absent_from_git_archive": true,
+    "git_only_check_without_request_data": "PASS",
+    "full_check_without_request_data": "expected failure with 35 missing inputs and author-request instructions",
+    "runtime_config_not_exported": true
+  }
+}

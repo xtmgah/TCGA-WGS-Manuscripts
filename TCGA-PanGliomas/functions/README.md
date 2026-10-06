@@ -1,0 +1,11 @@
+# Shared implementation
+
+`R/` contains survival/statistical recomputation and ggplot2 panels. `python/` contains input verification, AC2 aggregation, native-vector drawing and composition. `styles/figures.json` fixes current panel positions and page dimensions; `fonts/` contains the exact Python rendering fonts and their license.
+
+The plotting functions were extracted from the existing project's publication/refinement code, then adapted to the isolated workspace. `recompute.R`, `ac2_aggregate.py`, `ac2_statistics.R` and `ac2_validate.py` perform the tractable scientific recalculations. `render.py` composes freshly drawn panels. No function reads the manuscript reference PDFs to construct a figure.
+
+Paths resembling the historical project hierarchy are logical paths **inside `outputs/.work`**. `data/manifest.tsv` supplies their contents. They never resolve against the original parent project. The historical helper filenames reflect provenance; they do not imply that old figure layouts are used. Author/project licensing for scientific code and data has not been newly assigned by this packaging work.
+
+`styles/title_positions.json` records static title text and physical typography only. `python/polish.py` applies the manuscript’s title positions, vector legend translations, and local key backgrounds to newly generated panels. `title_streams.py` and `legend_streams.py` edit individual PDF text operations without resampling scientific marks. The fixed `pypdf` version is needed for their PDF parsing. Reference PDFs are never opened by these renderers; only `tests/verify.py` reads them. All 49 panels are compared at 150 and 300 dpi, with separate checks of text, font, size, color and origin.
+
+`python/cairo_spaces.py` normalizes proven-empty space glyphs emitted in separate Type3 fonts by newer Cairo builds. It preserves visible glyphs and positions for the layout steps; tests compare pixels and extracted labels. `python/common.py` selects the exact bundled Roboto Condensed faces so system-font cache order cannot change the Python figures. Register the variable fonts in `fonts/system/` for macOS R/Cairo. See `docs/ENVIRONMENT_VALIDATION.md` for the freshly installed environment and checks.

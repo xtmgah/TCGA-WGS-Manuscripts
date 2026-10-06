@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "date": "2026-10-06",
+  "milestone": "Tractable main-figure statistical recomputation",
+  "numerical_checks": 141,
+  "numeric_values_compared": 1064,
+  "extended_tables_or_selected_rows": 15,
+  "timing_permutations_recomputed": 3,
+  "ac2_tables_recomputed": 28,
+  "ac2_measurement_tables_checked": 2,
+  "statistical_failure_tests": 12,
+  "pdf_text_tests": 2,
+  "packaged_inputs": 169,
+  "prior_packaged_inputs_unchanged": 168,
+  "new_external_input": {
+    "id": "input_169",
+    "rows": 392,
+    "compressed_bytes": 8996,
+    "contains": "Specimen weighted timing sums"
+  },
+  "original_project_files_hash_checked": 207,
+  "all_original_files_unchanged": true,
+  "main_figure_visual_status": "REVIEWED_MATCH",
+  "compared_dpi": [
+    150,
+    300
+  ],
+  "build_source_reads_blocked": true,
+  "build_reference_reads_blocked": true,
+  "reference_tables_immutable": true,
+  "renderers_use_verified_recomputed_tables": true,
+  "unverified_upstream": [
+    "ordering/mixture fits",
+    "timing estimates",
+    "molecular and RNA preprocessing/classification",
+    "DESeq2",
+    "GSEA"
+  ],
+  "numeric_entries_include_expected_missing_values": true,
+  "input_absence_corruption_relocation_tests": "PASS",
+  "primary_build_seconds": 67.51,
+  "archive_relocation": {
+    "status": "PASS",
+    "fresh_workspace": true,
+    "rebuild_seconds": 76.67,
+    "original_project_and_reference_reads_blocked_during_build": true,
+    "all_three_statistical_audits_identical": true,
+    "all_169_packaged_inputs_identical": true,
+    "runtime_entrypoints_dependencies_and_visual_pins_match_export": true,
+    "no_local_runtime_config_in_export": true,
+    "figures": [
+      {
+        "figure": 1,
+        "pixel_identical_after_relocation": true,
+        "pixel_identical_after_relocation_dpi": [
+          150,
+          300
+        ],
+        "manuscript_visual_status": "REVIEWED_MATCH"
+      },
+      {
+        "figure": 2,
+        "pixel_identical_after_relocation": true,
+        "pixel_identical_after_relocation_dpi": [
+          150,
+          300
+        ],
+        "manuscript_visual_status": "REVIEWED_MATCH"
+      },
+      {
+        "figure": 3,
+        "pixel_identical_after_relocation": true,
+        "pixel_identical_after_relocation_dpi": [
+          150,
+          300
+        ],
+        "manuscript_visual_status": "REVIEWED_MATCH"
+      },
+      {
+        "figure": 4,
+        "pixel_identical_after_relocation": true,
+        "pixel_identical_after_relocation_dpi": [
+          150,
+          300
+        ],
+        "manuscript_visual_status": "REVIEWED_MATCH"
+      },
+      {
+        "figure": 5,
+        "pixel_identical_after_relocation": true,
+        "pixel_identical_after_relocation_dpi": [
+          150,
+          300
+        ],
+        "manuscript_visual_status": "REVIEWED_MATCH"
+      }
+    ]
+  },
+  "evidence_stage": "Before the data-minimization revision; see data_minimization_checks.json for current inputs and archives."
+}
