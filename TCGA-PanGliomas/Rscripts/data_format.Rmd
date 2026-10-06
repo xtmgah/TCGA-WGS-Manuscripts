@@ -1,0 +1,21 @@
+---
+title: "TCGA Pan-Glioma input format"
+output:
+  html_document:
+    self_contained: true
+    theme: readable
+---
+
+Inputs are gzip-compressed and resolved exclusively through `data/manifest.tsv`. Git contains 70 reviewed aggregate/style inputs. Full recalculation also requires 35 minimal files requested from the corresponding authors; the authors hold these on nonpublic Box/Biowulf. No public external accession is planned. The package does not read the original project or fetch remote inputs at runtime. See [data documentation](../data/README.md) for access and distribution details.
+
+```{r}
+repo <- normalizePath(file.path(dirname(knitr::current_input(dir=TRUE)),'..'))
+x <- read.delim(file.path(repo,'data/manifest.tsv'),check.names=FALSE)
+knitr::kable(aggregate(cbind(files=rep(1,nrow(x)),compressed_bytes=x$compressed_bytes)~tier,x,sum))
+```
+
+The manifest records both compressed and uncompressed SHA-256 checksums, source-relative logical paths, column schemas and redistribution classifications. Aggregate ordering files preserve saved model draws and violin densities. Other inputs include clinical survival tables, genomic measurements, transcriptomic summaries and curated AC2 features. Individual-level inputs and outputs are excluded from the code archive. The data review retired 64 unused files and removed 416 columns from retained tables. File-level classifications, column decisions and evidence are in `data/redistribution_audit.tsv`, `data/column_audit.tsv` and `docs/DATA_DISTRIBUTION.md`.
+
+```{r}
+knitr::kable(x[,c('id','tier','rows','role')],caption='Input inventory; full schemas are in data/manifest.tsv')
+```

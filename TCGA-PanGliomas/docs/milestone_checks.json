@@ -1,0 +1,93 @@
+{
+  "status": "PASS",
+  "source": "Allowlisted Git/code archive plus separately supplied private author-request archive",
+  "fresh_workspace": true,
+  "no_local_runtime_config_in_export": true,
+  "reference_read_blocked_while_rendering": true,
+  "figures": [
+    {
+      "figure": 1,
+      "pixel_identical_after_relocation": true,
+      "pixel_identical_after_relocation_dpi": [
+        150,
+        300
+      ],
+      "manuscript_visual_status": "REVIEWED_MATCH"
+    },
+    {
+      "figure": 2,
+      "pixel_identical_after_relocation": true,
+      "pixel_identical_after_relocation_dpi": [
+        150,
+        300
+      ],
+      "manuscript_visual_status": "REVIEWED_MATCH"
+    },
+    {
+      "figure": 3,
+      "pixel_identical_after_relocation": true,
+      "pixel_identical_after_relocation_dpi": [
+        150,
+        300
+      ],
+      "manuscript_visual_status": "REVIEWED_MATCH"
+    },
+    {
+      "figure": 4,
+      "pixel_identical_after_relocation": true,
+      "pixel_identical_after_relocation_dpi": [
+        150,
+        300
+      ],
+      "manuscript_visual_status": "REVIEWED_MATCH"
+    },
+    {
+      "figure": 5,
+      "pixel_identical_after_relocation": true,
+      "pixel_identical_after_relocation_dpi": [
+        150,
+        300
+      ],
+      "manuscript_visual_status": "REVIEWED_MATCH"
+    }
+  ],
+  "rmarkdown_rebuild_test": "PASS",
+  "original_files_hash_checked": 207,
+  "external_corruption_and_absence_tests": "PASS with current 105-input manifest",
+  "visual_review_date": "2026-10-06",
+  "visual_review_status": "REVIEWED_MATCH",
+  "panels_reviewed": 49,
+  "pdf_text_regression_tests": "2 PASS",
+  "relocation_rebuild_seconds": 74.22,
+  "relocation_compared_dpi": [
+    150,
+    300
+  ],
+  "relocation_numerical_results_match": true,
+  "rendering_code_and_dependency_files_match_export": true,
+  "rmarkdown_rebuild_test_stage": "Fresh macOS environment; executable Figure 1 rebuild matches reviewed pixels",
+  "current_html_reports_rendered": true,
+  "total_packaged_inputs": 105,
+  "statistical_recomputation_checks": 141,
+  "statistical_failure_tests": "12 PASS",
+  "extended_statistics_status": "PASS",
+  "latest_milestone": "Fresh macOS R/Python environment validation",
+  "git_inputs": 70,
+  "request_inputs": 35,
+  "retired_inputs": 64,
+  "columns_removed_from_retained_tables": 416,
+  "release_contract_tests": "7 PASS",
+  "git_only_archive_check_without_request_data": "PASS",
+  "full_check_without_request_data": "Expected failure with author-request instructions",
+  "public_storage": "Git only",
+  "private_storage": "Author-held Box/Biowulf; no public links",
+  "previous_milestone": "Data redistribution classification and minimization",
+  "fresh_environment_evidence": "environment_checks.json",
+  "second_platform": "Deferred at user request",
+  "containers": "Not requested or tested",
+  "fresh_environment_build_seconds": 101.21,
+  "fresh_environment_visual_status": "REVIEWED_MATCH",
+  "fresh_environment_numerical_checks": 141,
+  "fresh_environment_python_tests": 14,
+  "fresh_environment_entrypoint_tests": 2
+}

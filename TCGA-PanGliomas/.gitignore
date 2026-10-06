@@ -1,0 +1,15 @@
+# Local runtime, author-request data, and generated individual-level outputs.
+.local/
+.venv/
+.Rlib/
+renv/library/
+renv/staging/
+data/external/**
+!data/external/README.md
+outputs/
+__pycache__/
+*.py[cod]
+.Rhistory
+.RData
+.Ruserdata
+.DS_Store

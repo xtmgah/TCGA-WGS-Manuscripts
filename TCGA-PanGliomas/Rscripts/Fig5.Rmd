@@ -1,0 +1,49 @@
+---
+title: "Fig. 5: Amplicon architecture, EGFR amplification and transcriptional states in GBM"
+output:
+  html_document:
+    self_contained: true
+    theme: readable
+params:
+  rebuild: true
+  output_dir: null
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE,message=FALSE,warning=FALSE)
+repo <- normalizePath(file.path(dirname(knitr::current_input(dir=TRUE)),'..'))
+out <- if(is.null(params$output_dir))file.path(repo,'outputs')else params$output_dir
+```
+
+This standalone package includes the statistical recomputation and data-minimization milestones. Rebuilding requires the author-request inputs described in [data access](../data/external/README.md), alongside the Git inputs. Current AC2 summaries and tests, including EGFR expression/fusion tests, are regenerated from curated inputs. RNA-state composition and the recomputed adjusted multinomial test are checked. GSEA and upstream expression normalization/fusion calls remain frozen. Reference artwork is used only for comparison. Panel-level visual review against the current manuscript is complete; small rendering residuals are documented. A future changed render requires renewed review. See the [statistical methods](../docs/STATISTICAL_RECOMPUTATION.md), [scope](../docs/REPRODUCTION_SCOPE.md) and [validation record](../docs/VALIDATION.md).
+
+```{r reproduce}
+source(file.path(repo,'functions/R/entrypoint.R'))
+if(params$rebuild)run_reproduction(repo,c('--figures','5','--output-dir',out))
+stopifnot(file.exists(file.path(out,'figures/Figure_5.png')))
+```
+
+```{r figure, echo=FALSE, out.width="100%"}
+knitr::include_graphics(file.path(out,'figures/Figure_5.png'))
+```
+
+The original manuscript captions and displayed event-label mappings are retained in [reference/main_figure_captions.txt](../reference/main_figure_captions.txt).
+
+The figure is available as a vector PDF in `outputs/figures/Figure_5.pdf`.
+
+```{r statistics}
+checks <- jsonlite::fromJSON(file.path(out,'verification/statistical_verification.json'),simplifyVector=FALSE)
+summary <- do.call(rbind,lapply(names(checks$checks),function(k){
+ z<-checks$checks[[k]];data.frame(check=k,pass=z$pass,max_absolute_error=z$maximum_absolute_error)
+}))
+knitr::kable(summary,digits=10,caption='Shared numerical regression checks for this build')
+```
+
+```{r ac2_checks}
+ac2 <- jsonlite::fromJSON(file.path(out,'verification/ac2_verification.json'))
+knitr::kable(ac2$tables,caption='Current AC2 table checks; frozen copies are identified explicitly')
+```
+
+```{r session}
+sessionInfo()
+```
